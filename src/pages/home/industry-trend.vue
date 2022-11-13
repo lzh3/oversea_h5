@@ -23,6 +23,10 @@ export default {
             type: String,
             default: '行业动态'
         },
+        url: {
+            type: String,
+            default: api.home.articleList
+        }
     },
     filters: {
 
@@ -43,7 +47,7 @@ export default {
         // 行业动态
         getInfo() {
             this.loading = true;
-            this.$axios.post(api.home.articleList, {
+            this.$axios.post(this.url, {
                 type: 2,
                 page: this.page,
                 pageSize: this.pagesize
