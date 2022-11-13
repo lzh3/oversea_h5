@@ -6,9 +6,7 @@
                     <img :src="item.img_url" alt="">
                 </div>
                 <div class="details">
-                    <h3 class="item-title" :class="{'no-img': !item.url}">
-                        {{item.title}}
-                    </h3>
+                    <h3 class="item-title" :class="{'no-img': !item.url}" v-html="item.title"></h3>
                     <p class="time">{{item.update_time | toSecDate}}</p>
                 </div>
             </li>
@@ -61,7 +59,7 @@ export default {
                 height: 100%;
                 background: #f46464;
                 border-radius: 0.28rem;
-                img{
+                img {
                     width: 100%;
                     height: 100%;
                 }

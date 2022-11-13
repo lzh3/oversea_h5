@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     checkMore() {
-      this.$emit('more',this.type)
+      this.$emit('more', this.type)
     },
   },
 }

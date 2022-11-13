@@ -1,14 +1,13 @@
 <template>
-    <div class="list-wrap">
-        <ul>
-            <li class="item" v-for="item in cards" :key="item.id" @click="handleItemClick(item)">
+    <div class="list-wrap bg1">
+        <c-common-top :title="title" :isBack="true"></c-common-top>
+        <ul class=" p-30">
+            <li class="item" v-for="item in list" :key="item.id" @click="handleItemClick(item)">
                 <div class="pic" v-if="item.img_url">
                     <img :src="item.img_url" alt="">
                 </div>
                 <div class="details">
-                    <h3 class="item-title" :class="{'no-img': !item.url}">
-                        {{item.title}}
-                    </h3>
+                    <h3 class="item-title" :class="{'no-img': !item.url}" v-html="item.title"></h3>
                     <p class="time">{{item.update_time | toSecDate}}</p>
                 </div>
             </li>
@@ -16,12 +15,13 @@
     </div>
 </template>
 <script>
+import api from "@/api/api"
 
 export default {
     props: {
-        cards: {
-            type: Array,
-            default: () => []
+        title: {
+            type: String,
+            default: '行业动态'
         },
     },
     filters: {
@@ -29,10 +29,31 @@ export default {
     },
     data() {
         return {
+            loading: false,
+            list: [],
 
+            page: 0,
+            pagesize: 15,
         }
     },
+    created() {
+        this.getInfo();
+    },
     methods: {
+        // 行业动态
+        getInfo() {
+            this.loading = true;
+            this.$axios.post(api.home.articleList, {
+                type: 2,
+                page: this.page,
+                pageSize: this.pagesize
+
+            }).then(res => {
+                console.log('res', res.data)
+                this.loading = false;
+                this.list = res.data.list;
+            })
+        },
         handleItemClick(item) {
             this.$emit('item', item)
         }
@@ -61,7 +82,7 @@ export default {
                 height: 100%;
                 background: #f46464;
                 border-radius: 0.28rem;
-                img{
+                img {
                     width: 100%;
                     height: 100%;
                 }

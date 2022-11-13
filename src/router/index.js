@@ -28,6 +28,7 @@ import BankAdd from "@/pages/self/fund/bank-add";
 import OrderManage from "@/pages/self/order/manage";
 import OrderPay from "@/pages/self/order/pay-detail";
 import SafeIndex from '@/pages/self/safe/index'
+import IndustryTrend from '@/pages/home/industry-trend'
 
 Vue.use(Router);
 
@@ -154,7 +155,12 @@ let routerObj = new Router({
     {
       path: "/self/safe",
       component: SafeIndex
-    }
+    },
+    // 行业动态
+    {
+      path: "/industry/list",
+      component: IndustryTrend
+    },
   ]
 });
 

@@ -5,12 +5,14 @@
         <div class="main p-30">
             <section class="banner-section">
                 <van-swipe class="my-swipe" :show-indicators="false" :autoplay="2000" indicator-color="white">
-                    <van-swipe-item>1</van-swipe-item>
-                    <van-swipe-item>2</van-swipe-item>
+                    <van-swipe-item v-for="(item, index) in imgs" :key="index">
+                        <img :src="item" alt="">
+                    </van-swipe-item>
+
                 </van-swipe>
             </section>
             <section class="news-section">
-                <c-common-title title='行业动态' type='news'></c-common-title>
+                <c-common-title title='行业动态' type='news' @more="lookAll"></c-common-title>
                 <van-list v-model="loading" :finished="false" @load="getInfo">
                     <news-list :cards="newsList">
                     </news-list>
@@ -35,6 +37,7 @@ export default {
     data() {
         return {
             msg: '我的',
+            imgs: [],
             newsList: [
                 // {
                 //     id: 1,
@@ -52,10 +55,12 @@ export default {
     },
     created() {
         this.getInfo();
+        this.getBanner()
     },
     methods: {
+        // 行业动态
         getInfo() {
-          this.loading = true;
+            this.loading = true;
             this.$axios.post(api.home.articleList, {
                 type: 2,
                 page: this.page,
@@ -65,6 +70,27 @@ export default {
                 console.log('res', res.data)
                 this.loading = false;
                 this.newsList = res.data.list;
+            })
+        },
+        // banner
+        getBanner() {
+            this.$axios.post(api.home.articleList, {
+                type: 3,
+                page: this.page,
+                pageSize: this.pagesize
+
+            }).then(res => {
+                console.log('banner', res.data)
+                if (res.data) {
+                    this.imgs = res.data.list.map(item => item.img_url)
+                }
+
+            })
+        },
+        // 查看全部
+        lookAll() {
+            this.$router.push({
+                path: "/industry/list"
             })
         },
     }
@@ -81,8 +107,12 @@ export default {
     font-size: 0.2rem;
     line-height: 3.7rem;
     text-align: center;
-    background-color: #39a9ed;
+    // background-color: #39a9ed;
     border-radius: 0.29rem;
+    img {
+        width: 100%;
+        height: 100%;
+    }
 }
 .banner-section {
     // margin-top: 0.26rem;

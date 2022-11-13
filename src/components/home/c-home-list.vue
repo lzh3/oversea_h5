@@ -45,7 +45,7 @@ export default {
         },
         processBar(){
             return item=>{
-                return (item.sub_amount / item.amount)
+                return (item.sub_amount / item.amount) || 0;
             }
         },
     },
