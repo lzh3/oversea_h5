@@ -17,7 +17,7 @@
                         </div>
                         <span>{{progressCom(item)}}</span>
                     </div>
-                    <p class="time">截止时间：{{item.end_time | toDate}}</p>
+                    <p class="time">截止时间：{{item.end_time | toSecDate}}</p>
                 </div>
             </li>
         </ul>

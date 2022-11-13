@@ -2,12 +2,14 @@
     <div class="list-wrap">
         <ul>
             <li class="item" v-for="item in cards" :key="item.id" @click="handleItemClick(item)">
-                <div class="pic" v-if="item.url"></div>
+                <div class="pic" v-if="item.img_url">
+                    <img :src="item.img_url" alt="">
+                </div>
                 <div class="details">
                     <h3 class="item-title" :class="{'no-img': !item.url}">
                         {{item.title}}
                     </h3>
-                    <p class="time">{{item.time}}</p>
+                    <p class="time">{{item.update_time | toSecDate}}</p>
                 </div>
             </li>
         </ul>
@@ -58,6 +60,10 @@ export default {
                 height: 100%;
                 background: #f46464;
                 border-radius: 0.28rem;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
             }
             .details {
                 display: flex;
@@ -80,10 +86,10 @@ export default {
                     display: -webkit-box;
                     -webkit-line-clamp: 2;
                     -webkit-box-orient: vertical;
-                    &.no-img{
-                      width: 100%;
-                      box-sizing: border-box;
-                      padding-right: 0.3rem;
+                    &.no-img {
+                        width: 100%;
+                        box-sizing: border-box;
+                        padding-right: 0.3rem;
                     }
                 }
                 .time {

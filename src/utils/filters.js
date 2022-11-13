@@ -26,5 +26,10 @@ Vue.filter('toNumber', (value) => {
 
 // 2022-11-09 18:00:00
 Vue.filter('toDate', value => {
-  value ? moment(value).format('YYYY-MM-DD HH:mm:ss') : '--';
+  return value ? moment(value).format('YYYY-MM-DD HH:mm:ss') : '--';
+})
+
+// 单位秒 =>  格式化
+Vue.filter('toSecDate', value => {
+  return value ? moment(Number(value)*1000).format('YYYY-MM-DD HH:mm:ss') : '--';
 })

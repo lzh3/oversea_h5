@@ -81,21 +81,21 @@
             <li>
               <p class="title">投资方案：</p>
               <p class="invest">
-                <span>每人限购100份</span>
-                <span><i class="price">￥1000</i>/份</span>
+                <span>每人限购{{projectAbout.limit_num || 0}}份</span>
+                <span><i class="price">￥{{projectAbout.price}}</i>/份</span>
               </p>
             </li>
             <li>
               <p class="title">回报类型：</p>
-              <p class="detail">{{block2.a}}</p>
+              <p class="detail">{{projectAbout.return_type | returnFilter}}</p>
             </li>
             <li>
               <p class="title">退出机制：</p>
-              <p class="detail">{{block2.b}}</p>
+              <p class="detail">{{projectAbout.out_type | outFilter}}</p>
             </li>
             <li>
               <p class="title">补充说明：</p>
-              <p class="detail">{{block2.c}}</p>
+              <p class="detail">{{projectAbout.project_remark}}</p>
             </li>
           </ul>
         </section>
@@ -106,9 +106,9 @@
         <img src="../../assets/imgs/project/comment.png" alt="">
         <span>咨询</span>
       </div>
-      <div class="op-item">
+      <div class="op-item" @click="handleCollect">
         <img src="../../assets/imgs/project/shoucang.png" alt="">
-        <span>收藏</span>
+        <span>{{detailInfo.is_collection ==1?'已收藏':'收藏'}}</span>
       </div>
       <van-button @click="handleSub">认购</van-button>
     </div>
@@ -181,7 +181,25 @@ export default {
   filters: {
     statusFilter(val) {
       return STATUS[val] || ''
-    }
+    },
+    returnFilter(val){
+      let obj={
+        1: '现金分红'
+      }
+      return obj[val] || '--'
+    },
+    outFilter(val){
+      let obj={
+        1: '到期自动退出'
+      }
+      return obj[val] || '--'
+    },
+    // collectFilter(val){
+    //   let obj={
+    //     0:'收藏',
+    //     1:'已收藏'
+    //   }
+    // }
   },
   computed: {
     progressCom() {
@@ -191,19 +209,33 @@ export default {
     },
     progressBar() {
       return item => {
-        // console.log('parseFloat(item.sub_amount / item.amount)', parseFloat(item.sub_amount / item.amount))
         return parseFloat(item.sub_amount / item.amount) || 0;
       }
     },
+    projectAbout(){
+      return this.detailInfo.projectProgramme?this.detailInfo.projectProgramme[0]:{};
+    },
+
   },
   created() {
     this.getProjectInfo();
   },
   methods: {
+    // 点击认购
     handleSub() {
       this.$router.push({
         path: '/project/subscribe',
-        query: {},
+        query: {
+          id: this.detailInfo.project_id
+        },
+      })
+    },
+    // 点击收藏
+    handleCollect(){
+      this.$axios.post(api.home.setCollect, {
+        project_id: this.$route.query.id
+      }).then(res => {
+        this.getProjectInfo();
       })
     },
     getProjectInfo() {
@@ -354,7 +386,7 @@ export default {
           color: #666;
           img{
             width: 1rem;
-            height: 80%;
+            height: 0.8rem;
           }
         }
       }

@@ -116,6 +116,15 @@ export default {
         }
     },
     methods: {
+        // 获取info
+        getInfo() {
+            this.$axios.post(api.home.setCollect, {
+                project_id: this.$route.query.id
+            }).then(res => {
+                // this.detailInfo = res.data;
+                this.getProjectInfo();
+            })
+        },
         handleMin() {
             this.projectInfo.count--;
         },
