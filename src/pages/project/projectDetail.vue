@@ -22,14 +22,14 @@
             </div>
             <div class="status-time">
               <span>{{detailInfo.show_status | statusFilter}}：</span>
-              <span>剩余30天</span>
+              <span>剩余{{detailInfo.sy_time | toDay}}天</span>
             </div>
           </div>
           <div class="process">
             <div class="process-bar">
               <van-progress :percentage="progressBar(detailInfo)" :show-pivot="false" track-color="#FFB9B6" color="#FF1F16" />
             </div>
-            <span>{{detailInfo.show_status | statusFilter}}</span>
+            <!-- <span>{{detailInfo.show_status | statusFilter}}</span> -->
             <span>{{progressCom(detailInfo)}}</span>
           </div>
         </div>
@@ -182,14 +182,14 @@ export default {
     statusFilter(val) {
       return STATUS[val] || ''
     },
-    returnFilter(val){
-      let obj={
+    returnFilter(val) {
+      let obj = {
         1: '现金分红'
       }
       return obj[val] || '--'
     },
-    outFilter(val){
-      let obj={
+    outFilter(val) {
+      let obj = {
         1: '到期自动退出'
       }
       return obj[val] || '--'
@@ -212,8 +212,8 @@ export default {
         return parseFloat(item.sub_amount / item.amount) || 0;
       }
     },
-    projectAbout(){
-      return this.detailInfo.projectProgramme?this.detailInfo.projectProgramme[0]:{};
+    projectAbout() {
+      return this.detailInfo.projectProgramme ? this.detailInfo.projectProgramme[0] : {};
     },
 
   },
@@ -231,7 +231,7 @@ export default {
       })
     },
     // 点击收藏
-    handleCollect(){
+    handleCollect() {
       this.$axios.post(api.home.setCollect, {
         project_id: this.$route.query.id
       }).then(res => {
@@ -315,9 +315,10 @@ export default {
     width: 100%;
     align-items: center;
     .process-bar {
-      width: 4.7rem;
+      width: 5.8rem;
     }
     span {
+      white-space: nowrap;
       margin-left: 0.18rem;
       font-size: 0.22rem;
       color: #ff1f16;
@@ -384,7 +385,7 @@ export default {
           flex-direction: column;
           font-size: 0.19rem;
           color: #666;
-          img{
+          img {
             width: 1rem;
             height: 0.8rem;
           }

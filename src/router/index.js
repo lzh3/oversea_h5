@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 
-import localStorage from '@/utils/localStorage'
+import localStorage from "@/utils/localStorage";
 
 import Home from "@/pages/home";
 import Find from "@/pages/find";
@@ -29,9 +29,9 @@ import OrderManage from "@/pages/self/order/manage";
 import OrderPay from "@/pages/self/order/pay-detail";
 import SafeIndex from '@/pages/self/safe/index'
 import IndustryTrend from '@/pages/home/industry-trend'
+import pay from '@/pages/pay/index'
 
 Vue.use(Router);
-
 
 let routerObj = new Router({
   routes: [
@@ -161,18 +161,23 @@ let routerObj = new Router({
       path: "/industry/list",
       component: IndustryTrend
     },
+    // 支付结果
+    {
+      path: "/payResult",
+      component: pay
+    }
   ]
 });
 
 routerObj.beforeEach((to, from, next) => {
-  if (localStorage.get('userinfo')) {
+  if (localStorage.get("userinfo")) {
     next();
   } else {
-    if (to.path == '/login'){
-      next()
+    if (to.path == "/login") {
+      next();
     }
-    next('/login');
+    next("/login");
   }
-})
+});
 
 export default routerObj;

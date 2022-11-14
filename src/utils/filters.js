@@ -31,5 +31,11 @@ Vue.filter('toDate', value => {
 
 // 单位秒 =>  格式化
 Vue.filter('toSecDate', value => {
-  return value ? moment(Number(value)*1000).format('YYYY-MM-DD HH:mm:ss') : '--';
+  return value ? moment(Number(value) * 1000).format('YYYY-MM-DD HH:mm:ss') : '--';
 })
+
+// 单位秒 => 天
+Vue.filter('toDay', value => {
+  return value ? (value / 60 / 60 / 24).toFixed(2) : '--';
+})
+

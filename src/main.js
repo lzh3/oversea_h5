@@ -38,7 +38,7 @@ Vue.component('CCommonTop', CCommonTop)
 axios.defaults.withCredentials = true
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
-  console.log('请求拦截', config)
+  // console.log('请求拦截', config)
   // 发送请求
   return config;
 }, function (error) {
@@ -48,7 +48,7 @@ axios.interceptors.request.use(function (config) {
 
 // 添加响应拦截器
 axios.interceptors.response.use(function (response) {
-  console.log('响应拦截', response)
+  // console.log('响应拦截', response)
   // 响应数据
   return response.data;
 }, function (error) {

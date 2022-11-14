@@ -1,8 +1,12 @@
 import { COMMON_URL } from "./host";
 
-const selfAPI = {
-  login: "/api/site/login"
+const common = {
+  uploadImg:'/api/upload-image/add'
+}
 
+const selfAPI = {
+  login: "/api/site/login", // 登录
+  userInfo: '/api/user/info', // 用户信息
 
 };
 const homeAPI = {
@@ -20,7 +24,14 @@ const homeAPI = {
 for (let key in selfAPI) {
   selfAPI[key] = COMMON_URL + selfAPI[key]
 }
+for (let key in common) {
+  common[key] = COMMON_URL + common[key]
+}
+for (let key in homeAPI) {
+  homeAPI[key] = COMMON_URL + homeAPI[key]
+}
 export default {
   self: selfAPI,
   home: homeAPI,
+  common,
 };
