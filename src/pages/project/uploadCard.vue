@@ -18,13 +18,16 @@
         认证通过后不可修改，平台会保护你的个人信息
       </div>
       <div class="submit">
-        <van-button class="btn-bg" block>提交审核</van-button>
+        <van-button class="btn-bg" block @click="submit">提交审核</van-button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import localStore from '@/utils/localStorage'
+import api from "@/api/api"
+
 import img1 from '../../assets/imgs/project/id1.png'
 import img2 from '../../assets/imgs/project/id2.png'
 
@@ -43,6 +46,8 @@ export default {
         console.log('arr', arr)
         if (arr.length) {
           this.img1 = arr[0].content;
+          localStore.set('front_card', this.img1)
+          this.upload(this.img1, 'front_card_id')
         }
       },
       deep: true,
@@ -52,13 +57,27 @@ export default {
         // console.log('arr', arr)
         if (arr.length) {
           this.img2 = arr[0].content; // base64
+          localStore.set('back_card', this.img2)
+          this.upload(this.img2, 'back_card_id')
         }
       },
       deep: true,
     }
   },
-  created() { },
+  created() { 
+    this.init();
+  },
   methods: {
+    init(){
+      let front = localStore.get('front_card')
+      let back = localStore.get('back_card')
+      if(front){
+        this.img1 = front;
+      }
+      if(back){
+        this.img2 = back;
+      }
+    },
     // front_card_id  /   back_card_id
     upload(base, type) {
       this.$axios.post(api.common.uploadImg, {
@@ -68,6 +87,10 @@ export default {
         localStore.set(type, res.data.image_id)
         // this.$router.back();
       })
+    },
+    // 提交
+    submit(){
+      this.$router.back();
     },
   },
 };
