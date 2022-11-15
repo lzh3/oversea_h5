@@ -30,6 +30,8 @@ import OrderPay from "@/pages/self/order/pay-detail";
 import SafeIndex from '@/pages/self/safe/index'
 import IndustryTrend from '@/pages/home/industry-trend'
 import pay from '@/pages/pay/index'
+import ContractIndex from '@/pages/contract'
+import InvestRecommend from '@/pages/invest-recommend'
 
 Vue.use(Router);
 
@@ -165,6 +167,16 @@ let routerObj = new Router({
     {
       path: "/payResult",
       component: pay
+    },
+    // 合同
+    {
+      path: '/project/contract',
+      component: ContractIndex,
+    },
+    // 投资推荐
+    {
+      path: '/home/invest-recommend',
+      component: InvestRecommend,
     }
   ]
 });

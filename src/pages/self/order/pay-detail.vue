@@ -52,7 +52,7 @@
           <span>电子签名</span>
           <img class="sign-img" src="" alt="">
         </div>
-        <div class="bg-white card" @click="uploadCard">
+        <div class="bg-white card" @click="toContract">
           <span>合同</span>
           <i class="iconfont icon-xiangyoujiantou"></i>
         </div>
@@ -85,6 +85,13 @@ export default {
     handleAdd(){},
     handleMin(){},
     toSign(){},
+    // 合同
+    toContract(){
+      this.$router.push({
+        path: '/project/contract',
+        query: {},
+      })
+    },
   }
 }
 </script>

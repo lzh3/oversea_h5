@@ -154,6 +154,7 @@ export default {
       this.$axios.post(api.self.userInfo, {
         project_id: this.$route.query.id
       }).then(res => {
+        console.log('用户详情', res.data)
         this.userInfo = res.data;
       })
     },

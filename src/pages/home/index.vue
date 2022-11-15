@@ -34,7 +34,7 @@
         </div>
         <div class="column-wrap">
           <van-row class="columns">
-            <van-col span="8" v-for="item in columns" :key="item.text">
+            <van-col span="8" v-for="item in columns" :key="item.text" @click="jumpTo(item)">
               <div class="icon">
                 <img :src="item.icon" alt="">
               </div>
@@ -91,7 +91,7 @@ export default {
         {
           icon: barIcon1,
           text: '投资推荐',
-          url: ''
+          url: '/home/invest-recommend'
         },
         {
           icon: barIcon2,
@@ -163,6 +163,15 @@ export default {
         })
       }
     },
+    // colomn跳转
+    jumpTo(item){
+      this.$router.push({
+        path: item.url,
+        query: {
+          tab: 1,
+        },
+      })
+    }
   }
 }
 </script>

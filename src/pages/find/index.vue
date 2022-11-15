@@ -13,7 +13,7 @@
             </section>
             <section class="news-section">
                 <c-common-title title='行业动态' type='news' @more="lookAll"></c-common-title>
-                <van-list v-model="loading" :finished="false" @load="getInfo">
+                <van-list v-model="loading" :finished="false" @load="loadMore">
                     <news-list :cards="newsList">
                     </news-list>
                 </van-list>
@@ -58,12 +58,16 @@ export default {
         this.getBanner()
     },
     methods: {
+        loadMore(){
+            this.page++;
+            this.getInfo(this.page);
+        },
         // 行业动态
-        getInfo() {
+        getInfo(page = 0) {
             this.loading = true;
             this.$axios.post(api.home.articleList, {
                 type: 2,
-                page: this.page,
+                page,
                 pageSize: this.pagesize
 
             }).then(res => {

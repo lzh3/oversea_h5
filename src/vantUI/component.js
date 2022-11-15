@@ -28,14 +28,16 @@ import {
   RadioGroup,
   Radio,
   Cell,
+  Tab,
+  Tabs,
 } from "vant";
 
 const vant = {
-  install: function (Vue) {
+  install: function(Vue) {
     Vue.use(Overlay);
     Vue.use(Button);
     Vue.use(Loading);
-    Vue.use(Uploader)
+    Vue.use(Uploader);
     Vue.use(Toast);
     Vue.use(Tabbar);
     Vue.use(TabbarItem);
@@ -60,7 +62,9 @@ const vant = {
     Vue.use(Switch);
     Vue.use(Checkbox);
     Vue.use(CheckboxGroup);
-    Vue.use(Cell)
+    Vue.use(Cell);
+    Vue.use(Tab);
+    Vue.use(Tabs);
   }
 };
 
