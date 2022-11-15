@@ -24,7 +24,15 @@ export default {
     created() { },
     methods: {
         toChange(type){
-            
+            if(type==0){
+              this.$router.push({
+                 path: '/self/changepwd'
+              })
+            }else{
+                 this.$router.push({
+                 path: '/self/changepay'
+              })
+            }
         }
     },
 };

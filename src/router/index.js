@@ -30,6 +30,10 @@ import OrderPay from "@/pages/self/order/pay-detail";
 import SafeIndex from '@/pages/self/safe/index'
 import IndustryTrend from '@/pages/home/industry-trend'
 import pay from '@/pages/pay/index'
+import changepassword from '@/pages/self/safe/change-password'
+import changepay from '@/pages/self/safe/change-pay'
+
+
 
 Vue.use(Router);
 
@@ -165,6 +169,16 @@ let routerObj = new Router({
     {
       path: "/payResult",
       component: pay
+    },
+    // 修改登录密码
+    {
+      path: "/self/changepwd",
+      component: changepassword
+    },
+    // 修改支付密码
+    {
+      path: "/self/changepay",
+      component: changepay
     }
   ]
 });

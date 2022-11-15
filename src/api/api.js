@@ -30,7 +30,12 @@ const bankcardAPI = {
   deluserbank:'/api/user-bank/del', //用户删除银行卡
 
 }
+// ================================================
+const userinfo = {
+  getuserinfo:'/api/user/info',
+  updateuser:'/api/user/update-user',//修改用户信息（头像、昵称、性别、手机号码、邮件、地址、国籍）
 
+}
 
 
 
@@ -46,9 +51,14 @@ for (let key in homeAPI) {
 for (let key in bankcardAPI) {
   bankcardAPI[key] = COMMON_URL + bankcardAPI[key]
 }
+for (let key in userinfo) {
+  userinfo[key] = COMMON_URL + userinfo[key]
+}
 export default {
   self: selfAPI,
   home: homeAPI,
   common,
   bankcard:bankcardAPI,
+  userinfo,
+
 };
