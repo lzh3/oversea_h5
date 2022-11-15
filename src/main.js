@@ -16,7 +16,7 @@ import en from './language/en'
 import VueI18n from "vue-i18n"
 Vue.use(VueI18n)
 const i18n = new VueI18n({
-  locale: 'ch', // 定义默认语言为中文 
+  locale: 'ch', // 定义默认语言为中文
   messages: {
     ch,
     en,

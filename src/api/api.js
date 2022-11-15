@@ -7,6 +7,11 @@ const common = {
 const selfAPI = {
   login: "/api/site/login", // 登录
   userInfo: '/api/user/info', // 用户信息
+  updatepassword:'/api/user/update-password', //修改密码
+
+
+
+
 
 };
 const homeAPI = {
@@ -15,6 +20,14 @@ const homeAPI = {
   projectInfo:'/api/project/info', // 项目详情
   submitOrder: '/api/order/submit-order', // 认购
   setCollect: '/api/user-collection/set-collection', // 收藏
+
+}
+// ==============================================
+
+const bankcardAPI = {
+  banklist:'/api/user-bank/bank-list',//获取银行卡列表
+  addbank:'/api/user-bank/add',//用户添加银行卡
+  deluserbank:'/api/user-bank/del', //用户删除银行卡
 
 }
 
@@ -30,8 +43,12 @@ for (let key in common) {
 for (let key in homeAPI) {
   homeAPI[key] = COMMON_URL + homeAPI[key]
 }
+for (let key in bankcardAPI) {
+  bankcardAPI[key] = COMMON_URL + bankcardAPI[key]
+}
 export default {
   self: selfAPI,
   home: homeAPI,
   common,
+  bankcard:bankcardAPI,
 };

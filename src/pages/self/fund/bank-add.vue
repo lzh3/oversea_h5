@@ -3,12 +3,12 @@
         <c-common-top title="添加银行卡" :isBack="true"></c-common-top>
         <div class="main p-30">
             <div class="content">
-                <van-field v-model="info.name" label="持卡人姓名：" placeholder="" />
+                <van-field v-model="info.bank_name" label="持卡人姓名：" placeholder="" />
                 <!-- 输入手机号，调起手机号键盘 -->
-                <van-field v-model="info.phone" type="tel" label="银行名称：" placeholder="" />
-                <van-field v-model="info.address" label="开户行：" placeholder="" />
-                <van-field v-model="info.address" label="银行卡号：" placeholder="" />
-                <van-button type="info" class="btn-bg" block>保存</van-button>
+                <van-field v-model="info.bank_address" type="tel" label="银行名称：" placeholder="" />
+                <van-field v-model="info.bank_real_name" label="开户行：" placeholder="" />
+                <van-field v-model="info.bank_code" label="银行卡号：" placeholder="" />
+                <van-button type="info" class="btn-bg" block @click="saveFn">保存</van-button>
 
             </div>
         </div>
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import api from "@/api/api"
 export default {
     data() {
         return {
@@ -23,7 +24,30 @@ export default {
         };
     },
     created() { },
-    methods: {},
+    methods: {
+      saveFn(){
+         this.$axios.post(api.bankcard.addbank, {
+        bank_name: this.info.bank_name,
+        bank_address: this.info.bank_address,
+        bank_real_name: this.info.bank_real_name,
+        bank_code: this.info.bank_code,
+      }).then(res => {
+        console.log('res', res)
+        if (res.errCode == 200) {
+         this.$toast({
+            type: 'success',
+            message: res.data.errMsg
+          })
+          this.$router.push('/bank/list')
+        } else {
+          this.$toast({
+            type: 'fail',
+            message: res.data.errMsg
+          })
+        }
+      })
+      }
+    },
 };
 </script>
 <style lang="less" scoped>
