@@ -59,6 +59,11 @@ export default {
           to: "/fund/manage"
         },
         {
+          title: '订单管理',
+          pic: '',
+          to: "/self/order"
+        },
+        {
           title: '幸运天天乐',
           pic: '',
           to: '',
@@ -66,7 +71,7 @@ export default {
         {
           title: '我的收藏',
           pic: '',
-          to: '/self/order',
+          to: '',
         },
         {
           title: '高级认证',
