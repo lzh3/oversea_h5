@@ -8,10 +8,7 @@ const selfAPI = {
   login: "/api/site/login", // 登录
   userInfo: '/api/user/info', // 用户信息
   updatepassword:'/api/user/update-password', //修改密码
-
-
-
-
+  orderList: '/api/order/user-order-list', // 订单管理列表
 
 };
 const homeAPI = {
