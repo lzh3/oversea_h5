@@ -30,15 +30,10 @@ import OrderPay from "@/pages/self/order/pay-detail";
 import SafeIndex from '@/pages/self/safe/index'
 import IndustryTrend from '@/pages/home/industry-trend'
 import pay from '@/pages/pay/index'
-<<<<<<< HEAD
-import changepassword from '@/pages/self/safe/change-password'
-import changepay from '@/pages/self/safe/change-pay'
 
-
-=======
 import ContractIndex from '@/pages/contract'
 import InvestRecommend from '@/pages/invest-recommend'
->>>>>>> 4573b3f27b2cb37212bf73a876d2e14f302e0d73
+
 
 Vue.use(Router);
 
@@ -175,17 +170,6 @@ let routerObj = new Router({
       path: "/payResult",
       component: pay
     },
-<<<<<<< HEAD
-    // 修改登录密码
-    {
-      path: "/self/changepwd",
-      component: changepassword
-    },
-    // 修改支付密码
-    {
-      path: "/self/changepay",
-      component: changepay
-=======
     // 合同
     {
       path: '/project/contract',
@@ -195,7 +179,6 @@ let routerObj = new Router({
     {
       path: '/home/invest-recommend',
       component: InvestRecommend,
->>>>>>> 4573b3f27b2cb37212bf73a876d2e14f302e0d73
     }
   ]
 });
