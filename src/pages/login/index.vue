@@ -34,7 +34,7 @@ export default {
         user_name: this.user_name,
         password: this.password
       }).then(res => {
-        console.log('res', res)
+        console.log('res--login', res)
         if (res.errCode == 200) {
           localStorage.set('userinfo', {
             user_name: this.user_name,

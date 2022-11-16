@@ -30,6 +30,8 @@ import {
   Cell,
   Tab,
   Tabs,
+  ActionSheet ,
+  NoticeBar ,
 } from "vant";
 
 const vant = {
@@ -65,6 +67,9 @@ const vant = {
     Vue.use(Cell);
     Vue.use(Tab);
     Vue.use(Tabs);
+    Vue.use(ActionSheet );
+    Vue.use(NoticeBar );
+
   }
 };
 

@@ -20,6 +20,7 @@ const homeAPI = {
   projectInfo:'/api/project/info', // 项目详情
   submitOrder: '/api/order/submit-order', // 认购
   setCollect: '/api/user-collection/set-collection', // 收藏
+  notice:'/api/notice/notice-list',//公告列表
 
 }
 // ==============================================
@@ -38,7 +39,11 @@ const userinfo = {
 
 }
 
-
+// =================================================
+const updatepwd = {
+  updateuserpwd:'/api/user/update-password',
+  updatepay:'/api/user/update-withdraw-password'
+}
 
 for (let key in selfAPI) {
   selfAPI[key] = COMMON_URL + selfAPI[key]
@@ -55,11 +60,15 @@ for (let key in bankcardAPI) {
 for (let key in userinfo) {
   userinfo[key] = COMMON_URL + userinfo[key]
 }
+for (let key in updatepwd) {
+  updatepwd[key] = COMMON_URL + updatepwd[key]
+}
 export default {
   self: selfAPI,
   home: homeAPI,
   common,
   bankcard:bankcardAPI,
   userinfo,
+  updatepwd,
 
 };

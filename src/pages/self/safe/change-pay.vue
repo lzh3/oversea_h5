@@ -1,21 +1,21 @@
 <template>
     <div class="change-page">
-        <c-common-top title="修改密码" :isBack="true" />
+        <c-common-top title="修改支付密码" :isBack="true" />
+        <van-form ref="vanform">
         <div class="content">
-            <van-field v-model="info.old" type="tel" label="原密码" placeholder="请填写原密码" />
-            <van-field v-model="info.new" label="新密码" placeholder="请填写新密码" />
-            <van-field v-model="info.address" label="确认密码" placeholder="再次填写确认" />
-            <div  class="tips">
-                <p>密码必须是8-16位英文字母、数字的组合</p>
-                <p>忘记密码请联系业务人员修改</p>
-            </div>
-            <van-button type="info" class="btn-bg" block>确认修改</van-button>
+            <van-field v-model="info.old" type="tel" label="姓名" placeholder="请填写姓名" :rules="[{ required: true, message: '请填写姓名' }]" />
+            <van-field v-model="info.new" label="证件号" placeholder="请填写证件号" :rules="[{ required: true, message: '请填写证件号' }]" />
 
+            </div>
+            <van-button type="info" class="btn-bg" block>下一步</van-button>
+         </van-form>
         </div>
+
     </div>
 </template>
 
 <script>
+import api from "@/api/api";
 export default {
     data() {
         return {
@@ -29,5 +29,14 @@ export default {
 <style lang="less" scoped>
 .tips{
     font-size: 0.22rem;
+}
+.change-page{
+  margin: auto;
+  width: 6.9rem;
+height: 7.51rem;
+background: #FFFFFF;
+box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.05);
+opacity: 0.8;
+border-radius: 0.29rem;
 }
 </style>

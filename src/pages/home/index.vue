@@ -43,12 +43,17 @@
           </van-row>
         </div>
         <div class="adv-section">
-          <p>
-            <span class="tag">捐赠</span>
-            <span class="info">用户a</span>
-            捐赠
-            <span class="info">天猫精灵</span>
-          </p>
+         <van-notice-bar left-icon="volume-o" :scrollable="false">
+  <van-swipe
+    vertical
+    class="notice-swipe"
+    :autoplay="3000"
+    :show-indicators="false"
+  >
+    <van-swipe-item v-for="item in noticelist" :key="item.id">{{item.title}}</van-swipe-item>
+
+  </van-swipe>
+</van-notice-bar>
         </div>
       </section>
 
@@ -85,6 +90,7 @@ export default {
   },
   data() {
     return {
+      noticelist:[],
       save: 'save',
       keyword: '',
       columns: [
@@ -121,8 +127,20 @@ export default {
   created() {
     this.getProjectList();
     this.getArtList();
+    this.getnoticelist()
   },
   methods: {
+    // 获取公告列表
+    getnoticelist(){
+       this.$axios.post(api.home.notice, {
+        type: 1,
+        page: this.apage,
+        pageSize: this.apageSize
+      }).then(res => {
+        console.log('notice', res)
+        this.noticelist = res.data.list;
+      })
+    },
     // 获取项目列表
     getProjectList() {
       this.$axios.post(api.home.projectList, {
@@ -278,7 +296,7 @@ export default {
     font-size: 0.28rem;
     text-align: left;
     margin-bottom: 0.3rem;
-    background-color: #fff;
+    background-color: #fffbe8;
     line-height: 0.8rem;
     padding: 0 0.3rem;
     box-sizing: border-box;
@@ -301,4 +319,8 @@ export default {
   // margin-top: 1.065rem;
   // padding: 0 0.3rem;
 }
+  .notice-swipe {
+    height: 40px;
+    line-height: 40px;
+  }
 </style>
