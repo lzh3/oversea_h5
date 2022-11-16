@@ -33,6 +33,7 @@
 
 <script>
 import api from "@/api/api"
+import localStorage from '@/utils/localStorage'
 export default {
   name: 'Home',
   data() {
@@ -106,6 +107,7 @@ export default {
       }).then(res => {
         // console.log('用户详情', res.data)
         this.userInfo = res.data;
+        localStorage.set('userid', this.userInfo.user_id )
       })
     },
     toPage(item) {

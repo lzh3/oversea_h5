@@ -140,7 +140,8 @@ export default {
           }
         })
         console.log(this.items, 555);
-        this.$forceUpdate();
+        this.items=[...this.items]
+        // this.$forceUpdate();
 
         // this.banners = res.data.list.map(item => item.image)
       });
