@@ -1,5 +1,5 @@
 
-// front_card 身份证正面 /   back_id_card 身份证背面
+// front_card 身份证正面 /   back_card 身份证背面
 // front_card_id 身份证正面id /   back_card_id 身份证背面id
 
 // 电子签名(base64)  esign    

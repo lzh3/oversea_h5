@@ -46,14 +46,14 @@
                 <img src="../../assets/imgs/project/money.png" alt="">
                 佣金支付
               </span>
-              <van-radio name="1"></van-radio>
+              <van-radio :name="1"></van-radio>
             </p>
             <p>
               <span class="tt">
                 <img src="../../assets/imgs/project/card.png" alt="">
                 银行卡支付
               </span>
-              <van-radio name="2"></van-radio>
+              <van-radio :name="2"></van-radio>
             </p>
           </van-radio-group>
         </p>
@@ -62,7 +62,7 @@
         <div class="bg-white card" @click="uploadCard">
           <span>身份证信息</span>
           <p>
-            <span class="status">已上传</span>
+            <span class="status" v-if="front_id&&back_id">已上传</span>
             <i class="iconfont icon-xiangyoujiantou"></i>
           </p>
         </div>
@@ -88,7 +88,7 @@
     </div>
     <div class="bottom-op bg-white">
       <span class="price">￥{{totalPrice}}</span>
-      <van-button class="btn-bg">提交审核</van-button>
+      <van-button class="btn-bg" @click="submitCheck">提交审核</van-button>
     </div>
   </div>
 </template>
@@ -102,14 +102,17 @@ export default {
     return {
       userInfo: {},
       projectInfo: {},
-      payType: 0, // 支付方式
+      payType: 1, // 支付方式
       isAgree: false, // 是否同意
 
       buyInfo: {
         count: 0,
       },
 
-      esign: '', // 电子签名
+      esign: '', // 电子签名图片
+      esign_id: '',
+      front_id: '',
+      back_id: ''
     }
   },
   computed: {
@@ -119,34 +122,39 @@ export default {
 
     // 剩余份数
     remainCount() {
-      return this.projectInfo.limit_buy_num - this.buyInfo.count;
+      return this.projectInfo.limit_buy_num - this.buyInfo.count || 0;
     },
     // 服务费
     servicePrice() {
-      return this.projectAbout.price * this.buyInfo.count * this.projectInfo.service_rate / 100;
+      return this.projectAbout.price * this.buyInfo.count * this.projectInfo.service_rate / 100 || 0;
     },
     // 总金额
     totalPrice() {
-      return this.projectAbout.price * this.buyInfo.count + this.servicePrice;
+      return this.projectAbout.price * this.buyInfo.count + this.servicePrice || 0;
     },
   },
   created() {
-    this.getLocalSign();
     this.getUserInfo();
     this.getProjectInfo();
+    this.getCardId();
   },
   methods: {
-    getLocalSign(){
-        let sign = localStore.get('esign')
-        this.esign = sign;
-        // console.log(sign)
+    getCardId() {
+      let front = localStore.get('front_card_id')
+      let back = localStore.get('back_card_id')
+      let sign_id = localStore.get('sign_image_id')
+      let sign = localStore.get('esign')
+      this.esign = sign;
+      this.esign_id = sign_id;
+      this.front_id = front;
+      this.back_id = back;
     },
     // 获取用户信息
     getUserInfo() {
       this.$axios.post(api.self.userInfo, {
         project_id: this.$route.query.id
       }).then(res => {
-        console.log('用户信息详情', res.data)
+        console.log('用户详情', res.data)
         this.userInfo = res.data;
       })
     },
@@ -155,6 +163,7 @@ export default {
       this.$axios.post(api.home.projectInfo, {
         project_id: this.$route.query.id
       }).then(res => {
+        console.log('pro详情', res.data)
         this.projectInfo = res.data;
       })
     },
@@ -188,7 +197,41 @@ export default {
         path: '/project/uploadCard',
         query: {},
       })
-    }
+    },
+    // 提交审核
+    submitCheck() {
+      if (!this.isAgree) {
+        this.$toast({
+          type: 'fail',
+          message: '请阅读并同意相关条款协议'
+        })
+        return;
+      }
+      let param = {
+        project_id: this.$route.query.id,
+        programme_id: this.projectInfo.projectProgramme[0].programme_id,
+        num: this.buyInfo.count,
+        autograph: this.esign_id,
+        remark: '--',
+        pay_type: this.payType,
+        id_card_img_positive: this.front_id,
+        id_card_img_back: this.back_id,
+      }
+      console.log('param', param)
+      for (let key in param) {
+        if (!param[key]) {
+          this.$toast({
+            type: 'fail',
+            message: '信息请填写完整'
+          })
+          return;
+        }
+      }
+      this.$axios.post(api.home.submitOrder, param).then(res => {
+        this.$router.back();
+      })
+    },
+
   }
 }
 </script>
