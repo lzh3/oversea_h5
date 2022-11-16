@@ -36,18 +36,11 @@ export default {
         6: 'back', // 被驳回
       },
       statusTxt: {
-        0: '待支付',
-        1: '审核中',
-        2: '被驳回'
+        // 0: '待支付',
+        // 1: '审核中',
+        // 2: '被驳回'
       },
-      list: [
-        {
-          id: 1,
-          title: '泰国曼谷XXXXXX酒店5年股权',
-          price: 2392389.30,
-          status: '0'
-        },
-      ],
+      list: [],
       objFilter: {
         page: 1,
         pageSize: 15,

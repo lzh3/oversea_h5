@@ -65,6 +65,8 @@
 </template>
 
 <script>
+import api from "@/api/api"
+
 export default {
   data() {
     return {
@@ -78,13 +80,30 @@ export default {
       },
     }
   },
+  created(){
+    this.getOrderDetail();
+  },
   methods: {
+    // 获取订单详情
+    getOrderDetail(){
+      this.$axios.post(api.self.orderDetail, {
+        order_id: this.$route.query.id,
+      }).then(res => {
+        console.log('订单详情', res.data)
+      })
+    },
     uploadCard(){
 
     },
-    handleAdd(){},
-    handleMin(){},
-    toSign(){},
+    handleAdd(){
+
+    },
+    handleMin(){
+
+    },
+    toSign(){
+      
+    },
     // 合同
     toContract(){
       this.$router.push({
