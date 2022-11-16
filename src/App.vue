@@ -63,7 +63,6 @@ export default {
     watch: {
         $route: {
             handler(val) {
-                console.log('val', val)
                 if (val.path === '/home' || val.path === "/self" || val.path === "/find") {
                     this.showTab = true;
                 } else {

@@ -1,6 +1,7 @@
 <template>
     <div class="content bg-white-page">
-        <c-common-top :isBack="true" title=''/>
+        <c-common-top :isBack="true" title='合同'/>
+
     </div>
 </template>
 
@@ -15,4 +16,5 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+
 </style>

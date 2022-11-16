@@ -58,6 +58,10 @@ axios.interceptors.response.use(function (response) {
 axios.defaults.headers["Content-Type"] = "application/x-www-form-urlencoded";
 Vue.prototype.$axios = axios;
 
+// pdf处理
+import htmlToPdf from '@/utils/htmlToPdf'
+Vue.use(htmlToPdf)
+
 /* eslint-disable no-new */
 Vue.config.productionTip = false
 new Vue({
