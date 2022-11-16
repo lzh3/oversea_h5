@@ -2,19 +2,27 @@
     <div class="edit-wrap">
         <c-common-top title="编辑资料" :isBack="true"></c-common-top>
         <div class="main p-30">
+           <van-uploader v-model="avaFile">
             <div class="avatar bg-white p-30">
                 <p class="label">头像</p>
+
                 <div class="ava">
-                    <p class="pic"></p>
+                    <img :src="imgava" alt="">
                     <p class="icon"><i class="iconfont icon-xiangyoujiantou"></i></p>
                 </div>
+
             </div>
+           </van-uploader>
+
             <div class="edit-item">
                 <ul>
                     <li class="p-30 bg-white" v-for="item in items" :key="item.label" @click="handleItemClick(item)">
                         <span class="label">{{item.label}}</span>
-                        <!-- <span class="label">测试</span> -->
-                        <i class="iconfont icon-xiangyoujiantou"></i>
+                        <span class="label">{{item.desc}}
+                           <i class="iconfont icon-xiangyoujiantou"></i>
+                        </span>
+
+
                     </li>
                 </ul>
             </div>
@@ -34,6 +42,8 @@
 <script>
 import api from "@/api/api"
 import cDialogName from './c-dialog-name.vue';
+import localStore from '@/utils/localStorage'
+import imgava from '../../../assets/imgs/project/id1.png'
 // import cSheetSex from './c-popup-sex.vue';
 export default {
     components: {
@@ -42,10 +52,13 @@ export default {
     },
     data() {
         return {
+          userInfo:{},
+          imgava,
+          avaFile:[],
             items: [
                 {
                     label: '昵称',
-                    type: '1'
+                    type: '1',
                 },
                 {
                     label: '性别',
@@ -82,13 +95,60 @@ export default {
             dialogName: false,
         };
     },
-    created() { },
+    created() {
+       this.getUserInfoList()
+    },
+      watch: {
+    avaFile: {
+      handler(arr) {
+        console.log('arr', arr)
+        if (arr.length) {
+          this.imgava = arr[0].content;
+          localStore.set('imgava', this.imgava)
+          this.upload(this.imgava, 'imgava')
+        }
+      },
+      deep: true,
+    },
+  },
     methods: {
+      //上传头像
+          upload(base, type) {
+      this.$axios.post(api.common.uploadImg, {
+        image_base64: base
+      }).then(res => {
+        // console.log('upload', res)
+        localStore.set(type, res.data.image_id)
+        // this.$router.back();
+      })
+    },
       // 获取用户信息列表
       getUserInfoList(){
           this.$axios.post(api.userinfo.getuserinfo, {}).then(res => {
-        console.log("列表名称", res);
-        this.bankcardlist = res.data.list;
+          this.userInfo = res.data;
+        console.log("信息列表",  this.userInfo);
+          // this.items[0].desc = this.userInfo.nick_name
+          // this.items[1].desc = this.userInfo.sex==2?'女':'男'
+          // this.items[2].desc = this.userInfo.country || ''
+          // this.items[3].desc = this.userInfo.mobile || ''
+          // this.items[4].desc = this.userInfo.email || ''
+          // this.items[5].desc = this.userInfo.address || ''
+            this.items.forEach(i=>{
+              if(i.type=='1'){
+                i.desc = this.userInfo.nick_name
+              }else if(i.type=='2'){
+                  i.desc = this.userInfo.sex==2?'女':'男'
+              }else if(i.type=='3'){
+                  i.desc = this.userInfo.country || ''
+              }else if(i.type=='4'){
+                  i.desc = this.userInfo.email || ''
+              }else if(i.type=='5'){
+                  i.desc = this.userInfo.address || ''
+              }
+              return i
+            })
+            console.log(this.items,555);
+
         // this.banners = res.data.list.map(item => item.image)
       });
       },
@@ -161,6 +221,21 @@ export default {
 }
 </style>
 <style lang="less" scoped>
+  /deep/.van-uploader__preview {
+    display: none;
+  }
+  .van-uploader {
+    width: 100%;
+  }
+  /deep/.van-uploader__wrapper {
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  /deep/.van-uploader__input-wrapper {
+    width: 100%;
+  }
+
 .avatar {
     display: flex;
     width: 100%;
@@ -172,7 +247,7 @@ export default {
     .ava {
         display: flex;
         flex-wrap: nowrap;
-        .pic {
+        img {
             width: 1.09rem;
             height: 1.09rem;
             margin-right: 0.3rem;

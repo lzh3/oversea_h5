@@ -9,7 +9,7 @@
         <div class="user-card p-30" @click="goEdit">
           <p class="pic"></p>
           <p class="info">
-            <span class="user-name">用户昵称</span>
+            <span class="user-name">{{userInfo.user_name}}</span>
             <span class="user-id">ID: {{info.id}}</span>
           </p>
           <p class="icon">
@@ -32,11 +32,12 @@
 </template>
 
 <script>
-
+import api from "@/api/api"
 export default {
   name: 'Home',
   data() {
     return {
+      userInfo:{},
       info: {
         id: 3487854758
       },
@@ -90,7 +91,18 @@ export default {
 
     }
   },
+  created(){
+    this.getUserInfo()
+  },
   methods: {
+      // 获取用户信息
+    getUserInfo() {
+      this.$axios.post(api.self.userInfo, {
+      }).then(res => {
+        // console.log('用户详情', res.data)
+        this.userInfo = res.data;
+      })
+    },
     toPage(item) {
       console.log('item', item)
 

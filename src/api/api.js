@@ -28,6 +28,7 @@ const bankcardAPI = {
   banklist:'/api/user-bank/bank-list',//获取银行卡列表
   addbank:'/api/user-bank/add',//用户添加银行卡
   deluserbank:'/api/user-bank/del', //用户删除银行卡
+  addIdCard:'/api/user/update-id-card',//修改/添加客户身份证
 
 }
 // ================================================

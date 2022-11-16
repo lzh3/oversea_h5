@@ -33,7 +33,8 @@ import pay from '@/pages/pay/index'
 
 import ContractIndex from '@/pages/contract'
 import InvestRecommend from '@/pages/invest-recommend'
-
+import Changepwd from '@/pages/self/safe/change-password'
+import Changepay from '@/pages/self/safe/change-pay'
 
 Vue.use(Router);
 
@@ -179,6 +180,16 @@ let routerObj = new Router({
     {
       path: '/home/invest-recommend',
       component: InvestRecommend,
+    },
+    // 修改密码
+    {
+      path: '/self/changepwd',
+      component: Changepwd,
+    },
+    // 修改支付密码
+    {
+      path: '/self/changepay',
+      component: Changepay,
     }
   ]
 });
