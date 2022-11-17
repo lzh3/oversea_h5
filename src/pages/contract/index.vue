@@ -20,6 +20,9 @@ export default {
     },
     created() { },
     methods: {
+        getHtml(){
+            
+        },
         printPdf(){
             getPdf('合同', 'pdfDom')
         },
