@@ -1,6 +1,6 @@
 <template>
   <div class="cash-wrap bg1">
-    <c-common-top title='提现' 
+    <c-common-top title='提现'
     @to="toPage"
     :isTo='true' :isBack="true"></c-common-top>
     <div class="main p-30">
@@ -19,12 +19,12 @@
           <van-field v-model="money" label="" placeholder="" />
         </div>
         <div class="info">
-          当前可提现余额 
-          <span>￥{{balance}}元，</span> 
+          当前可提现余额
+          <span>￥{{balance}}元，</span>
           <span class="all-out" @click="handleOutAll">全部提现</span>
         </div>
         <div class="submit">
-          <van-button block type="default" class="btn-bg">提交审核</van-button>
+          <van-button block type="default" class="btn-bg" @click="subWithdraw">提交审核</van-button>
         </div>
       </div>
     </div>
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import api from "@/api/api";
 export default {
   data() {
     return {
@@ -40,6 +41,22 @@ export default {
     }
   },
   methods: {
+    // 提现
+    subWithdraw(){
+      this.$axios.post(api.self.withdraworder, {
+        money:this.money,
+        bank_id:100,
+        withdraw_password:100,
+      }).then(res => {
+        // console.log('获取用户提现列表', res)
+       if(res.res.errCode == 200){
+        this.$toast.success(res.data.errMsg)
+        this.$router.back()
+       }else{
+         this.$toast.fail(res.data.errMsg)
+       }
+      })
+    },
     handleOutAll(){
         this.money = this.balance;
     },

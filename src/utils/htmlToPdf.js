@@ -2,10 +2,11 @@
 import html2Canvas from 'html2canvas'
 import JsPDF from 'jspdf'
 
-export function getPdf(title,id){
+export function getPdf(title, id) {
   html2Canvas(document.querySelector(`#${id}`), {
     allowTaint: true
   }).then(function (canvas) {
+    console.log('canvas', canvas)
     let contentWidth = canvas.width
     let contentHeight = canvas.height
     let pageHeight = contentWidth / 592.28 * 841.89
