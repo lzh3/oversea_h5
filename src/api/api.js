@@ -10,6 +10,9 @@ const selfAPI = {
   updatepassword:'/api/user/update-password', //修改密码
   orderList: '/api/order/user-order-list', // 订单管理列表
   orderDetail: '/api/order/order-info', // 订单详情
+  fundsmgt:'/api/user-account-log/list',//资金管理
+  withdraworder:'/api/withdraw-order/submit-order',//提现
+  contract:'/api/user/contract',//获取合同
 
 };
 const homeAPI = {
@@ -39,8 +42,8 @@ const userinfo = {
 
 // =================================================
 const updatepwd = {
-  updateuserpwd:'/api/user/update-password',
-  updatepay:'/api/user/update-withdraw-password'
+  updateuserpwd:'/api/user/update-password',//修改登录密码
+  updatepay:'/api/user/update-withdraw-password',//修改支付密码
 }
 
 for (let key in selfAPI) {
