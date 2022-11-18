@@ -84,6 +84,7 @@ export default {
             background: #fff;
             border-radius: 0.28rem;
             overflow: hidden;
+            box-sizing: border-box;
             .van-tag{
                 margin-right: 0.18rem;
             }
