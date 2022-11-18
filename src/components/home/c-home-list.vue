@@ -2,9 +2,9 @@
     <div class="list-wrap">
         <ul>
             <li class="item" v-for="item in cards" :key="item.project_id" @click="handleItemClick(item)">
-                <div class="pic">
+                <!-- <div class="pic">
                     <img :src="item.image" alt="" v-if="item.image">
-                </div>
+                </div> -->
                 <div class="details">
                     <h3 class="item-title">
                         {{item.name}}
@@ -103,6 +103,7 @@ export default {
                 display: flex;
                 flex-direction: column;
                 height: 100%;
+                width: 100%;
                 margin-left: 0.3rem;
                 text-align: left;
                 // align-items: center;
@@ -128,7 +129,7 @@ export default {
                     width: 100%;
                     align-items: center;
                     .process-bar {
-                        width: 3.2rem;
+                        width: 100%;
                     }
                     span {
                         margin-left: 0.18rem;

@@ -97,7 +97,7 @@ export default {
         {
           icon: barIcon1,
           text: '投资推荐',
-          url: '/home/invest-recommend'
+          url: '/projectList'
         },
         {
           icon: barIcon2,
