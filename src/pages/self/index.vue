@@ -66,7 +66,7 @@ export default {
         {
           title: '幸运天天乐',
           pic: '',
-          to: '',
+          to: '/self/luckydraw',
         },
         {
           title: '我的收藏',

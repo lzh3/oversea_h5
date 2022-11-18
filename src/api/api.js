@@ -13,6 +13,8 @@ const selfAPI = {
   fundsmgt:'/api/user-account-log/list',//资金管理
   withdraworder:'/api/withdraw-order/submit-order',//提现
   contract:'/api/user/contract',//获取合同
+  getdaydayle:'/api/project/get-day-dayle',//获取天天乐奖池
+  drawprize:'/api/project/draw-prize',//用户天天乐抽奖
 
 };
 const homeAPI = {

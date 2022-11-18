@@ -26,6 +26,10 @@ const i18n = new VueI18n({
 import vant from './vantUI/component'
 import "./assets/css/custom_ui.less"
 Vue.use(vant)
+// 转盘
+import lottery from 'vue-lottery'
+Vue.use(lottery)
+
 
 import {Toast} from 'vant'
 Vue.prototype.$toast = Toast

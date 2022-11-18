@@ -30,6 +30,7 @@ import OrderPay from "@/pages/self/order/pay-detail";
 import SafeIndex from '@/pages/self/safe/index'
 import IndustryTrend from '@/pages/home/industry-trend'
 import pay from '@/pages/pay/index'
+import Luckydraw from '@/pages/self/luckydraw/index'
 
 import ContractIndex from '@/pages/contract'
 import InvestRecommend from '@/pages/invest-recommend'
@@ -190,7 +191,13 @@ let routerObj = new Router({
     {
       path: '/self/changepay',
       component: Changepay,
+    },
+    // 转盘抽奖
+    {
+      path: '/self/luckydraw',
+      component: Luckydraw,
     }
+
   ]
 });
 

@@ -20,6 +20,7 @@
     "vue": "^2.5.2",
     "vue-esign": "^1.1.4",
     "vue-i18n": "^8.27.2",
+    "vue-lottery": "^1.0.3",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
