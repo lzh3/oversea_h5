@@ -29,8 +29,9 @@ Vue.use(vant)
 // 转盘
 import lottery from 'vue-lottery'
 Vue.use(lottery)
-
-
+// touch事件
+import touch from 'vue-directive-touch';
+Vue.use(touch);
 import {Toast} from 'vant'
 Vue.prototype.$toast = Toast
 
