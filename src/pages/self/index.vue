@@ -81,7 +81,7 @@ export default {
         {
           title: '风险评估',
           pic: '',
-          to: '',
+          to: '/self/riskassessment',
         },
         {
           title: '账户安全',

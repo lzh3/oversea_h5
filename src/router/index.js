@@ -36,6 +36,8 @@ import ContractIndex from '@/pages/contract'
 import InvestRecommend from '@/pages/invest-recommend'
 import Changepwd from '@/pages/self/safe/change-password'
 import Changepay from '@/pages/self/safe/change-pay'
+import RiskAssessment from '@/pages/self/riskassessment/index'
+import Riskfinish from '@/pages/self/riskassessment/riskfinish'
 
 Vue.use(Router);
 
@@ -196,7 +198,18 @@ let routerObj = new Router({
     {
       path: '/self/luckydraw',
       component: Luckydraw,
-    }
+    },
+    //风险评估 
+    {
+      path: '/self/riskassessment',
+      component: RiskAssessment,
+    },
+    // 风险评估--完成
+    {
+      path: '/self/riskfinish',
+      component: Riskfinish,
+    },
+    
 
   ]
 });
