@@ -73,7 +73,7 @@ export default {
   // display: flex;
   height: 0.7rem;
   line-height: 0.7rem;
-  width: 100%;
+  width: 100vw;
   // background-color: #fff;
   align-items: center;
   color: #333333;

@@ -1,23 +1,22 @@
 <template>
   <div class="edit-wrap">
-    <c-common-top title="编辑资料" :isBack="true"></c-common-top>
+    <c-common-top :title="$t('self.userInfo')" :isBack="true"></c-common-top>
     <div class="main p-30">
       <van-uploader v-model="avaFile">
         <div class="avatar bg-white p-30">
-          <p class="label">头像</p>
+          <p class="label">{{$t('self.avatar')}}</p>
 
           <div class="ava">
             <img :src="imgava" alt="">
             <p class="icon"><i class="iconfont icon-xiangyoujiantou"></i></p>
           </div>
-
         </div>
       </van-uploader>
 
       <div class="edit-item">
         <ul>
           <li class="p-30 bg-white" v-for="item in items" :key="item.label" @click="handleItemClick(item)">
-            <span class="label">{{item.label}}</span>
+            <span class="label">{{$t(item.lang)}}</span>
             <p class="right">
               <span>{{item.desc}}</span>
               <i class="iconfont icon-xiangyoujiantou"></i>
@@ -26,13 +25,13 @@
         </ul>
       </div>
     </div>
-    <c-dialog-name :visible.sync="dialogName" @ok="upNickName" />
+    <c-dialog-name :title="$t('self.modify')" :visible.sync="dialogName" @ok="upNickName" />
     <!-- <c-sheet-sex :showShare="true"/> -->
     <van-popup class="sex-popup" v-model="showShare" position="bottom" :style="{ height: 'auto', }">
       <div class="op-block">
-        <p class="sex" v-for="item in sex" :key="item.type" @click="handleSexSelect(item.type)">{{item.label}}</p>
+        <p class="sex" v-for="item in sex" :key="item.type" @click="handleSexSelect(item.type)">{{$t(item.lang)}}</p>
         <p class="line"></p>
-        <p class="cancel" @click="cancelSex">取消</p>
+        <p class="cancel" @click="cancelSex">{{$t('common.cancel')}}</p>
       </div>
     </van-popup>
   </div>
@@ -58,41 +57,51 @@ export default {
         {
           label: '昵称',
           type: '1',
+          lang: 'self.nickname'
         },
         {
           label: '性别',
-          type: '2'
+          type: '2',
+          lang: 'self.sex'
         },
         {
           label: '国籍',
-          type: '3'
+          type: '3',
+          lang: 'self.nation'
         },
         {
           label: '手机号',
-          type: '4'
+          type: '4',
+          lang: 'self.phone'
         },
         {
           label: '邮箱',
-          type: '5'
+          type: '5',
+          lang: 'self.email'
         },
         {
           label: '收件地址',
-          type: '6'
+          type: '6',
+          lang: 'self.address'
         },
       ],
       sex: [
         {
           label: '男',
           type: 1,
+          lang: 'common.man'
         },
         {
           label: '女',
           type: 2,
+          lang: 'common.woman'
         }
       ],
       showShare: false,
       dialogName: false,
     };
+  },
+  filter: {
   },
   created() {
     this.getUserInfoList()

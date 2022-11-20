@@ -2,7 +2,7 @@
   <div class="title-wrap">
     <p class="title">{{title}}</p>
     <p class="more" @click="checkMore">
-      <span>查看全部</span>
+      <span>{{$t('common.more')}}</span>
       <img src="../../assets/imgs/icon/youjiantou.png" alt="" class="jiantou">
     </p>
   </div>

@@ -36,6 +36,7 @@ import ContractIndex from '@/pages/contract'
 import InvestRecommend from '@/pages/invest-recommend'
 import Changepwd from '@/pages/self/safe/change-password'
 import Changepay from '@/pages/self/safe/change-pay'
+import LangIndex from "@/pages/lang"
 
 Vue.use(Router);
 
@@ -196,6 +197,10 @@ let routerObj = new Router({
     {
       path: '/self/luckydraw',
       component: Luckydraw,
+    },
+    {
+      path: '/lang',
+      component: LangIndex
     }
 
   ]

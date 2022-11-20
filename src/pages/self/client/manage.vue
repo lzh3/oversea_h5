@@ -1,12 +1,12 @@
 <template>
   <div class="manage-wrap bg2">
-    <c-common-top title='客户管理' color='white' :isBack="true"></c-common-top>
+    <c-common-top :title='$t("self.clientManage")' color='white' :isBack="true"></c-common-top>
     <div class="main">
       <div class="summary-block">
-        <p class="title">客户人数</p>
+        <p class="title">{{$t('client.clientCount')}}</p>
         <p class="count">20</p>
         <p class="income">
-          昨日收益
+          {{$t('client.yMoney')}}:
           <span>255.20</span>
         </p>
       </div>
@@ -22,8 +22,10 @@
                 <p>ID: {{item.id}}</p>
               </div>
               <div>
-                <p class="count">客户：<span class="num">{{item.count}}</span>人</p>
-                <p>比例：<span>{{item.rate}}</span></p>
+                <p class="count">{{$t('client.customer')}}：<span class="num">{{item.count}}</span>
+                  <!-- {{$t('client.person')}} -->
+                </p>
+                <p>{{$t('client.ratio')}}：<span>{{item.rate}}</span></p>
               </div>
             </div>
             <p class="icon"><i class="iconfont icon-xiangyoujiantou"></i></p>

@@ -2,9 +2,9 @@
     <div class="list-wrap">
         <ul>
             <li class="item" v-for="item in cards" :key="item.project_id" @click="handleItemClick(item)">
-                <!-- <div class="pic">
+                <div class="pic">
                     <img :src="item.image" alt="" v-if="item.image">
-                </div> -->
+                </div>
                 <div class="details">
                     <h3 class="item-title">
                         {{item.name}}
@@ -40,7 +40,7 @@ export default {
     computed: {
         progressCom(){
             return item=>{
-                return (100 * (item.sub_amount / item.amount)) + "%";
+                return (100 * (item.sub_amount / item.amount)).toFixed(2) + "%";
             }
         },
         processBar(){
@@ -101,6 +101,7 @@ export default {
                 }
             }
             .details {
+                flex: 1;
                 display: flex;
                 flex-direction: column;
                 height: 100%;

@@ -1,10 +1,10 @@
 <template>
     <van-dialog :showConfirmButton="false" :showCancelButton="false" v-model="visible" :title="title" show-cancel-button>
-        <van-field v-model="name" clearable placeholder="请输入昵称" />
+        <van-field v-model="name" clearable :placeholder="$t('placehold.nickname')" />
 
         <div class="btns">
-            <van-button type="default" @click="cancel">取消</van-button>
-            <van-button type="default" @click="sure">确定</van-button>
+            <van-button type="default" @click="cancel">{{$t('common.cancel')}}</van-button>
+            <van-button type="default" @click="sure">{{$t('common.sure')}}</van-button>
         </div>
     </van-dialog>
 </template>

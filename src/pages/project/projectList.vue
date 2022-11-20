@@ -1,13 +1,13 @@
 <template>
   <div class="list-wrap bg1">
-    <c-common-top title="投资推荐" :isBack="true"></c-common-top>
+    <c-common-top :title="$t('home.investRec')" :isBack="true"></c-common-top>
     <van-tabs v-model="active" @click="changeTab">
-      <van-tab title="投资">
+      <van-tab :title="$t('home.investment')">
         <div class="main p-30 c_homelist">
           <c-home-list :cards="projects" />
         </div>
       </van-tab>
-      <van-tab title="预告">
+      <van-tab :title="$t('home.advNotice')">
         <div class="main p-30 c_homelist">
           <c-home-list :cards="projects1" />
         </div>

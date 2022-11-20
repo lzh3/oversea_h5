@@ -1,7 +1,7 @@
 
 <template>
   <div class="find-wrap bg1">
-    <c-common-top />
+    <c-common-top :title="$t('home.find')"/>
     <div class="main p-30">
       <section class="banner-section">
         <van-swipe class="my-swipe" :show-indicators="false" :autoplay="2000" indicator-color="white">
@@ -12,7 +12,7 @@
         </van-swipe>
       </section>
       <section class="news-section">
-        <c-common-title title='行业动态' type='news' @more="lookAll"></c-common-title>
+        <c-common-title :title='$t("find.industryDynamics")' type='news' @more="lookAll"></c-common-title>
         <van-list v-model="loading" :finished="isFinished" @load="loadMore">
           <news-list :cards="newsList">
           </news-list>

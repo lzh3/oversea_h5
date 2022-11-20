@@ -5,7 +5,7 @@
             <router-link to="/home">
                 <van-tabbar-item>
                     <!-- <span>首页</span> -->
-                    <p>首页</p>
+                    <p>{{$t('home.home')}}</p>
                     <template #icon="props">
                         <img :src="props.active ? homeActive : home" />
                     </template>
@@ -13,7 +13,7 @@
             </router-link>
             <router-link to="/find">
                 <van-tabbar-item icon="search">
-                    <p>发现</p>
+                    <p>{{$t('home.find')}}</p>
                     <template #icon="props">
                         <img :src="findActive" v-if="props.active" />
                         <img :src="find" v-else />
@@ -22,7 +22,7 @@
             </router-link>
             <router-link to="/self">
                 <van-tabbar-item icon="setting-o">
-                    <p>我的</p>
+                    <p>{{$t('home.personal')}}</p>
                     <template #icon="props">
                         <img :src="props.active ? meActive : me" />
                     </template>
@@ -40,6 +40,7 @@ import findActive from "./assets/imgs/tabbar/find_active.png"
 import me from "./assets/imgs/tabbar/me.png"
 import meActive from "./assets/imgs/tabbar/me_active.png"
 
+import localStore from '@/utils/localStorage'
 export default {
     name: 'App',
     data() {
@@ -68,6 +69,9 @@ export default {
                 } else {
                     this.showTab = false;
                 }
+
+                // 语言
+                this.$i18n.locale = localStore.get('LANGUAGE') || 'ch';
             },
             deep: true,
             immediate: true,

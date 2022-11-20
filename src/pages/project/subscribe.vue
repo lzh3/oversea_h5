@@ -68,7 +68,7 @@
         </div>
         <div class="bg-white" @click="toSign">
           <span>电子签名</span>
-          <img class="sign-img" :src="esign" alt="">
+          <img class="sign-img" v-if="esign" :src="esign" alt="">
         </div>
       </div>
       <div class="describe bg-white">

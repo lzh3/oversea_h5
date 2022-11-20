@@ -4,7 +4,7 @@
 
     <router-view v-if="$route.path!=='/self'" />
     <div class="self-wrap" v-else>
-      <c-common-top title="我的" />
+      <c-common-top :title="$t('self.mine')" />
       <div class="main p-30">
         <div class="user-card p-30" @click="goEdit">
           <p class="pic"></p>
@@ -20,7 +20,7 @@
           <ul>
             <li class="p-30" v-for="item in columns" :key="item.title" @click="toPage(item)">
               <p class="setting"></p>
-              <p class="title">{{item.title}}</p>
+              <p class="title">{{$t(item.lang)}}</p>
               <p class="icon"><i class="iconfont icon-xiangyoujiantou"></i></p>
             </li>
           </ul>
@@ -47,51 +47,61 @@ export default {
           title: '客户管理',
           pic: '',
           to: '/client/manage',
+          lang: 'self.clientManage'
         },
         {
           title: '已投项目',
           pic: '',
           to: '/hasProject',
+          lang: 'self.investProject'
         },
         {
           title: '资金管理',
           pic: '',
-          to: "/fund/manage"
+          to: "/fund/manage",
+          lang: 'self.fundManage'
         },
         {
           title: '订单管理',
           pic: '',
-          to: "/self/order"
+          to: "/self/order",
+          lang: 'self.orderManage'
         },
         {
           title: '幸运天天乐',
           pic: '',
           to: '/self/luckydraw',
+          lang: 'self.lucky'
         },
         {
           title: '我的收藏',
           pic: '',
           to: '',
+          lang: 'self.collect'
         },
         {
           title: '高级认证',
           pic: '',
           to: '',
+          lang: 'self.advCert'
         },
         {
           title: '风险评估',
           pic: '',
           to: '',
+          lang: 'self.risk'
         },
         {
           title: '账户安全',
           pic: '',
           to: '/self/safe',
+          lang: 'self.accountSafe'
         },
         {
           title: '更多',
           pic: '',
           to: '/login',
+          lang: 'self.more'
         },
       ]
 
