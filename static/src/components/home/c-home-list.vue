@@ -1,0 +1,148 @@
+<template>
+    <div class="list-wrap">
+        <ul>
+            <li class="item" v-for="item in cards" :key="item.project_id" @click="handleItemClick(item)">
+                <div class="pic">
+                    <img :src="item.image" alt="" v-if="item.image">
+                </div>
+                <div class="details">
+                    <h3 class="item-title">
+                        {{item.name}}
+                        <van-tag color="#EE7348" v-for="(v, index) in item.tags" :key="index">{{v}}</van-tag>
+                    </h3>
+                    <p class="status">{{item.show_status | statusFilter}}</p>
+                    <div class="process">
+                        <div class="process-bar">
+                            <van-progress :percentage="processBar(item)" :show-pivot="false" track-color="#FFB9B6" color="#FF1F16" />
+                        </div>
+                        <span>{{progressCom(item)}}</span>
+                    </div>
+                    <p class="time">截止时间：{{item.end_time | toSecDate}}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</template>
+<script>
+import { STATUS } from "@/utils/enum"
+export default {
+    props: {
+        cards: {
+            type: Array,
+            default: () => []
+        },
+    },
+    filters: {
+        statusFilter(val) {
+            return STATUS[val]
+        }
+    },
+    computed: {
+        progressCom(){
+            return item=>{
+                return (100 * (item.sub_amount / item.amount)) + "%";
+            }
+        },
+        processBar(){
+            return item=>{
+                return (item.sub_amount / item.amount) || 0;
+            }
+        },
+    },
+    data() {
+        return {
+
+        }
+    },
+    methods: {
+        handleItemClick(item){
+            this.$router.push({
+                path:'/projectDetail',
+                query: {
+                    id: item.project_id
+                },
+            })
+            // this.$emit('item', item)
+        }
+    },
+}
+</script>
+<style lang="less" scoped>
+/deep/.van-tag{
+    margin-right: 5px;
+}
+.list-wrap {
+    width: 100%;
+    ul {
+        width: 100%;
+
+        .item {
+            display: flex;
+            width: 100%;
+            height: 1.66rem;
+            margin-bottom: 0.3rem;
+            background: #fff;
+            border-radius: 0.28rem;
+            overflow: hidden;
+            .van-tag{
+                margin-right: 0.18rem;
+            }
+            .pic {
+                width: 2.5rem;
+                height: 100%;
+                // background: #eee;
+                border-radius: 0.28rem;
+                // overflow: hidden;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    border:none;
+                }
+            }
+            .details {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                margin-left: 0.3rem;
+                text-align: left;
+                // align-items: center;
+                // justify-content: center;
+                p {
+                    height: 0.24rem;
+                    line-height: 0.24rem;
+                }
+                .item-title {
+                    margin: 0.18rem 0 0.2rem 0;
+                    line-height: 0.28rem;
+                    font-size: 0.29rem;
+                    font-weight: 400;
+                    color: #333;
+                }
+                .status {
+                    font-size: 0.23rem;
+                    font-weight: 400;
+                    color: #ff1f16;
+                }
+                .process {
+                    display: flex;
+                    width: 100%;
+                    align-items: center;
+                    .process-bar {
+                        width: 3.2rem;
+                    }
+                    span {
+                        margin-left: 0.18rem;
+                        font-size: 0.22;
+                        color: #ff1f16;
+                    }
+                }
+                .time {
+                    font-size: 0.22rem;
+                    font-weight: 400;
+                    color: #666;
+                }
+            }
+        }
+    }
+}
+</style>

@@ -1,0 +1,128 @@
+<template>
+  <div class="cash-wrap bg1">
+    <c-common-top title='提现' 
+    @to="toPage"
+    :isTo='true' :isBack="true"></c-common-top>
+    <div class="main p-30">
+      <div class="main-top" @click="toCardList">
+        <p class="to tt">到账银行卡</p>
+        <div class="card tt">
+          <p class="card-id">中国银行（5588）</p>
+          <p class="tip">24小时内到账</p>
+        </div>
+        <p class="tt"><i class="iconfont icon-xiangyoujiantou"></i></p>
+      </div>
+      <div class="card-op">
+        <p class="title">提现金额</p>
+        <div class="money">
+          <span>￥</span>
+          <van-field v-model="money" label="" placeholder="" />
+        </div>
+        <div class="info">
+          当前可提现余额 
+          <span>￥{{balance}}元，</span> 
+          <span class="all-out" @click="handleOutAll">全部提现</span>
+        </div>
+        <div class="submit">
+          <van-button block type="default" class="btn-bg">提交审核</van-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+        money: '',
+        balance: 2000,
+    }
+  },
+  methods: {
+    handleOutAll(){
+        this.money = this.balance;
+    },
+    // 提现明细
+    toPage(){
+        this.$router.push({
+            path: '/getcash/detail',
+        })
+    },
+    // 选择银行卡
+    toCardList(){
+      this.$router.push({
+        path: '/bank/list'
+      })
+    }
+  }
+}
+</script>
+
+<style lang='less' scoped>
+.cash-wrap {
+  overflow: hidden;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  height: calc(~"100vh - 0.7rem");
+}
+.main-top {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.8rem;
+  color: #333;
+  .tt {
+    line-height: 0.3rem;
+  }
+  .to {
+    font-size: 0.29rem;
+    font-weight: 400;
+  }
+  .card-id {
+    font-size: 0.29rem;
+    font-weight: 550;
+    color: #333333;
+    margin-bottom: 0.3rem;
+  }
+  .tip {
+    font-size: 0.24rem;
+    font-weight: 400;
+    color: #888;
+  }
+  .iconfont {
+    font-size: 0.24rem;
+  }
+}
+.card-op {
+  width: 100%;
+  flex: auto;
+  padding: 0.3rem;
+  box-sizing: border-box;
+  margin-top: 0.6rem;
+  background-color: #fff;
+  border-radius: 0.29rem;
+  font-weight: 400;
+  .title {
+    font-size: 0.29rem;
+  }
+  .money {
+    display: flex;
+    align-items: center;
+    // line-height: 0.3rem;
+    margin: 0.5rem 0 0.3rem 0;
+    border-bottom: 1px solid #eee;
+    /deep/.van-cell {
+      padding: 0;
+    }
+  }
+  .info {
+    margin-bottom: 0.9rem;
+    font-size: 0.24rem;
+    .all-out{
+        color: #0A35D8;
+    }
+  }
+}
+</style>
