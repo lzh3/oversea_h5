@@ -204,12 +204,12 @@ export default {
   computed: {
     progressCom() {
       return item => {
-        return 100 * (item.sub_amount / item.amount) + "%";
+        return 100 * (item.sub_amount / item.amount).toFixed(2) + "%";
       }
     },
     progressBar() {
       return item => {
-        return parseFloat(item.sub_amount / item.amount) || 0;
+        return parseFloat(item.sub_amount / item.amount).toFixed(2) || 0;
       }
     },
     projectAbout() {

@@ -53,7 +53,8 @@ export default {
     address: "Consignee address"
   },
   placehold: {
-    nickname: "Please enter your nickname"
+    nickname: "Please enter your nickname",
+    projectname: "Please enter the project name",
   },
   client: {
     yMoney: "Yesterday's earnings",
@@ -61,5 +62,23 @@ export default {
     customer: "Customer",
     ratio: "Ratio",
     person: "person"
+  },
+  project: {
+    target: 'Target',
+    subscribed:'Subscribed',
+    startInvest: 'Starting investment',
+    productIntro: 'Project Introduction',
+    brandStory: "Brand Story",
+    team: 'Initiating the Team',
+    position: 'Geographic Location',
+    detailPosition: 'Detailed Address',
+    infoDispose: 'Information Disclosure',
+    risk: 'Risk Warning',
+    investPlan:'Investment Plan',
+    returnType:'Type of Return',
+    exit: 'Exit Base',
+    moreInfo: 'More Info',
+    consult: 'Consult',
+    collection: 'Collection',
   }
 };

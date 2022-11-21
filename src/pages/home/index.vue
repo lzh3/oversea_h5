@@ -8,7 +8,7 @@
                 <img src="../../assets/imgs/home/position.png" alt="">
                 <span>{{lang}}</span>
             </p>
-            <van-search v-model="keyword" shape="round" background="transparent" left-icon="search" placeholder="请输入项目名称" />
+            <van-search class='top-search' v-model="keyword" shape="round" background="transparent" left-icon="search" :placeholder="$t('placehold.projectname')" />
         </div>
         <div class="main p-30">
             <section class="home-top">
@@ -261,6 +261,12 @@ export default {
         img {
             width: 0.4rem;
             height: 0.4rem;
+        }
+    }
+    .top-search{
+        // width: 5.2rem;
+        .van-cell{
+            width: 4.8rem;
         }
     }
 }

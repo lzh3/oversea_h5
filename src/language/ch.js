@@ -53,7 +53,9 @@ export default {
     address: "收件地址"
   },
   placehold: {
-    nickname: "请输入昵称"
+    nickname: "请输入昵称",
+    projectname: '请输入项目名称',
+
   },
   client: {
     yMoney: "昨日收益",
@@ -61,5 +63,23 @@ export default {
     customer: "客户",
     ratio: "比例",
     person: "人"
+  },
+  project: {
+    target: '目标',
+    subscribed: '已认购',
+    startInvest: '起投',
+    productIntro: '项目介绍',
+    brandStory: "品牌故事",
+    team: '发起团队',
+    position: '地理位置',
+    detailPosition: '详细地理',
+    infoDispose: '信息披露',
+    risk: '风险提示',
+    investPlan:'投资计划',
+    returnType:'回报类型',
+    exit: '退出机制',
+    moreInfo: '补充说明',
+    consult: '咨询',
+    collection: '收藏',
   }
 };
