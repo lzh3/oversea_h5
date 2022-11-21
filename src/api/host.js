@@ -11,9 +11,9 @@ let common_url = ''
 // let baseUrl = "/";
 // const curDomain = document.domain;
 // if ("https://www.cbith.net/".includes(curDomain)) {
-//     baseUrl = "https://www.cbith.net/admin/";
+//     baseUrl = "https://www.cbith.net/";
 // } else if (" http://m.cbicn.net:799/".includes(curDomain)) {
-//     baseUrl = " http://m.cbicn.net:799/admin/";
+//     baseUrl = " http://m.cbicn.net:799/";
 // } else {
 //     baseUrl = "/admin";
 // }

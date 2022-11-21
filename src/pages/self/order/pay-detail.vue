@@ -89,12 +89,12 @@ export default {
       }).then(res => {
         console.log('支付', res.data)
         if (res && res.data) {
-          this.goPay(res.data.payUrl)
+          this.goPay(res.data.payUrl, res.data.msg)
         }
 
       })
     },
-    goPay(url = '') {
+    goPay(url = '', msg='') {
       if (url) {
         let aDom = document.createElement('a');
         aDom.style.display = 'none';
@@ -103,6 +103,11 @@ export default {
         document.body.appendChild(aDom);
         aDom.click();
         document.removeChild(aDom);
+      }else {
+        this.$toast({
+          type: 'fail',
+          message: msg,
+        })
       }
     },
     // 合同

@@ -17,7 +17,15 @@ module.exports = {
         pathRewrite: {
           "^/": ""
         }
-      }
+      },
+      "/api": {
+        target: "http://www.cbith.com",
+        // ws: false,
+        changeOrigin: true,
+        pathRewrite: {
+          "^/api": "/api"
+        }
+      },
     },
 
     // Various Dev Server settings
