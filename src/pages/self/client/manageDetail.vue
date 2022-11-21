@@ -1,6 +1,6 @@
 <template>
   <div class="bg1">
-    <c-common-top title='客户管理' :isBack="true"></c-common-top>
+    <c-common-top :title="$t('self.clientManage')" :isBack="true"></c-common-top>
     <div class="main p-30">
       <div class="user-card">
         <div class="user-info">
@@ -12,12 +12,12 @@
         </div>
         <div class="info-detail">
           <div class="detail-item">
-            <p>客户：<span class="count">{{info.client}}</span>人</p>
-            <p>项目：<span class="count">{{info.project}}</span>项</p>
+            <p>{{$t('client.customer')}}：<span class="count">{{info.client}}</span>人</p>
+            <p>{{$t('managedetail.project')}}：<span class="count">{{info.project}}</span>项</p>
           </div>
           <div class="detail-item">
-            <p>录入时间：<span>{{info.time}}</span></p>
-            <p>比例：<span>{{info.rate}}</span></p>
+            <p>{{$t('managedetail.time')}}：<span>{{info.time}}</span></p>
+            <p>{{$t('managedetail.percentage')}}：<span>{{info.rate}}</span></p>
           </div>
         </div>
       </div>
@@ -26,9 +26,9 @@
           <van-step v-for="item in steps" :key="item.id">
             <h3 class="time">{{item.time}}</h3>
             <div class="step-detail">
-              <p class="title">邀请新用户</p>
+              <p class="title">{{$t('managedetail.newuser')}}</p>
               <p class="info">
-                <span>用户：{{item.name}}</span>
+                <span>{{$t('managedetail.user')}}：{{item.name}}</span>
                 <span>ID：{{item.id}}</span>
               </p>
             </div>

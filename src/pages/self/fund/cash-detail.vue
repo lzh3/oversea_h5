@@ -1,6 +1,6 @@
 <template>
   <div class="bg1">
-    <c-common-top title='提现明细' :isBack="true"></c-common-top>
+    <c-common-top  :title="$t('fund.withdraw')" :isBack="true"></c-common-top>
     <div class="main">
       <div class="history p-30">
         <ul v-for="item in historyList" :key='item.time'>
@@ -13,7 +13,7 @@
               </p>
               <p class="time-flag c-888">
                 <span class="time">{{v.time}}</span>
-                <span class="com">佣金金额：{{v.commission}}</span>
+                <span class="com">{{$t('fund.commission')}}：{{v.commission}}</span>
               </p>
             </li>
           </div>

@@ -1,14 +1,14 @@
 <template>
   <div class="login">
-    <c-common-top title="登录"></c-common-top>
+    <c-common-top :title="$t('login.login')"></c-common-top>
     <div class="content">
       <h3 class="title">{{$t('login.title')}}</h3>
       <van-cell-group>
-        <van-field v-model="user_name" placeholder="请输入用户名" />
-        <van-field class="password" v-model="password" placeholder="请输入密码" />
+        <van-field v-model="user_name" :placeholder="$t('placehold.username')" />
+        <van-field class="password" v-model="password" placeholder="$t('placehold.password')" />
         <van-button round type="info" block @click="loginFn">{{$t('common.submit')}}</van-button>
       </van-cell-group>
-      <p class="tips">忘记密码，请联系工作人员</p>
+      <p class="tips">{{$t('placehold.forget')}}</p>
     </div>
   </div>
 </template>

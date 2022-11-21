@@ -1,6 +1,6 @@
 <template>
     <div class="page-wrap">
-        <c-common-top :isBack="true" title='身份证' :isTo="true" toText="添加" @to="toUpload"></c-common-top>
+        <c-common-top :isBack="true" :title="$t('subscribe.idcard')" :isTo="true" :toText="$t('common.add')" @to="toUpload"></c-common-top>
         <div class="id-list">
             <ul>
                 <li v-for="item in list" :key="item.id">

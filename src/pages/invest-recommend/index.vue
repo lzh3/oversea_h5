@@ -2,8 +2,8 @@
     <div class="recommend-page bg1">
         <c-common-top :isBack="true" :title="$t('home.investRec')"></c-common-top>
         <van-tabs v-model="active">
-            <van-tab title="投资"></van-tab>
-            <van-tab title="预告"></van-tab>
+            <van-tab :title="$t('home.investment')"></van-tab>
+            <van-tab :title="$t('home.advNotice')"></van-tab>
         </van-tabs>
     </div>
 </template>

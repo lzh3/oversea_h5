@@ -1,16 +1,16 @@
 <template>
   <div class="pay-result bg1">
-    <c-common-top v-if="payResult" class="common-top" title="支付结果" :isBack="true" />
+    <c-common-top v-if="payResult" class="common-top" :title="$t('pay.payres')" :isBack="true" />
     <div class="content">
       <div class="res-img">
         <img v-if="payResult" src="../../assets/imgs/common/success.png" alt="">
         <img v-else src="../../assets/imgs/common/fail.png" alt="">
       </div>
       <div class="res-text">
-        <span v-if="payResult">支付成功</span>
-        <span v-else>支付失败</span>
+        <span v-if="payResult">{{$t('pay.paysuccess')}}</span>
+        <span v-else>{{$t('pay.failuretopay')}}</span>
       </div>
-      <div class="btn" @click="handBack">返回首页</div>
+      <div class="btn" @click="handBack">{{$t('pay.toindex')}}</div>
     </div>
   </div>
 </template>

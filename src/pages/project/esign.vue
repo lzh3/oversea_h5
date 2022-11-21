@@ -1,18 +1,18 @@
 <template>
   <div class="bg1">
-    <c-common-top title="电子签名" :isBack="true"></c-common-top>
+    <c-common-top :title="$t('esignature.esignature')" :isBack="true"></c-common-top>
     <div class="esign">
       <div class="esign-box">
         <vue-esign class="sign1" ref="esign" :width="800" :height="500" :isCrop="isCrop" :lineWidth="lineWidth" :lineColor="lineColor" :bgColor.sync="bgColor" />
       </div>
       <div class="op-block">
         <div class="tips">
-          <span>请在上方空白处书写您的签字</span>
-          <span class="bold">提交签字后无法修改，请确认后提交</span>
+          <span>{{$t('esignature.esignature1')}}</span>
+          <span class="bold">{{$t('esignature.esignature2')}}</span>
         </div>
         <div class="esigh-btns">
-          <van-button class="reset" @click="handleReset">清除重写</van-button>
-          <van-button class="btn-bg" @click="handleSure">提交签字</van-button>
+          <van-button class="reset" @click="handleReset">{{$t('esignature.reset')}}</van-button>
+          <van-button class="btn-bg" @click="handleSure">{{$t('esignature.submit')}}</van-button>
         </div>
       </div>
       <!-- <div class="esigh-result">

@@ -35,15 +35,15 @@
         </div>
         <div class="money-list">
           <div class="money-item">
-            <p>目标：</p>
+            <p>{{ $t('project.target') }}：</p>
             <p>{{detailInfo.amount | toNumber}}</p>
           </div>
           <div class="money-item">
-            <p>已认购：</p>
+            <p>{{ $t('project.subscribed') }}：</p>
             <p>{{detailInfo.sub_amount | toNumber}}</p>
           </div>
           <div class="money-item">
-            <p>起投：</p>
+            <p>{{ $t('project.startInvest') }}：</p>
             <p>{{detailInfo.min_amount | toNumber}}</p>
           </div>
         </div>
@@ -79,22 +79,22 @@
         <section class="info-block2 p-30 bg-white b-29">
           <ul>
             <li>
-              <p class="title">投资方案：</p>
+              <p class="title">{{ $t('project.investPlan') }}：</p>
               <p class="invest">
                 <span>每人限购{{projectAbout.limit_num || 0}}份</span>
                 <span><i class="price">￥{{projectAbout.price}}</i>/份</span>
               </p>
             </li>
             <li>
-              <p class="title">回报类型：</p>
+              <p class="title">{{ $t('project.returnType') }}：</p>
               <p class="detail">{{projectAbout.return_type | returnFilter}}</p>
             </li>
             <li>
-              <p class="title">退出机制：</p>
+              <p class="title">{{ $t('project.exit') }}：</p>
               <p class="detail">{{projectAbout.out_type | outFilter}}</p>
             </li>
             <li>
-              <p class="title">补充说明：</p>
+              <p class="title">{{ $t('project.moreInfo') }}：</p>
               <p class="detail">{{projectAbout.project_remark}}</p>
             </li>
           </ul>
@@ -104,13 +104,13 @@
     <div class="bottom-op">
       <div class="op-item">
         <img src="../../assets/imgs/project/comment.png" alt="">
-        <span>咨询</span>
+        <span>{{ $t('project.consult') }}</span>
       </div>
       <div class="op-item" @click="handleCollect">
         <img src="../../assets/imgs/project/shoucang.png" alt="">
-        <span>{{detailInfo.is_collection ==1?'已收藏':'收藏'}}</span>
+        <span>{{detailInfo.is_collection ==1?$t('project.havecollection'):$t('project.collection')}}</span>
       </div>
-      <van-button @click="handleSub">认购</van-button>
+      <van-button @click="handleSub">{{ $t('project.subscribe') }}</van-button>
     </div>
   </div>
 </template>
@@ -125,25 +125,25 @@ export default {
       tags: ['酒店', '股权'],
       block1: [
         {
-          label: '项目介绍',
+          label:  this.$t('project.productIntro'),
           to: '',
           icon: 'icon-xiangyoujiantou',
           type: 1,
         },
         {
-          label: '品牌故事',
+          label: this.$t('project.brandStory'),
           to: '',
           icon: 'icon-xiangyoujiantou',
           type: 2,
         },
         {
-          label: '发起团队',
+          label: this.$t('project.team'),
           to: '',
           icon: 'icon-xiangyoujiantou',
           type: 5,
         },
         {
-          label: '地理位置',
+          label: this.$t('project.position'),
           to: '',
           country: '中国',
           detail: '广东省深圳市',
@@ -151,20 +151,20 @@ export default {
           type: 4,
         },
         {
-          label: '详细地理',
+          label: this.$t('project.detailPosition'),
           to: '',
           text: '泰国曼谷拉差贴威区296 Phayathai Road',
           type: 3,
-          op: '复制'
+          op: this.$t('project.copy')
         },
         {
-          label: '信息披露',
+          label: this.$t('project.infoDispose'),
           to: '',
           icon: 'icon-xiangyoujiantou',
           type: 6,
         },
         {
-          label: '风险提示',
+          label: this.$t('project.risk'),
           to: '',
           icon: 'icon-xiangyoujiantou',
           type: 7,

@@ -1,6 +1,6 @@
 <template>
     <div class="position-wrap">
-        <c-common-top title="选择地区" :isBack='true' />
+        <c-common-top :title="$t('common.selectarea')" :isBack='true' />
         <div class="main">
             <!-- <div class="search  p-30">
             </div> -->

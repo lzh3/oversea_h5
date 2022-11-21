@@ -1,6 +1,6 @@
 <template>
   <div class="page-wrap">
-    <c-common-top :isBack="true" title='添加身份证'></c-common-top>
+    <c-common-top :isBack="true" :title="$t('uploadCard.uploadCard')"></c-common-top>
     <div class="main p-30">
       <van-uploader v-model="frontFile">
         <div class="front pic-id">
@@ -15,10 +15,10 @@
 
       <div class="tips">
         <img src="../../assets/imgs/project/help.png" alt="">
-        认证通过后不可修改，平台会保护你的个人信息
+        {{$t('uploadCard.upload1')}}
       </div>
       <div class="submit">
-        <van-button class="btn-bg" block @click="submit">提交审核</van-button>
+        <van-button class="btn-bg" block @click="submit"> {{$t('common.submit')}}</van-button>
       </div>
     </div>
   </div>
@@ -64,7 +64,7 @@ export default {
       deep: true,
     }
   },
-  created() { 
+  created() {
     this.init();
   },
   methods: {
