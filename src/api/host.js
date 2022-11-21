@@ -10,10 +10,10 @@ let baseUrl = "/";
 
 // 需要判断
 const curDomain = document.domain;
-if ("https://www.cbith.net/".includes(curDomain)) {
-    baseUrl = "https://www.cbith.net/";
-} else if (" http://m.cbicn.net:799/".includes(curDomain)) {
-    baseUrl = " http://m.cbicn.net:799/";
+if ("https://www.cbith.com/".includes(curDomain)) {
+    baseUrl = "https://www.cbith.com";
+} else if (" http://m.cbicn.com:799/".includes(curDomain)) {
+    baseUrl = " http://m.cbicn.com:799";
 } else {
     baseUrl = "";
 }
