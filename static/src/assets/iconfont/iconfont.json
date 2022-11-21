@@ -1,0 +1,58 @@
+{
+  "id": "3732966",
+  "name": "investment_h5",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "8k",
+  "glyphs": [
+    {
+      "icon_id": "1226727",
+      "name": "help",
+      "font_class": "help",
+      "unicode": "e6b6",
+      "unicode_decimal": 59062
+    },
+    {
+      "icon_id": "21243058",
+      "name": "位置",
+      "font_class": "weizhi",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
+      "icon_id": "278744",
+      "name": "下箭头",
+      "font_class": "xiajiantou",
+      "unicode": "e6cc",
+      "unicode_decimal": 59084
+    },
+    {
+      "icon_id": "630094",
+      "name": "向右箭头",
+      "font_class": "xiangyoujiantou",
+      "unicode": "e65f",
+      "unicode_decimal": 58975
+    },
+    {
+      "icon_id": "1718353",
+      "name": "下箭头",
+      "font_class": "xiajiantou1",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "2076358",
+      "name": "返回箭头",
+      "font_class": "fanhuijiantou",
+      "unicode": "e8b5",
+      "unicode_decimal": 59573
+    },
+    {
+      "icon_id": "4175512",
+      "name": "上箭头",
+      "font_class": "shangjiantou",
+      "unicode": "eb6d",
+      "unicode_decimal": 60269
+    }
+  ]
+}
