@@ -38,7 +38,7 @@ export default {
   name: 'Home',
   data() {
     return {
-      userInfo:{},
+      userInfo: {},
       info: {
         id: 3487854758
       },
@@ -107,17 +107,17 @@ export default {
 
     }
   },
-  created(){
+  created() {
     this.getUserInfo()
   },
   methods: {
-      // 获取用户信息
+    // 获取用户信息
     getUserInfo() {
       this.$axios.post(api.self.userInfo, {
       }).then(res => {
         // console.log('用户详情', res.data)
         this.userInfo = res.data;
-        localStorage.set('userid', this.userInfo.user_id )
+        localStorage.set('userid', this.userInfo.user_id)
       })
     },
     toPage(item) {
@@ -192,6 +192,7 @@ export default {
       height: 0.84rem;
       border-radius: 0.28rem;
       background-color: #fff;
+      box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
       .setting {
         width: 0.32rem;
         height: 0.32rem;

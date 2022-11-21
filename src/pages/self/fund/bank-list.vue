@@ -9,7 +9,7 @@
     ></c-common-top>
     <div class="main p-30">
       <ul class="bank-list">
-        <li v-for="item in bankcardlist" :key="item.num" @touchend="delbank(item.bank_id)">
+        <li v-for="item in bankcardlist" :key="item.num" v-longpress="()=>delbank(item.bank_id)">
           <p class="name">{{ item.bank_address }}</p>
           <p class="num">{{ item.bank_code }}</p>
           <p class="time">添加日期：{{ item.create_time | toSecDate }}</p>

@@ -24,7 +24,8 @@
           </p>
           <p class="op">
             <span @click="handleMin">-</span>
-            <span class="count">{{buyInfo.count}}</span>
+            <!-- <span class="count">{{buyInfo.count}}</span> -->
+            <input class="count" v-model="buyInfo.count" placeholder="0" />
             <span @click="handleAdd">+</span>
           </p>
         </div>
@@ -41,13 +42,13 @@
         <p class="title">支付方式</p>
         <p class="type">
           <van-radio-group v-model="payType">
-            <p>
+            <!-- <p>
               <span class="tt">
                 <img src="../../assets/imgs/project/money.png" alt="">
                 佣金支付
               </span>
               <van-radio :name="1"></van-radio>
-            </p>
+            </p> -->
             <p>
               <span class="tt">
                 <img src="../../assets/imgs/project/card.png" alt="">
@@ -102,7 +103,7 @@ export default {
     return {
       userInfo: {},
       projectInfo: {},
-      payType: 1, // 支付方式
+      payType: 2, // 支付方式
       isAgree: false, // 是否同意
 
       buyInfo: {
@@ -228,6 +229,10 @@ export default {
         }
       }
       this.$axios.post(api.home.submitOrder, param).then(res => {
+        this.$toast({
+          type: 'success',
+          message: '提交成功',
+        })
         this.$router.back();
       })
     },
@@ -297,6 +302,7 @@ export default {
       }
     }
     .op {
+      display: flex;
       span {
         font-size: 0.36rem;
         color: #ddd;
@@ -307,12 +313,14 @@ export default {
       .count {
         width: 1.06rem;
         height: 0.54rem;
-        line-height: 0.54rem;
+        // line-height: 0.54rem;
         background: #ddd;
         border-radius: 0.27rem;
         font-size: 0.29rem;
         font-weight: bold;
         color: #333;
+        border: none;
+        text-align: center;
       }
     }
   }

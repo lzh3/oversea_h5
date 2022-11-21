@@ -33,6 +33,7 @@ const bankcardAPI = {
   addbank:'/api/user-bank/add',//用户添加银行卡
   deluserbank:'/api/user-bank/del', //用户删除银行卡
   addIdCard:'/api/user/update-id-card',//修改/添加客户身份证
+  createOrder: '/api/order/create-order',  // 第三方支付
 
 }
 // ================================================

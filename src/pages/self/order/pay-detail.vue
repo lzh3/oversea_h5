@@ -25,9 +25,7 @@
             <span class="remain">剩余{{(projectInfo.amount - orderInfo.num) || 0}}份</span>
           </p>
           <p class="op">
-            <!-- <span @click="handleMin">-</span> -->
             <span class="">{{orderInfo.num}}</span>
-            <!-- <span @click="handleAdd">+</span> -->
           </p>
         </div>
         <div class="service">
@@ -41,24 +39,14 @@
       </div>
       <!--  -->
       <div class="upload-box">
-        <!-- <div class="bg-white card" @click="uploadCard">
-                    <span>身份证信息</span>
-                    <p>
-                        <span class="status">已上传</span>
-                        <i class="iconfont icon-xiangyoujiantou"></i>
-                    </p>
-                </div>
-                <div class="bg-white" @click="toSign">
-                    <span>电子签名</span>
-                    <img class="sign-img" src="" alt="">
-                </div> -->
         <div class="bg-white card" @click="toContract">
           <span>合同</span>
           <i class="iconfont icon-xiangyoujiantou"></i>
         </div>
       </div>
       <div class="pay-btn">
-        <van-button block class="btn-bg">立即支付</van-button>
+        <!-- v-if="orderInfo.order_status==5"> -->
+        <van-button block class="btn-bg" @click="handlePay">立即支付</van-button>
       </div>
     </div>
   </div>
@@ -70,14 +58,7 @@ import api from "@/api/api"
 export default {
   data() {
     return {
-      projectInfo: {
-        // title: '泰国曼谷亚朵abc酒店5年股权',
-        // unit: 10000,
-        // remain: 30,
-        // service: 1000,
-        // serviceRate: '3%',
-        // count: 0,
-      },
+      projectInfo: {},
       orderInfo: {},
     }
   },
@@ -101,17 +82,28 @@ export default {
         this.orderInfo = res.data.order_info || {};
       })
     },
-    uploadCard() {
+    // 点击支付
+    handlePay() {
+      this.$axios.post(api.bankcard.createOrder, {
+        order_id: this.$route.query.id,
+      }).then(res => {
+        console.log('支付', res.data)
+        if (res && res.data) {
+          this.goPay(res.data.payUrl)
+        }
 
+      })
     },
-    handleAdd() {
-
-    },
-    handleMin() {
-
-    },
-    toSign() {
-
+    goPay(url = '') {
+      if (url) {
+        let aDom = document.createElement('a');
+        aDom.style.display = 'none';
+        aDom.target = '_self';
+        aDom.href = url;
+        document.body.appendChild(aDom);
+        aDom.click();
+        document.removeChild(aDom);
+      }
     },
     // 合同
     toContract() {

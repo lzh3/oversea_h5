@@ -8,6 +8,7 @@ import './assets/css/reset.css'
 import './assets/iconfont/iconfont.css'
 import "./utils/changeRem"
 import "./utils/filters"
+import "./utils/directive"
 
 
 // 配置i18n
@@ -62,6 +63,8 @@ axios.interceptors.response.use(function (response) {
 });
 axios.defaults.headers["Content-Type"] = "application/x-www-form-urlencoded";
 Vue.prototype.$axios = axios;
+
+
 
 
 /* eslint-disable no-new */
