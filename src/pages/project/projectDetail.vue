@@ -209,7 +209,7 @@ export default {
     },
     progressBar() {
       return item => {
-        return parseFloat(item.sub_amount / item.amount).toFixed(2) || 0;
+        return (item.sub_amount / item.amount).toFixed(2);
       }
     },
     projectAbout() {

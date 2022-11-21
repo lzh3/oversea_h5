@@ -7,7 +7,9 @@
       <c-common-top :title="$t('self.mine')" />
       <div class="main p-30">
         <div class="user-card p-30" @click="goEdit">
-          <p class="pic"></p>
+          <p class="pic">
+            <!-- <img :src="item.pic" alt=""> -->
+          </p>
           <p class="info">
             <span class="user-name">{{userInfo.user_name}}</span>
             <span class="user-id">ID: {{info.id}}</span>
@@ -19,7 +21,9 @@
         <div class="columns">
           <ul>
             <li class="p-30" v-for="item in columns" :key="item.title" @click="toPage(item)">
-              <p class="setting"></p>
+              <p class="setting">
+                <img :src="item.pic" alt="">
+              </p>
               <p class="title">{{$t(item.lang)}}</p>
               <p class="icon"><i class="iconfont icon-xiangyoujiantou"></i></p>
             </li>
@@ -34,6 +38,19 @@
 <script>
 import api from "@/api/api"
 import localStorage from '@/utils/localStorage'
+import img1 from '../../assets/imgs/self/1.png'
+import img2 from '../../assets/imgs/self/2.png'
+import img3 from '../../assets/imgs/self/3.png'
+import img4 from '../../assets/imgs/self/4.png'
+import img5 from '../../assets/imgs/self/5.png'
+import img6 from '../../assets/imgs/self/6.png'
+import img7 from '../../assets/imgs/self/7.png'
+import img8 from '../../assets/imgs/self/8.png'
+import img9 from '../../assets/imgs/self/9.png'
+import img10 from '../../assets/imgs/self/10.png'
+import img11 from '../../assets/imgs/self/11.png'
+
+
 export default {
   name: 'Home',
   data() {
@@ -45,61 +62,61 @@ export default {
       columns: [
         {
           title: '客户管理',
-          pic: '',
+          pic: img1,
           to: '/client/manage',
           lang: 'self.clientManage'
         },
         {
           title: '已投项目',
-          pic: '',
+          pic: img2,
           to: '/hasProject',
           lang: 'self.investProject'
         },
         {
           title: '资金管理',
-          pic: '',
+          pic: img3,
           to: "/fund/manage",
           lang: 'self.fundManage'
         },
         {
           title: '订单管理',
-          pic: '',
+          pic: img4,
           to: "/self/order",
           lang: 'self.orderManage'
         },
         {
           title: '幸运天天乐',
-          pic: '',
+          pic: img11,
           to: '/self/luckydraw',
           lang: 'self.lucky'
         },
         {
           title: '我的收藏',
-          pic: '',
+          pic: img6,
           to: '',
           lang: 'self.collect'
         },
         {
           title: '高级认证',
-          pic: '',
+          pic: img7,
           to: '',
           lang: 'self.advCert'
         },
         {
           title: '风险评估',
-          pic: '',
+          pic: img8,
           lang: 'self.risk',
           to: '/self/riskassessment',
         },
         {
           title: '账户安全',
-          pic: '',
+          pic: img9,
           to: '/self/safe',
           lang: 'self.accountSafe'
         },
         {
           title: '更多',
-          pic: '',
+          pic: img10,
           to: '/login',
           lang: 'self.more'
         },
@@ -161,7 +178,11 @@ export default {
     width: 1.08rem;
     height: 1.08rem;
     border-radius: 50%;
-    background: skyblue;
+    background: #ddd;
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
   .info {
     display: flex;
@@ -196,8 +217,12 @@ export default {
       .setting {
         width: 0.32rem;
         height: 0.32rem;
-        background-color: skyblue;
+        // background-color: skyblue;
         border-radius: 50%;
+        img {
+          width: 100%;
+          height: 100%;
+        }
       }
       .title {
         font-size: 0.29rem;

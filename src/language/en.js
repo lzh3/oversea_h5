@@ -47,7 +47,7 @@ export default {
     more: "More",
     accountSafe: "Account security",
     // ===
-    modify: "Modify nickname",
+    modify: "Modify Nickname",
     userInfo: "Personal information",
     avatar: "Avatar",
     nickname: "Nickname",
