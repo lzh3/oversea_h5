@@ -9,9 +9,14 @@ export default {
     woman: "Woman",
     add:'Add',
     selectarea:'Select-area',
+<<<<<<< HEAD
     default:'default',
     edit:'edit',
     delete:'delete',
+=======
+    payNow: 'Pay Now',
+    copies: 'copies'
+>>>>>>> be6d8287ff9d5f5792f23a4534da338bd38568f0
   },
   login: {
     title: "Welcome to login",
@@ -38,7 +43,7 @@ export default {
     mine: "Personal",
     lucky: "Lucky every day",
     clientManage: "Customer management",
-    investProject: "invested projects",
+    investProject: "Invested projects",
     fundManage: "Fund management",
     orderManage: "Order management",
     bankCard: "My bank card",
@@ -124,8 +129,8 @@ export default {
     submit:'Submit for signature',
   },
   contract:{
-    contract:'contract',
-    pcontract:'Print contract',
+    contract:'Contract',
+    pcontract:'Print Contract',
 
   },
   pay:{
@@ -165,6 +170,7 @@ export default {
     lucky:'Lucky every day',
     earnings:'Earnings of project',
   },
+<<<<<<< HEAD
   hasproject:{
     investment:'Investment',
     totalrevenue:'Total revenue',
@@ -183,6 +189,16 @@ export default {
     detailaddress:'Detail address',
     Provincialstreets:'Provincial and urban streets',
     setdefault:'Set Default',
+=======
+  order: {
+    orderManage: "Order Management",
+    orderDetail: 'Order Detail',
+    contract: 'Contract',
+    totalMoney: 'Total amount',
+    seviceCharge: 'Service charge',
+    remain: 'remain',
+  },
+>>>>>>> be6d8287ff9d5f5792f23a4534da338bd38568f0
 
   },
   luckydraw:{

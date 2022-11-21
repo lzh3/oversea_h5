@@ -1,6 +1,6 @@
 <template>
   <div class="bg1">
-    <c-common-top title="订单详情" :isBack="true" />
+    <c-common-top :title="$t('order.orderDetail')" :isBack="true" />
     <div class="main p-30">
       <!--  -->
       <div class="bar-section">
@@ -33,20 +33,20 @@
           <span class="cost">￥{{servicePrice}}</span>
         </div>
         <div class="total">
-          <span>总金额</span>
+          <span>{{$t('order.totalMoney')}}</span>
           <span class="cost">￥{{orderInfo.total_price}}</span>
         </div>
       </div>
       <!--  -->
       <div class="upload-box">
         <div class="bg-white card" @click="toContract">
-          <span>合同</span>
+          <span>{{$t('order.contract')}}</span>
           <i class="iconfont icon-xiangyoujiantou"></i>
         </div>
       </div>
       <div class="pay-btn">
         <!-- v-if="orderInfo.order_status==5"> -->
-        <van-button block class="btn-bg" @click="handlePay">立即支付</van-button>
+        <van-button block class="btn-bg" @click="handlePay">{{$t('common.payNow')}}</van-button>
       </div>
     </div>
   </div>
