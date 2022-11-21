@@ -1,6 +1,6 @@
 <template>
   <div class="content bg-white-page" id="page0">
-    <c-common-top :isBack="true" title='合同' />
+    <c-common-top :isBack="true" :title="$t('contract.contract')" />
     <!-- <div class="pic">
       <img :src="img" alt="">
     </div> -->
@@ -9,7 +9,7 @@
       <!-- {{htmlStr}} -->
       <div id="pdfContent"></div>
     </div>
-    <van-button type="primary" @click="printPdf" class="printbtn()">打印合同</van-button>
+    <van-button type="primary" @click="printPdf" class="printbtn()">{{$t('contract.pcontract')}}</van-button>
   </div>
 </template>
 
@@ -35,7 +35,7 @@ export default {
       // pdfDom
       let dom = document.getElementById('pdfContent')
       downloadPDF(dom)
-      
+
     },
     // 获取合同
     getcontract() {

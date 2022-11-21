@@ -1,6 +1,6 @@
 <template>
   <div class="sub-page bg1">
-    <c-common-top :isBack="true" title='认购'></c-common-top>
+    <c-common-top :isBack="true" :title= "$t('project.subscribe')"></c-common-top>
     <div class="main p-30">
       <div class="user-info">
         <!-- <div class="info">
@@ -19,8 +19,8 @@
         </div>
         <div class="buy">
           <p class="info">
-            <span class="unit">￥{{projectAbout.price}}<i>/份</i></span>
-            <span class="remain">剩余{{remainCount}}份</span>
+            <span class="unit">￥{{projectAbout.price}}<i>/{{$t('subscribe.copies')}}</i></span>
+            <span class="remain">{{$t('subscribe.remain')}}{{remainCount}}{{$t('subscribe.copies')}}</span>
           </p>
           <p class="op">
             <span @click="handleMin">-</span>
@@ -30,29 +30,29 @@
           </p>
         </div>
         <div class="service">
-          <span class="t">服务费({{projectInfo.service_rate}}%)</span>
+          <span class="t">{{$t('subscribe.servicefee')}}({{projectInfo.service_rate}}%)</span>
           <span class="cost">￥{{servicePrice}}</span>
         </div>
         <div class="total">
-          <span>总金额</span>
+          <span>{{$t('subscribe.totalamount')}}</span>
           <span class="cost">￥{{totalPrice}}</span>
         </div>
       </div>
       <div class="pay-type common-box">
-        <p class="title">支付方式</p>
+        <p class="title">{{$t('subscribe.paymentmethod')}}</p>
         <p class="type">
           <van-radio-group v-model="payType">
             <!-- <p>
               <span class="tt">
                 <img src="../../assets/imgs/project/money.png" alt="">
-                佣金支付
+                {{$t('subscribe.commission')}}
               </span>
               <van-radio :name="1"></van-radio>
             </p> -->
             <p>
               <span class="tt">
                 <img src="../../assets/imgs/project/card.png" alt="">
-                银行卡支付
+                {{$t('subscribe.bankcard')}}
               </span>
               <van-radio :name="2"></van-radio>
             </p>
@@ -61,14 +61,14 @@
       </div>
       <div class="upload-box">
         <div class="bg-white card" @click="uploadCard">
-          <span>身份证信息</span>
+          <span>{{$t('subscribe.idcard')}}</span>
           <p>
             <span class="status" v-if="front_id&&back_id">已上传</span>
             <i class="iconfont icon-xiangyoujiantou"></i>
           </p>
         </div>
         <div class="bg-white" @click="toSign">
-          <span>电子签名</span>
+          <span>{{$t('subscribe.esignature')}}</span>
           <img class="sign-img" v-if="esign" :src="esign" alt="">
         </div>
         <div class="bg-white address">
@@ -82,23 +82,23 @@
         </div>
       </div>
       <div class="describe bg-white">
-        <p class="title">交易说明</p>
+        <p class="title">{{$t('subscribe.trade')}}</p>
         <p class="content">交易说明交易接口的垃圾方式来得快上课啦的解放克里斯丁说明交易说明交易说明交易说明交易说明交易说明交易说明交易说明交易说明交易说明交易说明</p>
       </div>
       <div class="agree">
 
         <van-checkbox v-model="isAgree" shape="square">
-          我已阅读并同意
-          <span class="c-main">《投资协议》</span>、
-          <span class="c-main">《电子签名授权委托书》</span>、
-          <span class="c-main">《风险提示书》</span>
-          及其他相关的条款协议
+          {{$t('subscribe.agreement1')}}
+          <span class="c-main">{{$t('subscribe.agreement2')}}</span>、
+          <span class="c-main">{{$t('subscribe.agreement3')}}</span>、
+          <span class="c-main">{{$t('subscribe.agreement4')}}</span>
+          {{$t('subscribe.agreement5')}}
         </van-checkbox>
       </div>
     </div>
     <div class="bottom-op bg-white">
       <span class="price">￥{{totalPrice}}</span>
-      <van-button class="btn-bg" @click="submitCheck">提交审核</van-button>
+      <van-button class="btn-bg" @click="submitCheck">  {{$t('common.submit')}}</van-button>
     </div>
   </div>
 </template>

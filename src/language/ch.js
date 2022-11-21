@@ -6,10 +6,13 @@ export default {
     sure: "确定",
     cancel: "取消",
     man: "男",
-    woman: "女"
+    woman: "女",
+    add:'添加',
+    selectarea:'选择地区',
   },
   login: {
-    title: "欢迎登录"
+    title: "欢迎登录",
+    login: '登录'
   },
   home: {
     home: "首页",
@@ -55,7 +58,10 @@ export default {
   placehold: {
     nickname: "请输入昵称",
     projectname: '请输入项目名称',
-
+    Country:'请输入国家和地区',
+    username:'请输入用户名',
+    password:'请输入密码',
+    forget:'忘记密码,请联系工作人员',
   },
   client: {
     yMoney: "昨日收益",
@@ -65,8 +71,10 @@ export default {
     person: "人"
   },
   project: {
+    project:'project',
     target: '目标',
     subscribed: '已认购',
+    subscribe: '认购',
     startInvest: '起投',
     productIntro: '项目介绍',
     brandStory: "品牌故事",
@@ -81,5 +89,76 @@ export default {
     moreInfo: '补充说明',
     consult: '咨询',
     collection: '收藏',
-  }
+    havecollection: '已收藏',
+    copy:'复制',
+  },
+  subscribe:{
+    copies:'份',
+    remain:'剩余',
+    servicefee:'服务费',
+    totalamount:'总金额',
+    paymentmethod:'支付方式',
+    commission:'佣金支付',
+    bankcard: '银行卡',
+    idcard:'身份证信息',
+    esignature:'电子签名',
+    trade:'交易说明 Trade Description',
+    agreement1:'我已阅读并同意',
+    agreement2:'<<投资协议>>',
+    agreement3:'<<电子签名授权委托书>>',
+    agreement4:'<<风险提示书>>',
+    agreement5:'及其他相关的条款协议',
+  },
+  uploadCard:{
+    uploadCard:'添加身份证',
+    upload1:'认证通过后不可修改，平台会保护你的个人信息',
+  },
+  esignature:{
+    esignature:'电子签名',
+    esignature1:'请在上方空白处书写您的签字',
+    esignature2:'提交签字后无法修改，请确认后提交',
+    reset:'清除重写',
+    submit:'提交签字',
+  },
+  contract:{
+    contract:'合同',
+    pcontract:'打印合同',
+
+  },
+  pay:{
+    payres:'支付结果',
+    paysuccess:'支付成功',
+    failuretopay:"支付失败",
+    toindex:'返回首页'
+  },
+  managedetail:{
+    project:'项目',
+    time:'录入时间',
+    percentage:'比例',
+    newuser:'邀请新用户',
+    user:'用户',
+
+  },
+  fund:{
+    addbank:'添加银行卡',
+    NameonCard:'持卡人签名:',
+    bankname:'银行名称:',
+    openanaccount:'开户行:',
+    bankID:'银行卡号:',
+    bankcardlist:'银行卡列表',
+    add:'新增',
+    addtime:'添加日期',
+    withdraw:'提现明细',
+    commission:'佣金金额',
+    withdraw1:'提现',
+    card:'到账银行卡',
+    bank:'中国银行',
+    Received:'24小时内到账',
+    cash:'提现金额',
+    cashbalance:'当前可提现余额',
+    allcash:'全部提现',
+    cash1:'提现',
+
+
+  },
 };

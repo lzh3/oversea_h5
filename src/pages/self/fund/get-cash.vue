@@ -1,30 +1,30 @@
 <template>
   <div class="cash-wrap bg1">
-    <c-common-top title='提现'
+    <c-common-top :title="$t('fund.cash1')"
     @to="toPage"
     :isTo='true' :isBack="true"></c-common-top>
     <div class="main p-30">
       <div class="main-top" @click="toCardList">
-        <p class="to tt">到账银行卡</p>
+        <p class="to tt">{{$t('fund.card')}}</p>
         <div class="card tt">
-          <p class="card-id">中国银行（5588）</p>
-          <p class="tip">24小时内到账</p>
+          <p class="card-id">{{$t('fund.bank')}}（5588）</p>
+          <p class="tip">{{$t('fund.Received')}}</p>
         </div>
         <p class="tt"><i class="iconfont icon-xiangyoujiantou"></i></p>
       </div>
       <div class="card-op">
-        <p class="title">提现金额</p>
+        <p class="title">{{$t('fund.cash')}}</p>
         <div class="money">
           <span>￥</span>
           <van-field v-model="money" label="" placeholder="" />
         </div>
         <div class="info">
-          当前可提现余额
+          {{$t('fund.cashbalance')}}
           <span>￥{{balance}}元，</span>
-          <span class="all-out" @click="handleOutAll">全部提现</span>
+          <span class="all-out" @click="handleOutAll">{{$t('fund.allcash')}}</span>
         </div>
         <div class="submit">
-          <van-button block type="default" class="btn-bg" @click="subWithdraw">提交审核</van-button>
+          <van-button block type="default" class="btn-bg" @click="subWithdraw">{{$t('common.submit')}}</van-button>
         </div>
       </div>
     </div>

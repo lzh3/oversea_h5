@@ -1,14 +1,14 @@
 <template>
     <div class="wrapper bg1">
-        <c-common-top title="添加银行卡" :isBack="true"></c-common-top>
+        <c-common-top :title="$t('fund.addbank')" :isBack="true"></c-common-top>
         <div class="main p-30">
             <div class="content">
-                <van-field v-model="info.bank_name" label="持卡人姓名：" placeholder="" />
+                <van-field v-model="info.bank_name" :label="$t('fund.addbank')" placeholder="" />
                 <!-- 输入手机号，调起手机号键盘 -->
-                <van-field v-model="info.bank_address" type="tel" label="银行名称：" placeholder="" />
-                <van-field v-model="info.bank_real_name" label="开户行：" placeholder="" />
-                <van-field v-model="info.bank_code" label="银行卡号：" placeholder="" />
-                <van-button type="info" class="btn-bg" block @click="saveFn">保存</van-button>
+                <van-field v-model="info.bank_address" type="tel" :label="$t('fund.NameonCard')" placeholder="" />
+                <van-field v-model="info.bank_real_name" :label="$t('fund.openanaccount')" placeholder="" />
+                <van-field v-model="info.bank_code" :label="$t('fund.bankID')" placeholder="" />
+                <van-button type="info" class="btn-bg" block @click="saveFn">{{$t('common.save')}}</van-button>
 
             </div>
         </div>

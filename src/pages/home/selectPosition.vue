@@ -1,12 +1,12 @@
 <template>
     <div class="position-wrap">
-        <c-common-top title="选择地区" :isBack='true' />
+        <c-common-top :title="$t('common.selectarea')" :isBack='true' />
         <div class="main">
             <div class="search  p-30">
                 <p class="icon">
                     <img src="../../assets/imgs/icon/search.png" alt="">
                 </p>
-                <van-field v-model="keyword" name="" label="" placeholder="请输入国家和地区" />
+                <van-field v-model="keyword" name="" label="" :placeholder="$t('placehold.Country')" />
                 <p class="cancel">取消</p>
             </div>
             <div class="line"></div>
