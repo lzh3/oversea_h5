@@ -9,14 +9,11 @@ export default {
     woman: "女",
     add:'添加',
     selectarea:'选择地区',
-<<<<<<< HEAD
     default:'默认',
     edit:'编辑',
     delete:'删除',
-=======
     payNow: '立即支付',
     copies: '份',
->>>>>>> be6d8287ff9d5f5792f23a4534da338bd38568f0
   },
   login: {
     title: "欢迎登录",
@@ -170,7 +167,6 @@ export default {
     lucky:'幸运天天乐',
     earnings:'项目收益',
   },
-<<<<<<< HEAD
   hasproject:{
     investment:'投资项目',
     totalrevenue:'总收益',
@@ -196,8 +192,7 @@ export default {
     lucky2: "抽奖说明",
     lucky3: "每人每日可抽奖一次",
     lucky4: "若当日未抽奖,系统自动发放奖金到用户账户中",
-  }
-=======
+  },
   order: {
     orderManage: "订单管理",
     orderDetail: '订单详情',
@@ -206,5 +201,4 @@ export default {
     seviceCharge: '服务费',
     remain: '剩余',
   },
->>>>>>> be6d8287ff9d5f5792f23a4534da338bd38568f0
 };
