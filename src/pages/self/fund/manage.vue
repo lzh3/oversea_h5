@@ -1,15 +1,15 @@
 <template>
   <div class="bg2">
-    <c-common-top title='资金管理' color='white' :isBack="true"></c-common-top>
+    <c-common-top :title="$t('fund.FundsManagement')" color='white' :isBack="true"></c-common-top>
     <div class="main">
       <div class="summary-block">
         <p class="income">$ 23894.<span>18</span></p>
-        <van-button type="plain" @click="handleCash">提现</van-button>
+        <van-button type="plain" @click="handleCash">{{$t('fund.cash1')}}</van-button>
       </div>
       <div class="income-content p-30">
         <div class="tab-wrap" :class="{'right-active':currentTab==2}">
-          <p @click="tabClick(1)">幸运天天乐 <i class="iconfont "></i></p>
-          <p class="income" @click="tabClick(2)">项目收益</p>
+          <p @click="tabClick(1)">{{$t('fund.lucky')}} <i class="iconfont "></i></p>
+          <p class="income" @click="tabClick(2)">{{$t('fund.earnings')}}</p>
         </div>
         <div class="tab-block1" v-if="currentTab==1">
           <ul>

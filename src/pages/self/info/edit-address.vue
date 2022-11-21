@@ -1,16 +1,16 @@
 <template>
   <div class="address-page bg1">
-    <c-common-top title="修改收件地址" :isBack="true"></c-common-top>
+    <c-common-top :title="$t('info.edit_address')" :isBack="true"></c-common-top>
     <div class="main p-30">
-      <van-field v-model="info.name" label="收件人：" placeholder="名字"/>
+      <van-field v-model="info.name" :label="$t('info.receiver')" placeholder="名字"/>
       <!-- 输入手机号，调起手机号键盘 -->
-      <van-field v-model="info.phone" type="tel" label="手机号码：" placeholder="手机号"/>
-      <van-field v-model="info.address" label="详细地址：" placeholder="省、市、区、街道"/>
+      <van-field v-model="info.phone" type="tel" :label="$t('info.phone')" :placeholder="$t('info.phone')"/>
+      <van-field v-model="info.address" :label="$t('info.detailaddress')" :placeholder="t('info.Provincialstreets')"/>
       <div class="default">
-        <span>设为默认</span>
+        <span>{{$t('info.setdefault')}}</span>
         <van-switch size="16px" v-model="info.default" />
       </div>
-      <van-button type="info" class="btn-bg" block>保存</van-button>
+      <van-button type="info" class="btn-bg" block>{{$t('common.save')}}</van-button>
     </div>
   </div>
 </template>

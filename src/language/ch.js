@@ -9,6 +9,9 @@ export default {
     woman: "女",
     add:'添加',
     selectarea:'选择地区',
+    default:'默认',
+    edit:'编辑',
+    delete:'删除',
   },
   login: {
     title: "欢迎登录",
@@ -158,7 +161,34 @@ export default {
     cashbalance:'当前可提现余额',
     allcash:'全部提现',
     cash1:'提现',
-
-
+    FundsManagement:'资金管理',
+    lucky:'幸运天天乐',
+    earnings:'项目收益',
   },
+  hasproject:{
+    investment:'投资项目',
+    totalrevenue:'总收益',
+    lastrevenue:'昨日收益',
+    investmentamount:'投资金额',
+    uprevenue:'累计收益',
+    expire:'距离到期',
+    day:'天'
+  },
+  info:{
+    address: '收件地址',
+    add_address: '新增地址',
+    edit_address:'修改收件地址',
+    receiver:'收件人:',
+    phone:'手机号码:',
+    detailaddress:'详细地址:',
+    Provincialstreets:'省市区街道',
+    setdefault:'设置默认',
+  },
+  luckydraw:{
+    lucky: "幸运天天乐",
+    lucky1: "今日剩余抽奖次数",
+    lucky2: "抽奖说明",
+    lucky3: "每人每日可抽奖一次",
+    lucky4: "若当日未抽奖,系统自动发放奖金到用户账户中",
+  }
 };

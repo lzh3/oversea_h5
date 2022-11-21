@@ -9,6 +9,9 @@ export default {
     woman: "Woman",
     add:'Add',
     selectarea:'Select-area',
+    default:'default',
+    edit:'edit',
+    delete:'delete',
   },
   login: {
     title: "Welcome to login",
@@ -158,6 +161,35 @@ export default {
     cashbalance:'Current withdrawable balance',
     allcash:'Full withdrawal of cash',
     cash1:'Cash',
+    FundsManagement:'FundsManagement',
+    lucky:'Lucky every day',
+    earnings:'Earnings of project',
   },
+  hasproject:{
+    investment:'Investment',
+    totalrevenue:'Total revenue',
+    lastrevenue:'Last revenue',
+    investmentamount:'Investment Amount',
+    uprevenue:'Up Revenue',
+    expire:'Expiration of distance',
+    day:'Day'
+  },
+  info:{
+    address: 'address',
+    add_address: 'Add_address',
+    edit_address:'Edit address',
+    receiver:'Receiver',
+    phone:'Ihone',
+    detailaddress:'Detail address',
+    Provincialstreets:'Provincial and urban streets',
+    setdefault:'Set Default',
 
+  },
+  luckydraw:{
+    lucky: "Lucky every day",
+      lucky1: "Number of remaining draws today",
+    lucky2: "Description of Lucky Draw",
+    lucky3: "Each person can draw once a day",
+    lucky4: "If there is no lottery on that day, the system will automatically release the bonus to the user account",
+  }
 };

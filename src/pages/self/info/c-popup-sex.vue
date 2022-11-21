@@ -3,7 +3,7 @@
         <div class="op-block">
             <p class="sex" v-for="item in sex" :key="item.type">{{item.label}}</p>
             <p class="line"></p>
-            <p class="cancel" @click="cancel">取消</p>
+            <p class="cancel" @click="cancel">{{$t('common.cancel')}}</p>
         </div>
     </van-popup>
 </template>

@@ -1,12 +1,12 @@
 <template>
   <div class="project-page bg2">
-    <c-common-top title="投资项目" :isBack="true" color='white' />
+    <c-common-top :title="$t('hasproject.investment')" :isBack="true" color='white' />
     <div class="main">
       <div class="summary-block">
-        <p class="title">总收益（元）</p>
+        <p class="title">{{$t('hasproject.totalrevenue')}}（元）</p>
         <p class="count">2000.20</p>
         <p class="income">
-          昨日收益
+          {{$t('hasproject.lastrevenue')}}
           <span>255.20</span>
         </p>
       </div>
@@ -19,16 +19,16 @@
             </h3>
             <div class="details">
               <div class="item">
-                <p class="small-title">投资金额</p>
+                <p class="small-title">{{$t('hasproject.investmentamount')}}</p>
                 <p>{{item.invest | toNumber}}</p>
               </div>
               <div class="item">
-                <p class="small-title">累计收益</p>
+                <p class="small-title">{{$t('hasproject.uprevenue')}}</p>
                 <p class="total">{{item.total | toNumber}}</p>
               </div>
               <div class="item">
-                <p class="small-title">距离到期</p>
-                <p>{{item.day}} 天</p>
+                <p class="small-title">{{$t('hasproject.expire')}}</p>
+                <p>{{item.day}} {{$t('hasproject.day')}}</p>
               </div>
             </div>
           </li>

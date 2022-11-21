@@ -1,8 +1,8 @@
 <template>
   <div class="address-page bg1">
-    <c-common-top title="收件地址" 
+    <c-common-top :title="$t('info.address')"
     :isBack="true" :isTo="true"
-     toText="新增地址"></c-common-top>
+     :toText="$t('info.address')"></c-common-top>
     <div class="main p-30">
       <ul class="address-list">
         <li v-for="item in addressList" :key="item.id">
@@ -10,7 +10,7 @@
             <p class="info">
               <span class="name">{{item.name}}</span>
               <span class="phone">{{item.phone}}</span>
-              <van-tag color="#EE7348" v-if="item.default">默认</van-tag>
+              <van-tag color="#EE7348" v-if="item.default">{{$t('common.default')}}</van-tag>
             </p>
             <p class="address">
               <span>{{item.province}}</span>
@@ -19,8 +19,8 @@
             </p>
           </div>
           <div class="right c-main">
-            <p @click="handleEdit(item)">编辑</p>
-            <p @click="handleDelete(item)">删除</p>
+            <p @click="handleEdit(item)">{{$t('common.edit')}}</p>
+            <p @click="handleDelete(item)">{{$t('common.delete')}}</p>
           </div>
         </li>
       </ul>

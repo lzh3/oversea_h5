@@ -1,6 +1,6 @@
 <template>
   <div class="lucky">
-        <c-common-top title="幸运天天乐" :isBack="true" />
+        <c-common-top :title="$t('luckydraw.lucky')" :isBack="true" />
   <div class="inner">
   <lottery
             @lotteryClick="lotteryClick"
@@ -13,14 +13,14 @@
              pointer-bg="https://s1.ax1x.com/2022/11/18/znfpHf.png"
             :lottery-width="['85%','18%']"
         />
-        <p class="residuenum">今日剩余抽奖次数:&nbsp;&nbsp;1</p>
+        <p class="residuenum">{{$t('luckydraw.lucky1')}}:&nbsp;&nbsp;1</p>
 
         <div class="foot">
 
-        <div class="title"> <div class="line"></div> 抽奖说明  <div class="line"></div> </div>
+        <div class="title"> <div class="line"></div> {{$t('luckydraw.lucky2')}}  <div class="line"></div> </div>
           <div class="t_content">
-          <div> <div class="circle"></div> &nbsp;每人每日可抽奖一次</div>
-          <div class="circlebox"> <div class="circle"></div>&nbsp;若当日未抽奖,系统自动发放奖金到用户账户中</div>
+          <div> <div class="circle"></div> &nbsp;{{$t('luckydraw.lucky3')}}</div>
+          <div class="circlebox"> <div class="circle"></div>&nbsp;{{$t('luckydraw.lucky4')}}</div>
           </div>
 
         </div>
