@@ -9,6 +9,8 @@ export default {
     woman: "女",
     add:'添加',
     selectarea:'选择地区',
+    payNow: '立即支付',
+    copies: '份',
   },
   login: {
     title: "欢迎登录",
@@ -160,5 +162,13 @@ export default {
     cash1:'提现',
 
 
+  },
+  order: {
+    orderManage: "订单管理",
+    orderDetail: '订单详情',
+    contract: '合同',
+    totalMoney: '总金额',
+    seviceCharge: '服务费',
+    remain: '剩余',
   },
 };

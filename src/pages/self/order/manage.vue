@@ -1,6 +1,6 @@
 <template>
   <div class="bg1">
-    <c-common-top title="订单管理" :isBack="true" />
+    <c-common-top :title="$t('order.orderManage')" :isBack="true" />
     <div class="main p-30">
       <ul class="order-list">
         <van-list v-model="loading" :finished="finished" @load="loadMore">

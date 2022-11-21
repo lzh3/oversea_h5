@@ -9,6 +9,8 @@ export default {
     woman: "Woman",
     add:'Add',
     selectarea:'Select-area',
+    payNow: 'Pay Now',
+    copies: 'copies'
   },
   login: {
     title: "Welcome to login",
@@ -35,7 +37,7 @@ export default {
     mine: "Personal",
     lucky: "Lucky every day",
     clientManage: "Customer management",
-    investProject: "invested projects",
+    investProject: "Invested projects",
     fundManage: "Fund management",
     orderManage: "Order management",
     bankCard: "My bank card",
@@ -121,8 +123,8 @@ export default {
     submit:'Submit for signature',
   },
   contract:{
-    contract:'contract',
-    pcontract:'Print contract',
+    contract:'Contract',
+    pcontract:'Print Contract',
 
   },
   pay:{
@@ -158,6 +160,14 @@ export default {
     cashbalance:'Current withdrawable balance',
     allcash:'Full withdrawal of cash',
     cash1:'Cash',
+  },
+  order: {
+    orderManage: "Order Management",
+    orderDetail: 'Order Detail',
+    contract: 'Contract',
+    totalMoney: 'Total amount',
+    seviceCharge: 'Service charge',
+    remain: 'remain',
   },
 
 };
