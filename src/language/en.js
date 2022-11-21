@@ -64,6 +64,9 @@ export default {
     username: 'Please enter the Username',
     password: 'Please enter the Password',
     forget: 'Forget password, please contact staff',
+    realName: 'Please enter your real name',
+    idCard: 'Please enter your ID-Card',
+    address: 'Please enter your address',
 
   },
   client: {
@@ -91,7 +94,7 @@ export default {
     moreInfo: 'More Info',
     consult: 'Consult',
     collection: 'Collection',
-    havecollection: 'Have Collection',
+    havecollection: 'Collected',
     copy: 'Copy',
   },
   subscribe: {

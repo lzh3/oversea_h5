@@ -67,6 +67,9 @@ export default {
     username:'请输入用户名',
     password:'请输入密码',
     forget:'忘记密码,请联系工作人员',
+    realName: '请输入姓名',
+    idCard: '请输入身份证号码',
+    address: '请输入地址',
   },
   client: {
     yMoney: "昨日收益",

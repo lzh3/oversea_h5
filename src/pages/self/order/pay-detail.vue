@@ -21,15 +21,15 @@
         </div>
         <div class="buy">
           <p class="info">
-            <span class="unit">￥{{orderInfo.price}}<i>/份</i></span>
-            <span class="remain">剩余{{(projectInfo.amount - orderInfo.num) || 0}}份</span>
+            <span class="unit">￥{{orderInfo.price}}<i>/{{$t('common.copies')}}</i></span>
+            <span class="remain">{{$t('order.remain')}}{{(projectInfo.amount - orderInfo.num) || 0}}{{$t('common.copies')}}</span>
           </p>
           <p class="op">
             <span class="">{{orderInfo.num}}</span>
           </p>
         </div>
         <div class="service">
-          <span class="t">服务费({{projectInfo.service_rate}}%)</span>
+          <span class="t">{{$t('order.seviceCharge')}} ({{projectInfo.service_rate}}%)</span>
           <span class="cost">￥{{servicePrice}}</span>
         </div>
         <div class="total">

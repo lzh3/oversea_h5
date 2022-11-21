@@ -72,13 +72,13 @@
           <img class="sign-img" v-if="esign" :src="esign" alt="">
         </div>
         <div class="bg-white address">
-          <van-field v-model="realName" name="" label="" placeholder="请输入姓名" />
+          <van-field v-model="realName" name="" label="" :placeholder="$t('placehold.realName')" />
         </div>
         <div class="bg-white name">
-          <van-field v-model="card_no" name="" label="" placeholder="请输入身份证号码" />
+          <van-field v-model="card_no" name="" label="" :placeholder="$t('placehold.idCard')" />
         </div>
         <div class="bg-white id-num">
-          <van-field v-model="address" name="" label="" placeholder="请输入地址" />
+          <van-field v-model="address" name="" label="" :placeholder="$t('placehold.address')" />
         </div>
       </div>
       <div class="describe bg-white">
