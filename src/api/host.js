@@ -4,7 +4,7 @@ let common_url = ''
 if(/localhost/.test(location.href.toLowerCase())){
     common_url = ''
 }else{
-    common_url= 'http://www.cbith.com'
+    common_url= 'https://www.cbith.com'
 }
 
 // 需要判断
