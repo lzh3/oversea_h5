@@ -39,6 +39,7 @@ import Changepay from '@/pages/self/safe/change-pay'
 import LangIndex from "@/pages/lang"
 import RiskAssessment from '@/pages/self/riskassessment/index'
 import Riskfinish from '@/pages/self/riskassessment/riskfinish'
+import NewsDetail from  '@/pages/find/news-detail'
 
 Vue.use(Router);
 
@@ -70,6 +71,10 @@ let routerObj = new Router({
     {
       path: "/find",
       component: Find
+    },
+    {
+      path: "/find/newsDetail",
+      component: NewsDetail
     },
     {
       path: "/self",

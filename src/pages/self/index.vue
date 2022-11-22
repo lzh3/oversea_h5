@@ -8,7 +8,7 @@
       <div class="main p-30">
         <div class="user-card p-30" @click="goEdit">
           <p class="pic">
-            <!-- <img :src="item.pic" alt=""> -->
+            <img :src="avatar" alt="">
           </p>
           <p class="info">
             <span class="user-name">{{userInfo.user_name}}</span>
@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import localStore from '@/utils/localStorage'
 import api from "@/api/api"
 import localStorage from '@/utils/localStorage'
 import img1 from '../../assets/imgs/self/1.png'
@@ -55,6 +56,7 @@ export default {
   name: 'Home',
   data() {
     return {
+      avatar: '',
       userInfo: {},
       info: {
         id: 3487854758
@@ -125,14 +127,24 @@ export default {
     }
   },
   created() {
+    this.getAvatar();
     this.getUserInfo()
   },
   methods: {
+    getAvatar(){
+      let imgid = localStore.get('imgava')
+      this.$axios.post(api.common.getImg, {
+        image_id: imgid
+      }).then(res => {
+        console.log('头像', res)
+        this.avatar = res.data.image_base64
+      })
+    },
     // 获取用户信息
     getUserInfo() {
       this.$axios.post(api.self.userInfo, {
       }).then(res => {
-        // console.log('用户详情', res.data)
+        console.log('用户详情', res.data)
         this.userInfo = res.data;
         localStorage.set('userid', this.userInfo.user_id)
       })
@@ -179,6 +191,7 @@ export default {
     height: 1.08rem;
     border-radius: 50%;
     background: #ddd;
+    overflow: hidden;
     img {
       width: 100%;
       height: 100%;

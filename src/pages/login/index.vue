@@ -27,7 +27,9 @@ export default {
     };
   },
 
-  created() { },
+  created() {
+    localStorage.clear();
+  },
   methods: {
     loginFn() {
       this.$axios.post(api.self.login, {

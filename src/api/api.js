@@ -1,7 +1,8 @@
 import { COMMON_URL } from "./host";
 
 const common = {
-  uploadImg:'/api/upload-image/add'
+  uploadImg:'/api/upload-image/add',
+  getImg: '/api/upload-image/info', // 获取上传的图片信息
 }
 
 const selfAPI = {
