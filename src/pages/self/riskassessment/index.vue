@@ -1,13 +1,13 @@
 <template>
   <div class="rootbox">
-    <c-common-top title="风险评估" :isBack="true" />
+    <c-common-top :title="$t('risk.risk')"  :isBack="true" />
     <div class="content" v-touch:left="onSwipeRight">
         <div><span>1</span>/<span>10</span></div>
         <div class="progress"><div class="inprogress"></div></div>
-        <div class="question">您的主要收入来源是</div>
+        <div class="question">{{$t('risk.income')}}</div>
         <div class="q_option">
             <div :class="{active:clickindex===item.clickid}" @click="btnClick(item.clickid)" class="q_option_item" v-for="item in question" :key="item.clickid" v-html="item.option_item"></div>
-                
+
             </div>
             <!-- <div class="q_option_item"><span>A.</span>工资、劳务报酬</div>
             <div class="q_option_item"><span>B.</span>生产经营所得</div>
@@ -96,7 +96,7 @@ border-radius: 0.06rem;
 }
 .question{
     margin: 0.5rem 0;
-    width: 2.61rem;
+    //width: 2.61rem;
 height: 0.27rem;
 // font-size: 28px;
 font-family: Source Han Sans CN;
@@ -123,5 +123,5 @@ span{
     background-color: #738ef2!important;
   }
 }
-  
+
 </style>

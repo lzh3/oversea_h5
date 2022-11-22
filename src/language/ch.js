@@ -204,4 +204,9 @@ export default {
     seviceCharge: '服务费',
     remain: '剩余',
   },
+  risk:{
+    risk:'风险评估',
+    risk_hint:'您已完成风险评估,感谢您的配合',
+    income:'您的主要收入来源是',
+  }
 };

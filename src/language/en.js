@@ -200,5 +200,10 @@ export default {
     lucky2: "Description of Lucky Draw",
     lucky3: "Each person can draw once a day",
     lucky4: "If there is no lottery on that day, the system will automatically release the bonus to the user account",
+  },
+  risk:{
+    risk:'Risk Assessment',
+    risk_hint:'You have completed the risk assessment. Thank you for your cooperation',
+    income:'Your main source of income is',
   }
 };
