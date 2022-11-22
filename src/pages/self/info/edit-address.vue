@@ -5,7 +5,7 @@
       <van-field v-model="info.name" :label="$t('info.receiver')" placeholder="名字"/>
       <!-- 输入手机号，调起手机号键盘 -->
       <van-field v-model="info.phone" type="tel" :label="$t('info.phone')" :placeholder="$t('info.phone')"/>
-      <van-field v-model="info.address" :label="$t('info.detailaddress')" :placeholder="t('info.Provincialstreets')"/>
+      <van-field v-model="info.address" :label="$t('info.detailaddress')" :placeholder="$t('info.Provincialstreets')"/>
       <div class="default">
         <span>{{$t('info.setdefault')}}</span>
         <van-switch size="16px" v-model="info.default" />

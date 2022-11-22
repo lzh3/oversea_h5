@@ -2,17 +2,16 @@
   <div class="sub-page bg1">
     <c-common-top :isBack="true" :title= "$t('project.subscribe')"></c-common-top>
     <div class="main p-30">
-      <div class="user-info">
-        <!-- <div class="info">
+      <!--<div class="user-info">
+         <div class="info">
           <span>{{userInfo.user_name}}</span>
           <span>{{userInfo.mobile}}</span>
-        </div> -->
+        </div> 
         <div class="address">
           <i class="iconfont icon-weizhi"></i>
           {{userInfo.address}}
-        </div>
-        <!-- <div class="email">{{userInfo.email}}</div> -->
-      </div>
+        </div><div class="email">{{userInfo.email}}</div> 
+      </div>-->
       <div class="project-info">
         <div class="title">
           {{projectInfo.name}}
