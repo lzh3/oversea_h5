@@ -1,9 +1,9 @@
 <template>
   <div class="rootbox">
-    <c-common-top title="风险评估" :isBack="true" />
+    <c-common-top :title="$t('risk.risk')" :isBack="true" />
     <div class="content" v-touch:right="onSwipeRight">
        <div class="imgbox"><img src="../../../assets/imgs//self/smile.png" alt="" srcset=""></div>
-       <div class="title">您已完成风险评估,感谢您的配合</div>
+       <div class="title">{{$t('risk.risk_hint')}}</div>
     </div>
   </div>
 </template>
@@ -59,5 +59,5 @@ color: #333333;
 }
   }
 }
-  
+
 </style>

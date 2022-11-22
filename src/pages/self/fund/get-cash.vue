@@ -2,7 +2,7 @@
   <div class="cash-wrap bg1">
     <c-common-top :title="$t('fund.cash1')"
     @to="toPage"
-    :isTo='true' :isBack="true"></c-common-top>
+    :isTo='true' :isBack="true" :toText="text"></c-common-top>
     <div class="main p-30">
       <div class="main-top" @click="toCardList">
         <p class="to tt">{{$t('fund.card')}}</p>
@@ -36,6 +36,7 @@ import api from "@/api/api";
 export default {
   data() {
     return {
+      text:this.$t('fund.withdraw'),
         money: '',
         balance: 2000,
     }

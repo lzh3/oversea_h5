@@ -1,13 +1,13 @@
 <template>
     <div class="change-page">
-        <c-common-top title="修改支付密码" :isBack="true" />
+        <c-common-top :title="$t('changepay.title')" :isBack="true" />
         <van-form ref="vanform" class="vanform">
         <div class="content">
-            <van-field v-model="info.old" type="tel" label="姓名" placeholder="请填写姓名" :rules="[{ required: true, message: '请填写姓名' }]" />
-            <van-field v-model="info.new" label="证件号" placeholder="请填写证件号" :rules="[{ required: true, message: '请填写证件号' }]" />
+            <van-field v-model="info.old" type="tel" :label="$t('changepay.hint1')" :placeholder="$t('changepay.tip1')" :rules="[{ required: true, message: $t('changepay.tip1') }]" />
+            <van-field v-model="info.new" :label="$t('changepay.hint2')" :placeholder="$t('changepay.tip2')" :rules="[{ required: true, message: $t('changepay.tip2') }]" />
 
             </div>
-            <van-button type="info" class="btn-bg" block>下一步</van-button>
+            <van-button type="info" class="btn-bg" block>{{$t('changepay.next')}}</van-button>
          </van-form>
         </div>
 

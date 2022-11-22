@@ -1,33 +1,33 @@
 <template>
   <div class="change-page">
-    <c-common-top title="修改密码" :isBack="true" />
+    <c-common-top :title="$t('safe.changepwd')" :isBack="true" />
     <div class="content">
       <van-form ref="vanform" class="vanform">
         <van-field
           v-model="info.old"
           type="tel"
-          label="原密码"
-          placeholder="请填写原密码"
-          :rules="[{ validator, required: true, message: '请输入正确原密码' }]"
+          :label="$t('safe.originalpwd')"
+          :placeholder="$t('safe.hint1')"
+          :rules="[{ validator, required: true, message:$t('safe.tip1')  }]"
         />
         <van-field
           v-model="info.new"
-          label="新密码"
-          placeholder="请填写新密码"
-          :rules="[{ required: true, message: '请输入正确内容' }]"
+          :label="$t('safe.newpwd')"
+          :placeholder="$t('safe.hint2')"
+          :rules="[{ required: true, message: $t('safe.tip2') }]"
         />
         <van-field
           v-model="info.address"
-          label="确认密码"
-          placeholder="再次填写确认"
-          :rules="[{ validator1, message: '请确认是否输入一致' }]"
+          :label="$t('safe.confirm')"
+          :placeholder="$t('safe.hint3')"
+          :rules="[{ validator1, message: $t('safe.tip3') }]"
         />
         <div class="tips">
-          <p>密码必须是8-16位英文字母、数字的组合</p>
-          <p>忘记密码请联系业务人员修改</p>
+          <p>{{$t('safe.hint4')}}</p>
+          <p>{{$t('safe.hint5')}}</p>
         </div>
         <van-button type="info" class="btn-bg" block @click="changepwd"
-          >确认修改</van-button
+          >{{ $t('safe.hint6') }}</van-button
         >
       </van-form>
     </div>
