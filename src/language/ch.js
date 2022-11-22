@@ -194,7 +194,7 @@ export default {
     lucky: "幸运天天乐",
     lucky1: "今日剩余抽奖次数",
     lucky2: "抽奖说明",
-    lucky3: "每人每日可抽奖一次",
+    lucky3: "每人每日可抽奖1次",
     lucky4: "若当日未抽奖,系统自动发放奖金到用户账户中",
   },
   order: {
