@@ -58,7 +58,7 @@
               </p>
               <div v-if="item.type==3" class="block1-other">
                 <p class="text">{{detailInfo.address_info}}</p>
-                <p class="op">{{item.op}}</p>
+                <p class="op" @click="copy(item)">{{item.op}}</p>
               </div>
               <div v-if="item.position" class="block1-position">
                 <!-- <p class="text">
@@ -107,8 +107,9 @@
         <span>{{ $t('project.consult') }}</span>
       </div>
       <div class="op-item" @click="handleCollect">
-        <img src="../../assets/imgs/project/shoucang.png" alt="">
-        <span>{{detailInfo.is_collection ==1?$t('project.havecollection'):$t('project.collection')}}</span>
+        <img src="../../assets/imgs/project/shoucang.png" alt="" v-if="detailInfo.is_collection ==1">
+        <img src="../../assets/imgs/project/shoucang1.png" alt="" v-else>
+        <span>{{detailInfo.is_collection !=1?$t('project.havecollection'):$t('project.collection')}}</span>
       </div>
       <van-button @click="handleSub">{{ $t('project.subscribe') }}</van-button>
     </div>
@@ -125,7 +126,7 @@ export default {
       tags: ['酒店', '股权'],
       block1: [
         {
-          label:  this.$t('project.productIntro'),
+          label: this.$t('project.productIntro'),
           to: '',
           icon: 'icon-xiangyoujiantou',
           type: 1,
@@ -247,6 +248,17 @@ export default {
         this.detailInfo = res.data;
       })
     },
+    // 复制
+    copy(item) {
+      var oInput = document.createElement('input');
+      oInput.value = item.text;
+      document.body.appendChild(oInput);
+      oInput.select();
+      document.execCommand("Copy"); // 执行浏览器复制命令
+      oInput.className = 'oInput';
+      oInput.style.display = 'none';
+      this.$toast.success('复制成功');
+    },
   },
 };
 </script>
@@ -269,7 +281,7 @@ export default {
       line-height: 4.5rem;
       text-align: center;
       background-color: #39a9ed;
-      img{
+      img {
         height: 4.5rem;
       }
     }
@@ -371,6 +383,7 @@ export default {
         align-items: center;
         .text {
           width: 2.6rem;
+          max-width: 3rem;
           font-size: 0.24rem;
           margin-right: 0.3rem;
           text-align: center;
@@ -444,6 +457,7 @@ export default {
   background: #fff;
   .op-item {
     display: flex;
+    align-items: center;
     img {
       width: 0.45rem;
       height: 0.45rem;

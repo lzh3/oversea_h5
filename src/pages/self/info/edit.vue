@@ -109,7 +109,6 @@ export default {
   watch: {
     avaFile: {
       handler(arr) {
-        console.log('arr', arr)
         if (arr.length) {
           this.imgava = arr[0].content;
           localStore.set('imgava', this.imgava)
