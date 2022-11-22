@@ -10,7 +10,7 @@
             <p class="info">
               <span class="name">{{item.name}}</span>
               <span class="phone">{{item.phone}}</span>
-              <van-tag color="#EE7348" v-if="item.default">{{$t('common.default')}}</van-tag>
+              <van-tag color="#EE7348" v-if="item.default">  {{$t('common.default')}}</van-tag>
             </p>
             <p class="address">
               <span>{{item.province}}</span>

@@ -41,7 +41,7 @@ export default {
     },
     toText: {
       type: String,
-      default: '提现明细'
+      default: null
     },
   },
   data() {

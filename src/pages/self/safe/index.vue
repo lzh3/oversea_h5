@@ -1,14 +1,14 @@
 <template>
     <div class="safe-page bg1">
-        <c-common-top title="账户安全" :isBack="true" />
+        <c-common-top :title="$t('changepay.safe')" :isBack="true" />
         <div class="safe-box p-30">
             <div class="bg-white card" @click="toChange(0)">
-                <span>修改登录密码</span>
+                <span>{{$t('changepay.title1')}}</span>
 
                 <i class="iconfont icon-xiangyoujiantou"></i>
             </div>
             <div class="bg-white" @click="toChange(1)">
-                <span>修改支付密码</span>
+                <span>{{$t('changepay.title')}}</span>
                 <i class="iconfont icon-xiangyoujiantou"></i>
             </div>
         </div>
