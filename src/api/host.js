@@ -12,8 +12,8 @@ let baseUrl = "/";
 const curDomain = document.domain;
 if ("https://www.cbith.com/".includes(curDomain)) {
     baseUrl = "https://www.cbith.com";
-} else if (" http://m.cbicn.com:799/".includes(curDomain)) {
-    baseUrl = " http://m.cbicn.com:799";
+} else if ("http://h5.cbicn.net:799/".includes(curDomain)) {
+    baseUrl = " http://h5.cbicn.net:799/";
 } else {
     baseUrl = "";
 }

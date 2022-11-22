@@ -234,7 +234,7 @@ export default {
             overflow: hidden;
             img {
                 width: 100%;
-                height: 100%;
+                height: 2.5rem;
                 border-radius: 0.29rem;
             }
         }
