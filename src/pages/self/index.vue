@@ -133,6 +133,7 @@ export default {
   methods: {
     getAvatar(){
       let imgid = localStore.get('imgava')
+      if(!imgid) return;
       this.$axios.post(api.common.getImg, {
         image_id: imgid
       }).then(res => {

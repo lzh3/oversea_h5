@@ -269,6 +269,9 @@ export default {
       line-height: 4.5rem;
       text-align: center;
       background-color: #39a9ed;
+      img{
+        height: 4.5rem;
+      }
     }
   }
 }

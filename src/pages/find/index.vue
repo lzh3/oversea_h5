@@ -118,7 +118,7 @@ export default {
   border-radius: 0.29rem;
   img {
     width: 100%;
-    height: 100%;
+    height: 3.7rem;
   }
 }
 .banner-section {
