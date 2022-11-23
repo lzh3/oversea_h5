@@ -104,7 +104,7 @@
       </div>
     </div>
     <div class="bottom-op">
-      <div class="op-item">
+      <div class="op-item" @click="toconsult">
         <img src="../../assets/imgs/project/comment.png" alt="">
         <span>{{ $t('project.consult') }}</span>
       </div>
@@ -250,6 +250,10 @@ export default {
           title: item.label
         },
       })
+    },
+    //客服
+    toconsult(){
+      this.$router.push('/project/consult')
     },
     // 点击认购
     handleSub() {

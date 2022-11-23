@@ -40,6 +40,7 @@ import LangIndex from "@/pages/lang"
 import RiskAssessment from '@/pages/self/riskassessment/index'
 import Riskfinish from '@/pages/self/riskassessment/riskfinish'
 import NewsDetail from  '@/pages/find/news-detail'
+import Consult from "@/pages/project/consult";
 
 // html字符串展示页面
 import DetailInner from '@/pages/project/detail-inner'
@@ -220,7 +221,7 @@ let routerObj = new Router({
       path: '/lang',
       component: LangIndex
     },
-    //风险评估 
+    //风险评估
     {
       path: '/self/riskassessment',
       component: RiskAssessment,
@@ -230,7 +231,12 @@ let routerObj = new Router({
       path: '/self/riskfinish',
       component: Riskfinish,
     },
-    
+    //客服
+    {
+      path: '/project/consult',
+      component: Consult,
+    },
+
 
   ]
 });
