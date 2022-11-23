@@ -3,9 +3,10 @@
     <c-common-top :title="$t('risk.risk')" :isBack="true"/>
     <div class="content">
       <div><span>{{touchindex+1}}</span>/<span>10</span></div>
-      <div class="progress">
-        <div class="inprogress"></div>
-      </div>
+<!--      <div class="progress">-->
+<!--        <div class="inprogress"></div>-->
+<!--      </div>-->
+      <van-progress :percentage="percent" class="progress" />
 <!--      <div class="question">{{ $t('risk.income') }}</div>-->
       <div class="question">{{titleArr[touchindex]}}</div>
       <div class="q_option">
@@ -29,6 +30,7 @@ import api from "@/api/api";
 export default {
   data() {
     return {
+      percent:10,
       touchindex:0,
       clickindex: null,
       titleArr: [
@@ -254,6 +256,7 @@ export default {
     },
     onSwipeRight() {
       console.log(this.touchindex,'touchindex---')
+      this.percent = (this.touchindex+2) * 10
       if(this.touchindex>8){
         this.$router.push('/self/riskfinish')
       }else{
@@ -262,9 +265,10 @@ export default {
     },
     onSwipeleft(){
       console.log(this.touchindex,'touchindex')
-
+      this.percent = this.touchindex * 10
       if(this.touchindex<=1){
         this.touchindex = 0
+        this.percent = 10
       }else{
         this.touchindex--;
       }
@@ -296,19 +300,18 @@ export default {
 
       // margin: auto;
       margin: 0.2rem 0;
+      //width: 5.60rem;
+      //height: 0.12rem;
+      //background: #CCCCCC;
+      //border-radius: 0.06rem;
 
-      width: 5.60rem;
-      height: 0.12rem;
-      background: #CCCCCC;
-      border-radius: 0.06rem;
-
-      .inprogress {
-        float: left;
-        width: 10%;
-        height: 100%;
-        background-color: #0A35D8;
-        border-radius: 0.06rem;
-      }
+      //.inprogress {
+      //  float: left;
+      //  width: 10%;
+      //  height: 100%;
+      //  background-color: #0A35D8;
+      //  border-radius: 0.06rem;
+      //}
     }
 
     .question {

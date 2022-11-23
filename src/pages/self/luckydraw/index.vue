@@ -2,13 +2,13 @@
   <div class="lucky">
     <c-common-top :title="$t('luckydraw.lucky')" :isBack="true" />
     <div class="inner">
-      <lottery @lotteryClick="lotteryClick" 
-      @lotteryDone="lotteryDone" 
-      :lottery-start="lotteryStart" 
+      <lottery @lotteryClick="lotteryClick"
+      @lotteryDone="lotteryDone"
+      :lottery-start="lotteryStart"
       :lottery-prizenum="prizeNum"
        :lottery-prizeno="prizeNo"
-       lottery-bg="https://s1.ax1x.com/2022/11/18/znhqld.png" 
-       content-bg="https://s1.ax1x.com/2022/11/18/znfeuq.png" 
+       lottery-bg="https://s1.ax1x.com/2022/11/18/znhqld.png"
+       content-bg="https://s1.ax1x.com/2022/11/18/znfeuq.png"
        pointer-bg="https://s1.ax1x.com/2022/11/18/znfpHf.png"
         :lottery-width="['85%','18%']" />
       <p class="residuenum">{{$t('luckydraw.lucky1')}}:&nbsp;&nbsp;{{prizeInfo.num}}</p>
@@ -44,7 +44,7 @@ export default {
       prizeInfo: {}
     }
   },
-  created() { 
+  created() {
     this.getdaydayle();
     this.drawprize();
   },
@@ -63,6 +63,7 @@ export default {
       }).then(res => {
         console.log('天天乐抽奖', res)
         this.prizeInfo = res.data
+        // console.log(this.prizeInfo,5555)
       })
     },
     lotteryClick() {
