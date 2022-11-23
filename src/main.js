@@ -57,9 +57,9 @@ axios.interceptors.response.use(function (response) {
   // console.log('响应拦截', response.data.errCode)
   let code = response.data.errCode;
   if(code!=200){
-    router.push({
-      path: '/login'
-    })
+    // router.push({
+    //   path: '/login'
+    // })
   }
   // 响应数据
   return response.data;

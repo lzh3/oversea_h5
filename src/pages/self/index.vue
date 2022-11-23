@@ -2,8 +2,8 @@
 <template>
   <div class="bg1 self-wrap_page">
 
-    <router-view v-if="$route.path!=='/self'" />
-    <div class="self-wrap" v-else>
+    <!-- <router-view v-if="$route.path!=='/self'" /> -->
+    <div class="self-wrap">
       <c-common-top :title="$t('self.mine')" />
       <div class="main p-30">
         <div class="user-card p-30" @click="goEdit">

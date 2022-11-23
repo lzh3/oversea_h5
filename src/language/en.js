@@ -13,7 +13,8 @@ export default {
     edit:'Edit',
     delete:'Delete',
     payNow: 'Pay Now',
-    copies: 'copies'
+    copies: 'copies',
+    map: 'Map',
   },
   login: {
     title: "Welcome to login",
