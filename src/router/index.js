@@ -42,6 +42,9 @@ import Riskfinish from '@/pages/self/riskassessment/riskfinish'
 import NewsDetail from  '@/pages/find/news-detail'
 import Consult from "@/pages/project/consult";
 
+// html字符串展示页面
+import DetailInner from '@/pages/project/detail-inner'
+
 Vue.use(Router);
 
 let routerObj = new Router({
@@ -80,13 +83,17 @@ let routerObj = new Router({
     {
       path: "/self",
       component: Self,
-      children: [
-        {
-          path: "edit",
-          component: SelfEdit
-          // parent: '/self'
-        }
-      ]
+      // children: [
+      //   {
+      //     path: "edit",
+      //     component: SelfEdit
+      //     // parent: '/self'
+      //   }
+      // ]
+    },
+    {
+      path: "/self/edit",
+      component: SelfEdit
     },
     {
       path: "/address/list",
@@ -108,6 +115,10 @@ let routerObj = new Router({
     {
       path: "/project/subscribe",
       component: ProjectSubscribe
+    },
+    {
+      path: '/detailInner',
+      component: DetailInner,
     },
     // 身份证列表
     {

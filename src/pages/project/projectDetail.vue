@@ -52,13 +52,15 @@
         <section class="info-block1 p-30 bg-white b-29">
           <ul>
             <li v-for="item in block1" :key="item.label">
-              <p class="label">{{item.label}}</p>
-              <p class="icon" v-if="item.icon">
-                <i class="iconfont icon-xiangyoujiantou"></i>
-              </p>
+              <div class="common-div" @click="jumpPage(item)">
+                <p class="label">{{item.label}}</p>
+                <p class="icon" v-if="item.icon">
+                  <i class="iconfont icon-xiangyoujiantou"></i>
+                </p>
+              </div>
               <div v-if="item.type==3" class="block1-other">
                 <p class="text">{{detailInfo.address_info}}</p>
-                <p class="op" @click="copy(item)">{{item.op}}</p>
+                <p class="op" @click="copy(item)" v-if="item.op">{{item.op}}</p>
               </div>
               <div v-if="item.position" class="block1-position">
                 <!-- <p class="text">
@@ -113,6 +115,17 @@
       </div>
       <van-button @click="handleSub">{{ $t('project.subscribe') }}</van-button>
     </div>
+
+    <van-dialog class="address-dialog" 
+    :cancelButtonText="$t('common.cancel')"
+    :confirmButtonText="$t('common.sure')"
+    v-model="isShow" :title="$t('common.map')" show-cancel-button>
+      <img :src="detailInfo.address_image" />
+      <div class="ad">
+        <p>{{detailInfo.address_info}}</p>
+        <p class="op" @click="copy({})">{{$t('project.copy')}}</p>
+      </div>
+    </van-dialog>
   </div>
 </template>
 
@@ -124,18 +137,21 @@ export default {
   data() {
     return {
       tags: ['酒店', '股权'],
+      isShow: false,
       block1: [
         {
           label: this.$t('project.productIntro'),
           to: '',
           icon: 'icon-xiangyoujiantou',
           type: 1,
+          prop: 'remark'
         },
         {
           label: this.$t('project.brandStory'),
-          to: '',
+          to: '/detailInner',
           icon: 'icon-xiangyoujiantou',
           type: 2,
+          prop: 'story', // 字段名称
         },
         {
           label: this.$t('project.team'),
@@ -146,8 +162,6 @@ export default {
         {
           label: this.$t('project.position'),
           to: '',
-          country: '中国',
-          detail: '广东省深圳市',
           position: 'icon-xiangyoujiantou',
           type: 4,
         },
@@ -156,7 +170,7 @@ export default {
           to: '',
           text: '泰国曼谷拉差贴威区296 Phayathai Road',
           type: 3,
-          op: this.$t('project.copy')
+          // op: this.$t('project.copy')
         },
         {
           label: this.$t('project.infoDispose'),
@@ -222,6 +236,21 @@ export default {
     this.getProjectInfo();
   },
   methods: {
+    // 跳转
+    jumpPage(item, type) {
+      if (item.type == 4) { // 地理位置
+        this.isShow = true;
+        return;
+      }
+      if (!item.prop) return;
+      this.$router.push({
+        path: '/detailInner',
+        query: {
+          content: this.detailInfo[item.prop],
+          title: item.label
+        },
+      })
+    },
     //客服
     toconsult(){
       this.$router.push('/project/consult')
@@ -255,7 +284,7 @@ export default {
     // 复制
     copy(item) {
       var oInput = document.createElement('input');
-      oInput.value = item.text;
+      oInput.value = item.text || this.detailInfo.address_info;
       document.body.appendChild(oInput);
       oInput.select();
       document.execCommand("Copy"); // 执行浏览器复制命令
@@ -289,6 +318,22 @@ export default {
         height: 4.5rem;
       }
     }
+  }
+}
+.address-dialog {
+  img {
+    width: 100%;
+    height: 6rem;
+  }
+  .ad {
+    display: flex;
+    padding: 5px;
+    font-size: 12px;
+  }
+  .op {
+    width: 1.3rem;
+    color: #0a35d8;
+    font-size: 0.28rem;
   }
 }
 .bar-section {
@@ -373,6 +418,12 @@ export default {
       max-height: 1rem;
       align-items: center;
       justify-content: space-between;
+      .common-div {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
       &:not(:last-child) {
         border-bottom: 1px solid #ddd;
       }
@@ -386,13 +437,14 @@ export default {
         display: flex;
         align-items: center;
         .text {
-          width: 2.6rem;
-          max-width: 3rem;
+          // width: 2.6rem;
+          // max-width: 3rem;
           font-size: 0.24rem;
-          margin-right: 0.3rem;
+          margin-right: 0.1rem;
           text-align: center;
         }
         .op {
+          width: 1.3rem;
           color: #0a35d8;
           font-size: 0.28rem;
         }

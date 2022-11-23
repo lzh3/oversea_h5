@@ -14,6 +14,7 @@ export default {
     delete: '删除',
     payNow: '立即支付',
     copies: '份',
+    map: '地图',
   },
   login: {
     title: "欢迎登录",
