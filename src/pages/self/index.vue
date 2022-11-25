@@ -116,11 +116,17 @@ export default {
           to: '/self/safe',
           lang: 'self.accountSafe'
         },
+        // {
+        //   title: '更多',
+        //   pic: img10,
+        //   to: '/login',
+        //   lang: 'self.more'
+        // },
         {
-          title: '更多',
-          pic: img10,
+          title: '退出登录',
+          lang: 'login.loginOut',
           to: '/login',
-          lang: 'self.more'
+          type: 'out',
         },
       ]
 
@@ -152,7 +158,9 @@ export default {
     },
     toPage(item) {
       console.log('item', item)
-
+      if(item.type==='out'){ // 退出登录
+        localStore.clear();
+      }
       this.$router.push({
         path: item.to
       })

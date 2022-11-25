@@ -21,7 +21,7 @@
               <van-tag color="#EE7348">{{detailInfo.type}}</van-tag>
             </div>
             <div class="status-time">
-              <span>{{detailInfo.show_status | statusFilter}}：</span>
+              <span>{{detailInfo.project_status | statusFilter}}：</span>
               <span>剩余{{detailInfo.sy_time | toDay}}天</span>
             </div>
           </div>

@@ -18,7 +18,8 @@ export default {
   },
   login: {
     title: "欢迎登录",
-    login: '登录'
+    login: '登录',
+    loginOut: '退出登录',
   },
   home: {
     home: "首页",
