@@ -86,13 +86,13 @@
       </div>
       <div class="agree">
 
-        <van-checkbox v-model="isAgree" shape="square">
+        <!-- <van-checkbox v-model="isAgree" shape="square">
           {{$t('subscribe.agreement1')}}
           <span class="c-main">{{$t('subscribe.agreement2')}}</span>、
           <span class="c-main">{{$t('subscribe.agreement3')}}</span>、
           <span class="c-main">{{$t('subscribe.agreement4')}}</span>
           {{$t('subscribe.agreement5')}}
-        </van-checkbox>
+        </van-checkbox> -->
       </div>
     </div>
     <div class="bottom-op bg-white">
@@ -112,7 +112,7 @@ export default {
       userInfo: {},
       projectInfo: {},
       payType: 2, // 支付方式
-      isAgree: false, // 是否同意
+      isAgree: true, // 是否同意
 
       buyInfo: {
         count: 0,
@@ -212,13 +212,13 @@ export default {
     },
     // 提交审核
     submitCheck() {
-      if (!this.isAgree) {
-        this.$toast({
-          type: 'fail',
-          message: '请阅读并同意相关条款协议'
-        })
-        return;
-      }
+      // if (!this.isAgree) {
+      //   this.$toast({
+      //     type: 'fail',
+      //     message: '请阅读并同意相关条款协议'
+      //   })
+      //   return;
+      // }
       let param = {
         project_id: this.$route.query.id,
         programme_id: this.projectInfo.projectProgramme[0].programme_id,

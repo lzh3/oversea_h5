@@ -253,7 +253,12 @@ export default {
     },
     //客服
     toconsult(){
-      this.$router.push('/project/consult')
+      // this.$router.push('/project/consult')
+      // http://chat.cbith.net/#/chat
+      let a = document.createElement('a')
+      a.target='_self'
+      a.href='http://chat.cbith.net/#/chat'
+      a.click();
     },
     // 点击认购
     handleSub() {

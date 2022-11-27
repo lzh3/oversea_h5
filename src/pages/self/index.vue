@@ -21,7 +21,7 @@
         <div class="columns">
           <ul>
             <li class="p-30" v-for="item in columns" :key="item.title" @click="toPage(item)">
-              <p class="setting">
+              <p class="setting" v-if="item.pic">
                 <img :src="item.pic" alt="">
               </p>
               <p class="title">{{$t(item.lang)}}</p>
@@ -116,17 +116,19 @@ export default {
           to: '/self/safe',
           lang: 'self.accountSafe'
         },
-        // {
-        //   title: '更多',
-        //   pic: img10,
-        //   to: '/login',
-        //   lang: 'self.more'
-        // },
+        // 域名切换
+        {
+          title: '更多',
+          pic: img10,
+          to: '/login',
+          lang: 'self.more'
+        },
         {
           title: '退出登录',
           lang: 'login.loginOut',
           to: '/login',
           type: 'out',
+          // pic: img10,
         },
       ]
 
