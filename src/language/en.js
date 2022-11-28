@@ -19,6 +19,7 @@ export default {
   login: {
     title: "Welcome to login",
     login: 'login',
+    loginOut: 'Login Out'
   },
   home: {
     home: "Home",

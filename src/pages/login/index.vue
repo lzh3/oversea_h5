@@ -42,6 +42,7 @@ export default {
             user_name: this.user_name,
             password: this.password
           })
+          localStorage.set('token', res.data.token)
           this.$router.push('/home')
         } else {
           this.$toast({

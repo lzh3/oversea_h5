@@ -24,9 +24,11 @@ export default {
       contractSrc: null,
       htmlStr: '',
       img: '',
+      contract_id: '',
     };
   },
   mounted() {
+    this.contract_id = this.$route.query.contractId;
     this.getcontract()
   },
   methods: {
@@ -39,7 +41,10 @@ export default {
     },
     // 获取合同
     getcontract() {
-      this.$axios.post(api.self.contract, {}).then(res => {
+      console.log('conid', this.contract_id)
+      this.$axios.post(api.self.contract, {
+        contract_id: this.contract_id,
+      }).then(res => {
         console.log("合同", res);
         this.contractSrc = res.data.url;
         this.htmlStr = res.data.html;
