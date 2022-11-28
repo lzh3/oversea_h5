@@ -42,6 +42,7 @@ import Riskfinish from '@/pages/self/riskassessment/riskfinish'
 import NewsDetail from  '@/pages/find/news-detail'
 import Consult from "@/pages/project/consult";
 
+import Collect from "@/pages/self/collect/index";
 // html字符串展示页面
 import DetailInner from '@/pages/project/detail-inner'
 
@@ -235,6 +236,11 @@ let routerObj = new Router({
     {
       path: '/project/consult',
       component: Consult,
+    },
+    //收藏列表
+    {
+      path:'/self/collect',
+      component:Collect,
     },
 
 

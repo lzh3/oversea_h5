@@ -95,7 +95,7 @@ export default {
         {
           title: '我的收藏',
           pic: img6,
-          to: '',
+          to: '/self/collect',
           lang: 'self.collect'
         },
         {

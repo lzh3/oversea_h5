@@ -64,21 +64,21 @@ export default {
           type: '2',
           lang: 'self.sex'
         },
-        {
-          label: '国籍',
-          type: '3',
-          lang: 'self.nation'
-        },
-        {
-          label: '手机号',
-          type: '4',
-          lang: 'self.phone'
-        },
-        {
-          label: '邮箱',
-          type: '5',
-          lang: 'self.email'
-        },
+        // {
+        //   label: '国籍',
+        //   type: '3',
+        //   lang: 'self.nation'
+        // },
+        // {
+        //   label: '手机号',
+        //   type: '4',
+        //   lang: 'self.phone'
+        // },
+        // {
+        //   label: '邮箱',
+        //   type: '5',
+        //   lang: 'self.email'
+        // },
         {
           label: '收件地址',
           type: '6',
