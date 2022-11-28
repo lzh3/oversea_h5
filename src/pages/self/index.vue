@@ -120,7 +120,7 @@ export default {
         {
           title: '更多',
           pic: img10,
-          to: '/login',
+          to: '/self/beta',
           lang: 'self.more'
         },
         {
