@@ -9,7 +9,7 @@
                     <h3 class="item-title">
                         {{item.name}}
                         <van-tag color="#EE7348">{{item.city}}</van-tag>
-                        <van-tag color="#EE7348">{{item.type | ellipsis}}</van-tag>
+                        <van-tag color="#7DA4F5">{{item.type | ellipsis}}</van-tag>
                     </h3>
                     <p class="status">{{item.show_status | statusFilter}}</p>
                     <div class="process">

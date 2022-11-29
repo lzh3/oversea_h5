@@ -173,16 +173,18 @@ export default {
           // op: this.$t('project.copy')
         },
         {
-          label: this.$t('project.infoDispose'),
+          label: this.$t('project.infoDispose'), // 信息披露
           to: '',
           icon: 'icon-xiangyoujiantou',
           type: 6,
+          prop: 'information'
         },
         {
-          label: this.$t('project.risk'),
+          label: this.$t('project.risk'), // 风险提示
           to: '',
           icon: 'icon-xiangyoujiantou',
           type: 7,
+          prop: 'notice'
         },
       ],
       block2: {
@@ -239,6 +241,13 @@ export default {
   methods: {
     //认购
     handleSub() {
+      this.$router.push({
+        path: '/project/subscribe',
+        query: {
+          id: this.detailInfo.project_id
+        },
+      })
+      return ;
       this.$axios.post(api.home.submitOrder, {
         project_id:this.projectProgramme.project_id,
         programme_id:this.projectProgramme.programme_id,
@@ -248,19 +257,23 @@ export default {
         pay_type:this.projectProgramme.return_type,
         id_card_img_positive:1,
         id_card_img_back:1,
+        address: this.detailInfo.address_info
       }).then(res => {
         // console.log('res', res)
           if (res.errCode == 200) {
-            this.$toast.success('认购成功');
+            this.$toast.success('Success');
             this.$router.push({
-              path: '/project/subscribe',
+              path: '/self/order',
               query: {
                 id: this.detailInfo.project_id
               },
             })
 
           }else{
-            this.$toast.fail('认购失败');
+            this.$toast({
+              type: 'fail',
+              message: res.errMsg
+            });
           }
       })
     },

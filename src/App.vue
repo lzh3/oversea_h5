@@ -64,6 +64,13 @@ export default {
     watch: {
         $route: {
             handler(val) {
+                let obj = {
+                    '/home': 0,
+                    '/find': 1,
+                    '/self': 2,
+                }
+                this.active = obj[val.path]
+
                 if (val.path === '/home' || val.path === "/self" || val.path === "/find") {
                     this.showTab = true;
                 } else {

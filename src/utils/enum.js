@@ -5,6 +5,8 @@
 // 电子签名(base64)  esign    
 // 电子签名id   sign_image_id
 
+// ISIN 是否国内版本  true: 是
+
 
 export const STATUS = {
     // 状态0预上线1上线中2推荐

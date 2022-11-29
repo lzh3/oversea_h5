@@ -50,11 +50,11 @@ export default {
         withdraw_password:100,
       }).then(res => {
         // console.log('获取用户提现列表', res)
-       if(res.res.errCode == 200){
-        this.$toast.success(res.data.errMsg)
+       if(res.errCode == 200){
+        this.$toast.success(res.errMsg)
         this.$router.back()
        }else{
-         this.$toast.fail(res.data.errMsg)
+         this.$toast.fail(res.errMsg)
        }
       })
     },

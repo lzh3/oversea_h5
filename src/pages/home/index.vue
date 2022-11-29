@@ -157,8 +157,10 @@ export default {
             this.$axios.post(api.home.projectList, {
 
             }).then(res => {
-                console.log('项目列表', res)
-                this.projects = res.data.list;
+                this.projects = [];
+                console.log('项目列表', res);
+                let resData =res.data.list[0];
+                this.projects.push(resData);
                 this.banners = res.data.list.map(item => item.image)
             })
         },

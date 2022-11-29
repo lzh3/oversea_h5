@@ -12,6 +12,8 @@ import "./utils/directive"
 
 import localStore from '@/utils/localStorage'
 
+console.log('================mainjs执行=================')
+
 
 // 配置i18n
 import ch from './language/ch'

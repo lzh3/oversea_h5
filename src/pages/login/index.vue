@@ -23,12 +23,12 @@ export default {
   data() {
     return {
       user_name: 'yceshi',
-      password: '121212'
+      password: '123456'
     };
   },
 
   created() {
-    localStorage.clear();
+    // localStorage.clear();
   },
   methods: {
     loginFn() {
@@ -47,7 +47,7 @@ export default {
         } else {
           this.$toast({
             type: 'fail',
-            message: res.data.errMsg
+            message: res.errMsg
           })
         }
       })

@@ -135,20 +135,20 @@ export default {
     }
   },
   created() {
-    this.getAvatar();
+    // this.getAvatar();
     this.getUserInfo()
   },
   methods: {
-    getAvatar(){
-      let imgid = localStore.get('imgava')
-      if(!imgid) return;
-      this.$axios.post(api.common.getImg, {
-        image_id: imgid
-      }).then(res => {
-        console.log('头像', res)
-        this.avatar = res.data.image_base64
-      })
-    },
+    // getAvatar(){
+    //   let imgid = localStore.get('imgava')
+    //   if(!imgid) return;
+    //   this.$axios.post(api.common.getImg, {
+    //     image_id: imgid
+    //   }).then(res => {
+    //     console.log('头像', res)
+    //     this.avatar = res.data.header_img
+    //   })
+    // },
     // 获取用户信息
     getUserInfo() {
       this.$axios.post(api.self.userInfo, {
@@ -156,12 +156,13 @@ export default {
         console.log('用户详情', res.data)
         this.userInfo = res.data;
         localStorage.set('userid', this.userInfo.user_id)
+        this.avatar = res.data.header_img
       })
     },
     toPage(item) {
       console.log('item', item)
       if(item.type==='out'){ // 退出登录
-        localStore.clear();
+        // localStore.clear();
       }
       this.$router.push({
         path: item.to

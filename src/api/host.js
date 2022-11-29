@@ -6,8 +6,9 @@
 // }else{
 //     common_url= 'http://www.cbith.com'
 // }
+let ISIN = localStorage.getItem('ISIN');
 let baseUrl = "/";
-
+console.log('host---ISIN', ISIN)
 // 需要判断
 const curDomain = document.domain;
 if ("https://www.cbith.com/".includes(curDomain)) {
