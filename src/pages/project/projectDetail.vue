@@ -116,7 +116,7 @@
       <van-button @click="handleSub">{{ $t('project.subscribe') }}</van-button>
     </div>
 
-    <van-dialog class="address-dialog" 
+    <van-dialog class="address-dialog"
     :cancelButtonText="$t('common.cancel')"
     :confirmButtonText="$t('common.sure')"
     v-model="isShow" :title="$t('common.map')" show-cancel-button>
@@ -191,6 +191,7 @@ export default {
         c: '补充说明内容',
       },
       detailInfo: {},
+      projectProgramme:{},
     };
   },
   filters: {
@@ -236,8 +237,38 @@ export default {
     this.getProjectInfo();
   },
   methods: {
+    //认购
+    handleSub() {
+      this.$axios.post(api.home.submitOrder, {
+        project_id:this.projectProgramme.project_id,
+        programme_id:this.projectProgramme.programme_id,
+        num:this.projectProgramme.get_num,
+        autograph:this.projectProgramme.project_id,
+        remark:this.projectProgramme.project_remark,
+        pay_type:this.projectProgramme.return_type,
+        id_card_img_positive:1,
+        id_card_img_back:1,
+      }).then(res => {
+        // console.log('res', res)
+          if (res.errCode == 200) {
+            this.$toast.success('认购成功');
+            this.$router.push({
+              path: '/project/subscribe',
+              query: {
+                id: this.detailInfo.project_id
+              },
+            })
+
+          }else{
+            this.$toast.fail('认购失败');
+          }
+      })
+    },
     // 跳转
     jumpPage(item, type) {
+     if(item.type==3){ //复制
+       this.copy(item)
+     }
       if (item.type == 4) { // 地理位置
         this.isShow = true;
         return;
@@ -260,15 +291,7 @@ export default {
       a.href='http://chat.cbith.net/#/chat'
       a.click();
     },
-    // 点击认购
-    handleSub() {
-      this.$router.push({
-        path: '/project/subscribe',
-        query: {
-          id: this.detailInfo.project_id
-        },
-      })
-    },
+
     // 点击收藏
     handleCollect() {
       this.$axios.post(api.home.setCollect, {
@@ -284,6 +307,8 @@ export default {
         console.log('详情', res.data)
         // this.projects = res.data.data.list;
         this.detailInfo = res.data;
+        this.projectProgramme = res.data.projectProgramme[0]
+        // console.log( this.projectProgramme,' this.projectProgramme')
       })
     },
     // 复制
