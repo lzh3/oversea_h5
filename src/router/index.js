@@ -45,6 +45,7 @@ import Consult from "@/pages/project/consult";
 import Collect from "@/pages/self/collect/index";
 // html字符串展示页面
 import DetailInner from '@/pages/project/detail-inner'
+import Beta from '@/pages/self/beta'
 
 Vue.use(Router);
 
@@ -241,6 +242,10 @@ let routerObj = new Router({
     {
       path:'/self/collect',
       component:Collect,
+    },
+    {
+      path:'/self/beta',
+      component:Beta,
     },
 
 
