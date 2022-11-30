@@ -13,7 +13,7 @@
       <div class="project-list p-30">
 
         <ul>
-          <li v-for="item in projects" :key="item.id">
+          <li v-for="item in projects" :key="item.id" @click="handleItemClick(item)">
             <h3 class="item-title">
               {{item.name}}
               <van-tag color="#EE7348" >{{item.type}}</van-tag>
@@ -70,6 +70,15 @@ export default {
     this.getcollectlist()
   },
   methods: {
+    handleItemClick(item){
+      this.$router.push({
+        path:'/projectDetail',
+        query: {
+          id: item.project_id
+        },
+      })
+      // this.$emit('item', item)
+    },
     // 获取用户喜欢列表
     getcollectlist() {
       this.$axios.post('/api/user-collection/user-collection-list', {
