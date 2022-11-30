@@ -7,7 +7,7 @@
       <div class="main-top" @click="toCardList">
         <p class="to tt">{{$t('fund.card')}}</p>
         <div class="card tt">
-          <p class="card-id">{{$t('fund.bank')}}（5588）</p>
+          <p class="card-id">{{cardinfo}}</p>
           <p class="tip">{{$t('fund.Received')}}</p>
         </div>
         <p class="tt"><i class="iconfont icon-xiangyoujiantou"></i></p>
@@ -39,6 +39,16 @@ export default {
       text:this.$t('fund.withdraw'),
         money: '',
         balance: 2000,
+        cardinfo:'中国银行 (5558)',
+      bank_id:null,
+    }
+  },
+  created() {
+    let cdata = this.$route.params
+
+    if (cdata.bank_code != undefined) {
+      this.cardinfo = cdata.bank_address + "(" + cdata.bank_code + ")"
+      this.bank_id = cdata.bank_id
     }
   },
   methods: {
@@ -46,7 +56,7 @@ export default {
     subWithdraw(){
       this.$axios.post(api.self.withdraworder, {
         money:this.money,
-        bank_id:100,
+        bank_id:this.bank_id,
         withdraw_password:100,
       }).then(res => {
         // console.log('获取用户提现列表', res)

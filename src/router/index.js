@@ -150,6 +150,7 @@ let routerObj = new Router({
     },
     {
       path: "/fund/cash", // 提现
+      name:'fundcash',
       component: FundCash
     },
     {
