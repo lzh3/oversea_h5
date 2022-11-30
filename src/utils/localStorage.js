@@ -18,7 +18,10 @@ const myStorage = {
   // 删除数据
   remove(key) {
     localStorage.removeItem(key);
-  }
+  },
+  clear(){
+    localStorage.clear();
+  },
 };
 
 export default myStorage;

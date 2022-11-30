@@ -64,21 +64,21 @@ export default {
           type: '2',
           lang: 'self.sex'
         },
-        {
-          label: '国籍',
-          type: '3',
-          lang: 'self.nation'
-        },
-        {
-          label: '手机号',
-          type: '4',
-          lang: 'self.phone'
-        },
-        {
-          label: '邮箱',
-          type: '5',
-          lang: 'self.email'
-        },
+        // {
+        //   label: '国籍',
+        //   type: '3',
+        //   lang: 'self.nation'
+        // },
+        // {
+        //   label: '手机号',
+        //   type: '4',
+        //   lang: 'self.phone'
+        // },
+        // {
+        //   label: '邮箱',
+        //   type: '5',
+        //   lang: 'self.email'
+        // },
         {
           label: '收件地址',
           type: '6',
@@ -105,11 +105,11 @@ export default {
   },
   created() {
     this.getUserInfoList()
+    this.getAvatar();
   },
   watch: {
     avaFile: {
       handler(arr) {
-        console.log('arr', arr)
         if (arr.length) {
           this.imgava = arr[0].content;
           localStore.set('imgava', this.imgava)
@@ -120,6 +120,17 @@ export default {
     },
   },
   methods: {
+    // 获取头像
+    getAvatar(){
+      let imgid = localStore.get('imgava')
+      if(!imgid) return;
+      this.$axios.post(api.common.getImg, {
+        image_id: imgid
+      }).then(res => {
+        console.log('头像', res)
+        this.imgava = res.data.image_base64
+      })
+    },
     //上传头像
     upload(base, type) {
       this.$axios.post(api.common.uploadImg, {

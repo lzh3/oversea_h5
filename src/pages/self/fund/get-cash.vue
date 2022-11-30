@@ -2,12 +2,12 @@
   <div class="cash-wrap bg1">
     <c-common-top :title="$t('fund.cash1')"
     @to="toPage"
-    :isTo='true' :isBack="true"></c-common-top>
+    :isTo='true' :isBack="true" :toText="text"></c-common-top>
     <div class="main p-30">
       <div class="main-top" @click="toCardList">
         <p class="to tt">{{$t('fund.card')}}</p>
         <div class="card tt">
-          <p class="card-id">{{$t('fund.bank')}}（5588）</p>
+          <p class="card-id">{{cardinfo}}</p>
           <p class="tip">{{$t('fund.Received')}}</p>
         </div>
         <p class="tt"><i class="iconfont icon-xiangyoujiantou"></i></p>
@@ -36,8 +36,19 @@ import api from "@/api/api";
 export default {
   data() {
     return {
+      text:this.$t('fund.withdraw'),
         money: '',
         balance: 2000,
+        cardinfo:'中国银行 (5558)',
+      bank_id:null,
+    }
+  },
+  created() {
+    let cdata = this.$route.params
+
+    if (cdata.bank_code != undefined) {
+      this.cardinfo = cdata.bank_address + "(" + cdata.bank_code + ")"
+      this.bank_id = cdata.bank_id
     }
   },
   methods: {
@@ -45,15 +56,15 @@ export default {
     subWithdraw(){
       this.$axios.post(api.self.withdraworder, {
         money:this.money,
-        bank_id:100,
+        bank_id:this.bank_id,
         withdraw_password:100,
       }).then(res => {
         // console.log('获取用户提现列表', res)
-       if(res.res.errCode == 200){
-        this.$toast.success(res.data.errMsg)
+       if(res.errCode == 200){
+        this.$toast.success(res.errMsg)
         this.$router.back()
        }else{
-         this.$toast.fail(res.data.errMsg)
+         this.$toast.fail(res.errMsg)
        }
       })
     },

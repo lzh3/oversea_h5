@@ -34,6 +34,13 @@ export default {
     },
     methods: {
         handleItemClick(item) {
+            console.log('item', item)
+            this.$router.push({
+                path: '/find/newsDetail',
+                query: {
+                    content: item.contents,
+                },
+            })
             this.$emit('item', item)
         }
     },

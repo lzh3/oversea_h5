@@ -1,7 +1,8 @@
 import { COMMON_URL } from "./host";
 
 const common = {
-  uploadImg:'/api/upload-image/add'
+  uploadImg:'/api/upload-image/add',
+  getImg: '/api/upload-image/info', // 获取上传的图片信息
 }
 
 const selfAPI = {
@@ -34,6 +35,7 @@ const bankcardAPI = {
   deluserbank:'/api/user-bank/del', //用户删除银行卡
   addIdCard:'/api/user/update-id-card',//修改/添加客户身份证
   createOrder: '/api/order/create-order',  // 第三方支付
+  withdrawList: '/api/withdraw-order/withdraw-order-list', // 提现明细
 
 }
 // ================================================

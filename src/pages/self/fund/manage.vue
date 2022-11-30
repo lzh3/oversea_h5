@@ -118,7 +118,7 @@ export default {
     },
     showDialog() {
       this.$dialog.confirm({
-        message: '每天20:00-24:00开奖，请注意查看',
+        message: this.$t('fund.hint'),
         showConfirmButton: false,
       })
     },

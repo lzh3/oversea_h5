@@ -1,22 +1,23 @@
 // let common_url =  'http://www.cbith.com'
-let common_url = ''
+// let common_url = ''
 
-if(/localhost/.test(location.href.toLowerCase())){
-    common_url = ''
-}else{
-    common_url= 'https://www.cbith.com'
+// if(/localhost/.test(location.href.toLowerCase())){
+//     common_url = ''
+// }else{
+//     common_url= 'http://www.cbith.com'
+// }
+let ISIN = localStorage.getItem('ISIN');
+let baseUrl = "/";
+console.log('host---ISIN', ISIN)
+// 需要判断
+const curDomain = document.domain;
+if ("https://www.cbith.com/".includes(curDomain)) {
+    baseUrl = "https://www.cbith.com";
+} else if ("http://h5.cbicn.net:799/".includes(curDomain)) {
+    baseUrl = " http://h5.cbicn.net:799/";
+} else {
+    baseUrl = "";
 }
 
-// 需要判断
-// let baseUrl = "/";
-// const curDomain = document.domain;
-// if ("https://www.cbith.net/".includes(curDomain)) {
-//     baseUrl = "https://www.cbith.net/";
-// } else if (" http://m.cbicn.net:799/".includes(curDomain)) {
-//     baseUrl = " http://m.cbicn.net:799/";
-// } else {
-//     baseUrl = "/admin";
-// }
-
-export const COMMON_URL = common_url;
+export const COMMON_URL = baseUrl;
 

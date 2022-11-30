@@ -21,15 +21,15 @@
         </div>
         <div class="buy">
           <p class="info">
-            <span class="unit">￥{{orderInfo.price}}<i>/份</i></span>
-            <span class="remain">剩余{{(projectInfo.amount - orderInfo.num) || 0}}份</span>
+            <span class="unit">￥{{orderInfo.price}}<i>/{{$t('common.copies')}}</i></span>
+            <span class="remain">{{$t('order.remain')}}{{(projectInfo.amount - orderInfo.num) || 0}}{{$t('common.copies')}}</span>
           </p>
           <p class="op">
             <span class="">{{orderInfo.num}}</span>
           </p>
         </div>
         <div class="service">
-          <span class="t">服务费({{projectInfo.service_rate}}%)</span>
+          <span class="t">{{$t('order.seviceCharge')}} ({{projectInfo.service_rate}}%)</span>
           <span class="cost">￥{{servicePrice}}</span>
         </div>
         <div class="total">
@@ -44,7 +44,7 @@
           <i class="iconfont icon-xiangyoujiantou"></i>
         </div>
       </div>
-      <div class="pay-btn">
+      <div class="pay-btn" v-if="orderInfo.order_status==5">
         <!-- v-if="orderInfo.order_status==5"> -->
         <van-button block class="btn-bg" @click="handlePay">{{$t('common.payNow')}}</van-button>
       </div>
@@ -110,11 +110,14 @@ export default {
         })
       }
     },
-    // 合同
+    // 跳转合同
     toContract() {
+      console.log('jump', this.projectInfo)
       this.$router.push({
         path: '/project/contract',
-        query: {},
+        query: {
+          contractId: this.orderInfo.contract_id,
+        },
       })
     },
   }

@@ -12,7 +12,7 @@
       </div>
       <div class="project-list p-30">
         <ul>
-          <li v-for="item in projects" :key="item.id">
+          <li v-for="item in projects" :key="item.id" @click="topage">
             <h3 class="item-title">
               {{item.title}}
               <van-tag color="#EE7348" v-for="(v, index) in item.tags" :key="index">{{v}}</van-tag>
@@ -65,7 +65,11 @@ export default {
     };
   },
   created() { },
-  methods: {},
+  methods: {
+    topage(){
+      this.$router.push('/projectDetail')
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

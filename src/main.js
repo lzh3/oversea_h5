@@ -10,6 +10,10 @@ import "./utils/changeRem"
 import "./utils/filters"
 import "./utils/directive"
 
+import localStore from '@/utils/localStorage'
+
+console.log('================mainjs执行=================')
+
 
 // 配置i18n
 import ch from './language/ch'
@@ -41,7 +45,9 @@ Vue.component('CCommonTitle', CCommonTitle)
 import CCommonTop from './components/c-common-top.vue'
 Vue.component('CCommonTop', CCommonTop)
 
-axios.defaults.withCredentials = true
+// axios.defaults.withCredentials = true
+let token  = localStore.get('token');
+console.log('token', token)
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
   // console.log('请求拦截', config)
@@ -54,17 +60,23 @@ axios.interceptors.request.use(function (config) {
 
 // 添加响应拦截器
 axios.interceptors.response.use(function (response) {
-  // console.log('响应拦截', response)
+  // console.log('响应拦截', response.data.errCode)
+  let code = response.data.errCode;
+  if(code!=200){
+    // router.push({
+    //   path: '/login'
+    // })
+  }
   // 响应数据
   return response.data;
 }, function (error) {
   // 响应错误
   return Promise.reject(error);
 });
+
+axios.defaults.headers["token"] = token;
 axios.defaults.headers["Content-Type"] = "application/x-www-form-urlencoded";
 Vue.prototype.$axios = axios;
-
-
 
 
 /* eslint-disable no-new */

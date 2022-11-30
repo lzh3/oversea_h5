@@ -23,11 +23,13 @@ export default {
   data() {
     return {
       user_name: 'yceshi',
-      password: '121212'
+      password: '123456'
     };
   },
 
-  created() { },
+  created() {
+    // localStorage.clear();
+  },
   methods: {
     loginFn() {
       this.$axios.post(api.self.login, {
@@ -40,11 +42,12 @@ export default {
             user_name: this.user_name,
             password: this.password
           })
+          localStorage.set('token', res.data.token)
           this.$router.push('/home')
         } else {
           this.$toast({
             type: 'fail',
-            message: res.data.errMsg
+            message: res.errMsg
           })
         }
       })

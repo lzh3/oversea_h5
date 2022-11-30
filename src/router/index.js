@@ -39,6 +39,13 @@ import Changepay from '@/pages/self/safe/change-pay'
 import LangIndex from "@/pages/lang"
 import RiskAssessment from '@/pages/self/riskassessment/index'
 import Riskfinish from '@/pages/self/riskassessment/riskfinish'
+import NewsDetail from  '@/pages/find/news-detail'
+import Consult from "@/pages/project/consult";
+
+import Collect from "@/pages/self/collect/index";
+// html字符串展示页面
+import DetailInner from '@/pages/project/detail-inner'
+import Beta from '@/pages/self/beta'
 
 Vue.use(Router);
 
@@ -72,15 +79,23 @@ let routerObj = new Router({
       component: Find
     },
     {
+      path: "/find/newsDetail",
+      component: NewsDetail
+    },
+    {
       path: "/self",
       component: Self,
-      children: [
-        {
-          path: "edit",
-          component: SelfEdit
-          // parent: '/self'
-        }
-      ]
+      // children: [
+      //   {
+      //     path: "edit",
+      //     component: SelfEdit
+      //     // parent: '/self'
+      //   }
+      // ]
+    },
+    {
+      path: "/self/edit",
+      component: SelfEdit
     },
     {
       path: "/address/list",
@@ -102,6 +117,10 @@ let routerObj = new Router({
     {
       path: "/project/subscribe",
       component: ProjectSubscribe
+    },
+    {
+      path: '/detailInner',
+      component: DetailInner,
     },
     // 身份证列表
     {
@@ -131,6 +150,7 @@ let routerObj = new Router({
     },
     {
       path: "/fund/cash", // 提现
+      name:'fundcash',
       component: FundCash
     },
     {
@@ -204,7 +224,7 @@ let routerObj = new Router({
       path: '/lang',
       component: LangIndex
     },
-    //风险评估 
+    //风险评估
     {
       path: '/self/riskassessment',
       component: RiskAssessment,
@@ -214,7 +234,21 @@ let routerObj = new Router({
       path: '/self/riskfinish',
       component: Riskfinish,
     },
-    
+    //客服
+    {
+      path: '/project/consult',
+      component: Consult,
+    },
+    //收藏列表
+    {
+      path:'/self/collect',
+      component:Collect,
+    },
+    {
+      path:'/self/beta',
+      component:Beta,
+    },
+
 
   ]
 });

@@ -21,7 +21,7 @@
               <van-tag color="#EE7348">{{detailInfo.type}}</van-tag>
             </div>
             <div class="status-time">
-              <span>{{detailInfo.show_status | statusFilter}}：</span>
+              <span>{{detailInfo.project_status | statusFilter}}：</span>
               <span>剩余{{detailInfo.sy_time | toDay}}天</span>
             </div>
           </div>
@@ -52,13 +52,15 @@
         <section class="info-block1 p-30 bg-white b-29">
           <ul>
             <li v-for="item in block1" :key="item.label">
-              <p class="label">{{item.label}}</p>
-              <p class="icon" v-if="item.icon">
-                <i class="iconfont icon-xiangyoujiantou"></i>
-              </p>
+              <div class="common-div" @click="jumpPage(item)">
+                <p class="label">{{item.label}}</p>
+                <p class="icon" v-if="item.icon">
+                  <i class="iconfont icon-xiangyoujiantou"></i>
+                </p>
+              </div>
               <div v-if="item.type==3" class="block1-other">
                 <p class="text">{{detailInfo.address_info}}</p>
-                <p class="op">{{item.op}}</p>
+                <p class="op" @click="copy(item)" v-if="item.op">{{item.op}}</p>
               </div>
               <div v-if="item.position" class="block1-position">
                 <!-- <p class="text">
@@ -102,16 +104,28 @@
       </div>
     </div>
     <div class="bottom-op">
-      <div class="op-item">
+      <div class="op-item" @click="toconsult">
         <img src="../../assets/imgs/project/comment.png" alt="">
         <span>{{ $t('project.consult') }}</span>
       </div>
       <div class="op-item" @click="handleCollect">
-        <img src="../../assets/imgs/project/shoucang.png" alt="">
-        <span>{{detailInfo.is_collection ==1?$t('project.havecollection'):$t('project.collection')}}</span>
+        <img src="../../assets/imgs/project/shoucang.png" alt="" v-if="detailInfo.is_collection ==1">
+        <img src="../../assets/imgs/project/shoucang1.png" alt="" v-else>
+        <span>{{detailInfo.is_collection !=1?$t('project.havecollection'):$t('project.collection')}}</span>
       </div>
       <van-button @click="handleSub">{{ $t('project.subscribe') }}</van-button>
     </div>
+
+    <van-dialog class="address-dialog"
+    :cancelButtonText="$t('common.cancel')"
+    :confirmButtonText="$t('common.sure')"
+    v-model="isShow" :title="$t('common.map')" show-cancel-button>
+      <img :src="detailInfo.address_image" />
+      <div class="ad">
+        <p>{{detailInfo.address_info}}</p>
+        <p class="op" @click="copy({})">{{$t('project.copy')}}</p>
+      </div>
+    </van-dialog>
   </div>
 </template>
 
@@ -123,18 +137,21 @@ export default {
   data() {
     return {
       tags: ['酒店', '股权'],
+      isShow: false,
       block1: [
         {
-          label:  this.$t('project.productIntro'),
+          label: this.$t('project.productIntro'),
           to: '',
           icon: 'icon-xiangyoujiantou',
           type: 1,
+          prop: 'remark'
         },
         {
           label: this.$t('project.brandStory'),
-          to: '',
+          to: '/detailInner',
           icon: 'icon-xiangyoujiantou',
           type: 2,
+          prop: 'story', // 字段名称
         },
         {
           label: this.$t('project.team'),
@@ -145,8 +162,6 @@ export default {
         {
           label: this.$t('project.position'),
           to: '',
-          country: '中国',
-          detail: '广东省深圳市',
           position: 'icon-xiangyoujiantou',
           type: 4,
         },
@@ -155,19 +170,21 @@ export default {
           to: '',
           text: '泰国曼谷拉差贴威区296 Phayathai Road',
           type: 3,
-          op: this.$t('project.copy')
+          // op: this.$t('project.copy')
         },
         {
-          label: this.$t('project.infoDispose'),
+          label: this.$t('project.infoDispose'), // 信息披露
           to: '',
           icon: 'icon-xiangyoujiantou',
           type: 6,
+          prop: 'information'
         },
         {
-          label: this.$t('project.risk'),
+          label: this.$t('project.risk'), // 风险提示
           to: '',
           icon: 'icon-xiangyoujiantou',
           type: 7,
+          prop: 'notice'
         },
       ],
       block2: {
@@ -176,6 +193,7 @@ export default {
         c: '补充说明内容',
       },
       detailInfo: {},
+      projectProgramme:{},
     };
   },
   filters: {
@@ -209,7 +227,7 @@ export default {
     },
     progressBar() {
       return item => {
-        return parseFloat(item.sub_amount / item.amount).toFixed(2) || 0;
+        return (item.sub_amount / item.amount).toFixed(2);
       }
     },
     projectAbout() {
@@ -221,7 +239,7 @@ export default {
     this.getProjectInfo();
   },
   methods: {
-    // 点击认购
+    //认购
     handleSub() {
       this.$router.push({
         path: '/project/subscribe',
@@ -229,7 +247,64 @@ export default {
           id: this.detailInfo.project_id
         },
       })
+      return ;
+      this.$axios.post(api.home.submitOrder, {
+        project_id:this.projectProgramme.project_id,
+        programme_id:this.projectProgramme.programme_id,
+        num:this.projectProgramme.get_num,
+        autograph:this.projectProgramme.project_id,
+        remark:this.projectProgramme.project_remark,
+        pay_type:this.projectProgramme.return_type,
+        id_card_img_positive:1,
+        id_card_img_back:1,
+        address: this.detailInfo.address_info
+      }).then(res => {
+        // console.log('res', res)
+          if (res.errCode == 200) {
+            this.$toast.success('Success');
+            this.$router.push({
+              path: '/self/order',
+              query: {
+                id: this.detailInfo.project_id
+              },
+            })
+
+          }else{
+            this.$toast({
+              type: 'fail',
+              message: res.errMsg
+            });
+          }
+      })
     },
+    // 跳转
+    jumpPage(item, type) {
+     if(item.type==3){ //复制
+       this.copy(item)
+     }
+      if (item.type == 4) { // 地理位置
+        this.isShow = true;
+        return;
+      }
+      if (!item.prop) return;
+      this.$router.push({
+        path: '/detailInner',
+        query: {
+          content: this.detailInfo[item.prop],
+          title: item.label
+        },
+      })
+    },
+    //客服
+    toconsult(){
+      // this.$router.push('/project/consult')
+      // http://chat.cbith.net/#/chat
+      let a = document.createElement('a')
+      a.target='_self'
+      a.href='http://chat.cbith.net/#/chat'
+      a.click();
+    },
+
     // 点击收藏
     handleCollect() {
       this.$axios.post(api.home.setCollect, {
@@ -245,7 +320,20 @@ export default {
         console.log('详情', res.data)
         // this.projects = res.data.data.list;
         this.detailInfo = res.data;
+        this.projectProgramme = res.data.projectProgramme[0]
+        // console.log( this.projectProgramme,' this.projectProgramme')
       })
+    },
+    // 复制
+    copy(item) {
+      var oInput = document.createElement('input');
+      oInput.value = item.text || this.detailInfo.address_info;
+      document.body.appendChild(oInput);
+      oInput.select();
+      document.execCommand("Copy"); // 执行浏览器复制命令
+      oInput.className = 'oInput';
+      oInput.style.display = 'none';
+      this.$toast.success('复制成功');
     },
   },
 };
@@ -269,7 +357,26 @@ export default {
       line-height: 4.5rem;
       text-align: center;
       background-color: #39a9ed;
+      img {
+        height: 4.5rem;
+      }
     }
+  }
+}
+.address-dialog {
+  img {
+    width: 100%;
+    height: 6rem;
+  }
+  .ad {
+    display: flex;
+    padding: 5px;
+    font-size: 12px;
+  }
+  .op {
+    width: 1.3rem;
+    color: #0a35d8;
+    font-size: 0.28rem;
   }
 }
 .bar-section {
@@ -354,6 +461,12 @@ export default {
       max-height: 1rem;
       align-items: center;
       justify-content: space-between;
+      .common-div {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
       &:not(:last-child) {
         border-bottom: 1px solid #ddd;
       }
@@ -367,12 +480,14 @@ export default {
         display: flex;
         align-items: center;
         .text {
-          width: 2.6rem;
+          // width: 2.6rem;
+          // max-width: 3rem;
           font-size: 0.24rem;
-          margin-right: 0.3rem;
+          margin-right: 0.1rem;
           text-align: center;
         }
         .op {
+          width: 1.3rem;
           color: #0a35d8;
           font-size: 0.28rem;
         }
@@ -441,6 +556,7 @@ export default {
   background: #fff;
   .op-item {
     display: flex;
+    align-items: center;
     img {
       width: 0.45rem;
       height: 0.45rem;

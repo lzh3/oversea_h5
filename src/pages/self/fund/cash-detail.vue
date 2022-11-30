@@ -1,142 +1,134 @@
 <template>
-  <div class="bg1">
-    <c-common-top  :title="$t('fund.withdraw')" :isBack="true"></c-common-top>
-    <div class="main">
-      <div class="history p-30">
-        <ul v-for="item in historyList" :key='item.time'>
-          <li class="date">{{item.date}}</li>
-          <div class="li-content">
-            <li v-for="(v,index) in item.list" :key='index'>
-              <p class="status-block">
-                <span class="money">{{v.money | toNumber}}</span>
-                <span class="status" :class="v.status==0?'ing':v.status==1?'finish':'back'">{{v.status | statusFilter}}</span>
-              </p>
-              <p class="time-flag c-888">
-                <span class="time">{{v.time}}</span>
-                <span class="com">{{$t('fund.commission')}}：{{v.commission}}</span>
-              </p>
-            </li>
-          </div>
-        </ul>
-      </div>
+    <div class="bg1">
+        <c-common-top :title="$t('fund.withdraw')" :isBack="true"></c-common-top>
+        <div class="main">
+            <div class="history p-30">
+                <ul>
+                    <!-- <li class="date">{{item.date}}</li> -->
+                    <div class="li-content">
+                        <li v-for="(v,index) in historyList" :key='index'>
+                            <p class="status-block">
+                                <span class="money">{{v.money | toNumber}}</span>
+                                <span class="status" :class="v.withdraw_status==0?'ing':v.withdraw_status==1?'finish':'back'">{{v.withdraw_status | statusFilter}}</span>
+                            </p>
+                            <p class="time-flag c-888">
+                                <span class="time">{{v.pay_time || v.create_time | toSecDate}}</span>
+                                <!-- <span class="com">{{$t('fund.commission')}}：{{v.commission}}</span> -->
+                            </p>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
+import api from "@/api/api"
+
 export default {
-  data() {
-    return {
-      historyList: [
-        {
-          date: '2022-10-01',
-          list: [
-            {
-              commission: 100,
-              money: 10000,
-              status: 1,
-              time: '2022-02-23 20:20'
-            }
-          ],
-        },
-        {
-          date: '2022-10-01',
-          list: [
-            {
-              commission: 100,
-              money: 10000,
-              status: 0,
-              time: '2022-02-23 20:20'
-            },
-            {
-              commission: 100,
-              money: 10000,
-              status: 2,
-              time: '2022-02-23 20:20'
-            }
-          ],
+    data() {
+        return {
+            historyList: [
+            ],
+
+            page: 0,
+            pageSize: 20,
         }
-      ],
-    }
-  },
-
-  filters: {
-    statusFilter(val) {
-      let obj = {
-        0: '进行中',
-        1: '已完成',
-        2: '被驳回'
-      }
-      return obj[val]
     },
-  },
-  created() {
 
-  },
-  methods: {}
+    filters: {
+        statusFilter(val) {
+            // 0（默认）生成订单1审核中2提现成功3审核失败
+            let obj = {
+                0: '生成订单',
+                1: '审核中',
+                2: '提现成功',
+                3: '审核失败'
+            }
+            return obj[val]
+        },
+    },
+    created() {
+      this.getList();
+    },
+    methods: {
+        // 提现列表
+        getList() {
+            // bankcardAPI.withdrawList
+            this.$axios.post(api.bankcard.withdrawList, {
+                page: this.page,
+                pageSize: this.pageSize,
+            }).then(res => {
+                // console.log('用户详情', res.data)
+                this.historyList = res.data.list;
+            })
+        },
+    }
 }
 </script>
 
 <style lang='less' scoped>
 .history {
-  ul {
-    .li-content {
-      border-radius: 0.29rem;
-      overflow: hidden;
-      box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
-    }
-    li {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 1.3rem;
-      padding: 0.3rem;
-      box-sizing: border-box;
-      background-color: #fff;
-      &:not(:last-child){
-        border-bottom: 1px solid #eee;
-      }
-      .status-block {
-        display: flex;
-        justify-content: space-between;
-        font-size: 0.31rem;
-        line-height: 0.3rem;
-        vertical-align: middle;
-        .money {
-          font-weight: bold;
+    ul {
+        .li-content {
+            // overflow: hidden;
         }
-        .status {
-          font-size: 0.27rem;
-          &.ing {
-            color: #0c9f39;
-          }
-          &.finish {
-            color: #888;
-          }
-          &.back {
-            color: #ec3535;
-          }
+        li {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 1.3rem;
+            padding: 0.3rem;
+            margin-bottom: 0.12rem;
+            box-sizing: border-box;
+            background-color: #fff;
+            border-radius: 0.29rem;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            // &:not(:last-child) {
+            //     border-bottom: 1px solid #eee;
+            // }
+            .status-block {
+                display: flex;
+                justify-content: space-between;
+                font-size: 0.31rem;
+                line-height: 0.3rem;
+                vertical-align: middle;
+                .money {
+                    font-weight: bold;
+                }
+                .status {
+                    font-size: 0.27rem;
+                    &.ing {
+                        color: #0c9f39;
+                    }
+                    &.finish {
+                        color: #888;
+                    }
+                    &.back {
+                        color: #ec3535;
+                    }
+                }
+            }
+            .time-flag {
+                margin-top: 0.15rem;
+                font-size: 0.24rem;
+                display: flex;
+                justify-content: space-between;
+            }
         }
-      }
-      .time-flag {
-        margin-top: 0.15rem;
-        font-size: 0.24rem;
-        display: flex;
-        justify-content: space-between;
-      }
+        .date {
+            margin-bottom: 0.3rem;
+            text-align: left;
+            padding-left: 0;
+            padding-bottom: 0;
+            height: auto;
+            background-color: transparent;
+            font-size: 0.29rem;
+            font-weight: 400;
+            color: #333;
+            border-bottom-color: transparent !important;
+        }
     }
-    .date {
-      margin-bottom: 0.3rem;
-      text-align: left;
-      padding-left: 0;
-      padding-bottom: 0;
-      height: auto;
-      background-color: transparent;
-      font-size: 0.29rem;
-      font-weight: 400;
-      color: #333;
-      border-bottom-color: transparent !important;
-    }
-  }
 }
 </style>

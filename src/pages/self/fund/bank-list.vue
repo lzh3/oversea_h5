@@ -9,7 +9,7 @@
     ></c-common-top>
     <div class="main p-30">
       <ul class="bank-list">
-        <li v-for="item in bankcardlist" :key="item.num" v-longpress="()=>delbank(item.bank_id)">
+        <li v-for="item in bankcardlist" :key="item.num" @click="selectBank(item)" v-longpress="()=>delbank(item.bank_id)">
           <p class="name">{{ item.bank_address }}</p>
           <p class="num">{{ item.bank_code }}</p>
           <p class="time">{{$t('fund.addtime')}}：{{ item.create_time | toSecDate }}</p>
@@ -44,10 +44,22 @@ export default {
     this.getBankcardList();
   },
   methods: {
+    // 选择银行
+    selectBank(v){
+      console.log(v,4444)
+      this.$router.push({
+        name: 'fundcash',
+        params: {
+          bank_address: v.bank_address,
+          bank_id:v.bank_id,
+          bank_code:v.bank_code.substr(-4)
+        },
+      })
+    },
     // 获取银行卡列表
     getBankcardList() {
       this.$axios.post(api.bankcard.banklist, {}).then(res => {
-        console.log("项目列表", res);
+        // console.log("项目列表", res);
         this.bankcardlist = res.data.list;
         // this.banners = res.data.list.map(item => item.image)
       });

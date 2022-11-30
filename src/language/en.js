@@ -9,12 +9,17 @@ export default {
     woman: "Woman",
     add: 'Add',
     selectarea: 'Select-area',
+    default:'Default',
+    edit:'Edit',
+    delete:'Delete',
     payNow: 'Pay Now',
-    copies: 'copies'
+    copies: 'copies',
+    map: 'Map',
   },
   login: {
     title: "Welcome to login",
     login: 'login',
+    loginOut: 'Login Out'
   },
   home: {
     home: "Home",
@@ -47,7 +52,7 @@ export default {
     more: "More",
     accountSafe: "Account security",
     // ===
-    modify: "Modify nickname",
+    modify: "Modify Nickname",
     userInfo: "Personal information",
     avatar: "Avatar",
     nickname: "Nickname",
@@ -55,7 +60,10 @@ export default {
     nation: "Nationality",
     phone: "Phone",
     email: "Email",
-    address: "Consignee address"
+    address: "Consignee address",
+    changeV: 'Change Version',
+    outVersion: '海外版',
+    inVersion: '国内版',
   },
   placehold: {
     nickname: "Please enter your nickname",
@@ -64,6 +72,9 @@ export default {
     username: 'Please enter the Username',
     password: 'Please enter the Password',
     forget: 'Forget password, please contact staff',
+    realName: 'Please enter your real name',
+    idCard: 'Please enter your ID-Card',
+    address: 'Please enter your address',
 
   },
   client: {
@@ -91,7 +102,7 @@ export default {
     moreInfo: 'More Info',
     consult: 'Consult',
     collection: 'Collection',
-    havecollection: 'Have Collection',
+    havecollection: 'Collected',
     copy: 'Copy',
   },
   subscribe: {
@@ -163,6 +174,7 @@ export default {
     FundsManagement: 'FundsManagement',
     lucky: 'Lucky every day',
     earnings: 'Earnings of project',
+    hint:'Draw every day from 20:00 to 24:00, please pay attention to check',
   },
   hasproject: {
     investment: 'Investment',
@@ -197,5 +209,35 @@ export default {
     lucky2: "Description of Lucky Draw",
     lucky3: "Each person can draw once a day",
     lucky4: "If there is no lottery on that day, the system will automatically release the bonus to the user account",
-  }
+  },
+  risk:{
+    risk:'Risk Assessment',
+    risk_hint:'You have completed the risk assessment. Thank you for your cooperation',
+    income:'Your main source of income is',
+  },
+  safe: {
+    changepwd: 'changepwd',
+    originalpwd: 'originalpwd',
+    hint1: 'Please fill in the old password',
+    newpwd: 'New Password',
+    hint2: 'Please fill in the new password',
+    confirm: 'Confirm Password',
+    hint3: 'Please fill in the confirmation password',
+    hint4:'The password must contain 8 to 16 alphanumeric characters',
+    hint5:'If you forget the password, contact technical support to change it',
+    hint6:'Confirm changes',
+    tip1:'Please enter the correct old password',
+    tip2:'Please enter the correct new password',
+    tip3:'Check whether the input is consistent',
+  },
+  changepay:{
+    title:'Changing the Payment Password',
+    title1:'Changing the Login Password',
+    hint1:'Name',
+    hint2:'ID Number',
+    tip1:'Please fill in your name',
+    tip2:'Please fill in the ID number',
+    next:'Next',
+    safe:'Account Security',
+  },
 };
