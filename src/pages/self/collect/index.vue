@@ -11,24 +11,25 @@
 <!--        </p>-->
 <!--      </div>-->
       <div class="project-list p-30">
+
         <ul>
           <li v-for="item in projects" :key="item.id">
             <h3 class="item-title">
-              {{item.title}}
-              <van-tag color="#EE7348" v-for="(v, index) in item.tags" :key="index">{{v}}</van-tag>
+              {{item.name}}
+              <van-tag color="#EE7348" >{{item.type}}</van-tag>
             </h3>
             <div class="details">
               <div class="item">
                 <p class="small-title">{{$t('hasproject.investmentamount')}}</p>
-                <p>{{item.invest | toNumber}}</p>
+                <p>{{item.amount | toNumber}}</p>
               </div>
               <div class="item">
                 <p class="small-title">{{$t('hasproject.uprevenue')}}</p>
-                <p class="total">{{item.total | toNumber}}</p>
+                <p class="total">{{item.min_amount | toNumber}}</p>
               </div>
               <div class="item">
                 <p class="small-title">{{$t('hasproject.expire')}}</p>
-                <p>{{item.day}} {{$t('hasproject.day')}}</p>
+                <p>{{item.sort}} {{$t('hasproject.day')}}</p>
               </div>
             </div>
           </li>
@@ -45,23 +46,23 @@ export default {
     return {
 
       projects: [
-        {
-          id: 0,
-          title: '项目abc',
-          invest: 10000000,
-          time: '2022-02-28',
-          tags: ['酒店', '利润'],
-          total: 232344,
-          day: 200,
-        },
-        {
-          id: 1,
-          title: '项目c',
-          invest: 398000,
-          time: '2022-02-28',
-          total: 230923,
-          day: 300,
-        },
+        // {
+        //   id: 0,
+        //   title: '项目abc',
+        //   invest: 10000000,
+        //   time: '2022-02-28',
+        //   tags: ['酒店', '利润'],
+        //   total: 232344,
+        //   day: 200,
+        // },
+        // {
+        //   id: 1,
+        //   title: '项目c',
+        //   invest: 398000,
+        //   time: '2022-02-28',
+        //   total: 230923,
+        //   day: 300,
+        // },
       ]
     };
   },
@@ -76,7 +77,7 @@ export default {
         pageSize: 100
       }).then(res => {
         console.log('喜欢列表', res)
-        // this.projects = res.data.list;
+        this.projects = res.data.list;
       })
     },
   },
