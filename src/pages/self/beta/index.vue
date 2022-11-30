@@ -1,15 +1,15 @@
 <template>
     <div class="bg1">
-        <c-common-top title='版本切换' :isBack='true'></c-common-top>
+        <c-common-top :title='$t("self.changeV")' :isBack='true'></c-common-top>
         <div class="p-30">
-            <van-cell title="国内版" clickable @click="handleCell('1')">
+            <van-cell :title="$t('self.inVersion')" clickable @click="handleCell('1')">
                 <template #right-icon>
                     <van-radio-group v-model="radio">
                         <van-radio name="1" />
                     </van-radio-group>
                 </template>
             </van-cell>
-            <van-cell title="海外版" clickable @click="handleCell('2')">
+            <van-cell :title="$t('self.outVersion')" clickable @click="handleCell('2')">
                 <template #right-icon>
                     <van-radio-group v-model="radio">
                         <van-radio name="2" />
