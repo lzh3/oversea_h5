@@ -60,7 +60,10 @@ export default {
     nation: "Nationality",
     phone: "Phone",
     email: "Email",
-    address: "Consignee address"
+    address: "Consignee address",
+    changeV: 'Change Version',
+    outVersion: '海外版',
+    inVersion: '国内版',
   },
   placehold: {
     nickname: "Please enter your nickname",
