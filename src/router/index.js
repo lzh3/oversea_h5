@@ -14,6 +14,7 @@ import ProjectDetail from "@/pages/project/projectDetail";
 import ProjectSubscribe from "@/pages/project/subscribe";
 import IDcardList from "@/pages/project/idcardList";
 import UploadCard from "@/pages/project/UploadCard";
+import Plan from '@/pages/project/plan'
 import ClientManage from "@/pages/self/client/manage";
 import FundManage from "@/pages/self/fund/manage";
 import ClientManagedetail from "@/pages/self/client/manageDetail";
@@ -108,6 +109,10 @@ let routerObj = new Router({
     {
       path: "/projectList",
       component: ProjectList
+    },
+    {
+      path: '/projectDetail/plan',
+      component: Plan,
     },
     {
       path: "/projectDetail",

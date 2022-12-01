@@ -62,8 +62,9 @@ export default {
     email: "邮箱",
     address: "收件地址",
     changeV: '版本切换',
-    outVersion: 'Outside Version',
-    inVersion: 'Inside Version',
+    outVersion: '海外版',
+    inVersion: '国内版',
+    
   },
   placehold: {
     nickname: "请输入昵称",

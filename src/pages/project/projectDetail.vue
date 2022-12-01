@@ -80,7 +80,7 @@
 
         <section class="info-block2 p-30 bg-white b-29">
           <ul>
-            <li>
+            <li @click="toPlan">
               <p class="title">{{ $t('project.investPlan') }}：</p>
               <p class="invest">
                 <span>每人限购{{projectAbout.limit_num || 0}}份</span>
@@ -239,6 +239,12 @@ export default {
     this.getProjectInfo();
   },
   methods: {
+    toPlan(){
+      this.$router.push({
+        path: '/projectDetail/plan',
+        
+      })
+    },
     //认购
     handleSub() {
       this.$router.push({

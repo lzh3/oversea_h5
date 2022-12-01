@@ -62,8 +62,8 @@ export default {
     email: "Email",
     address: "Consignee address",
     changeV: 'Change Version',
-    outVersion: '海外版',
-    inVersion: '国内版',
+    outVersion: 'Outside Version',
+    inVersion: 'Inside Version',
   },
   placehold: {
     nickname: "Please enter your nickname",
