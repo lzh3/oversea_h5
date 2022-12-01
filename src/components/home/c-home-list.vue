@@ -8,9 +8,11 @@
                 <div class="details">
                     <h3 class="item-title">
                         {{item.name}}
-                        <van-tag color="#EE7348">{{item.city}}</van-tag>
-                        <van-tag color="#7DA4F5">{{item.type | ellipsis}}</van-tag>
                     </h3>
+                  <div class="c-tag">
+                    <van-tag color="#EE7348">{{item.city}}</van-tag>
+                    <van-tag color="#7DA4F5">{{item.type }}</van-tag>
+                  </div>
                     <p class="status">{{item.show_status | statusFilter}}</p>
                     <div class="process">
                         <div class="process-bar">
@@ -37,13 +39,13 @@ export default {
         statusFilter(val) {
             return STATUS[val]
         },
-      ellipsis(value){
-        if (!value) return '';
-        if (value.length > 4) {
-          return value.slice(2) + '...'
-        }
-        return value
-      }
+      // ellipsis(value){
+      //   if (!value) return '';
+      //   if (value.length > 4) {
+      //     return value.slice(2) + '...'
+      //   }
+      //   return value
+      // }
     },
     computed: {
         progressCom(){
@@ -87,12 +89,13 @@ export default {
         .item {
             display: flex;
             width: 100%;
-            height: 1.66rem;
+            height: 2.2rem;
             margin-bottom: 0.3rem;
             background: #fff;
             border-radius: 0.28rem;
             overflow: hidden;
             box-sizing: border-box;
+          //padding-bottom: 0.3rem;
             .van-tag{
                 //margin-right: 0.18rem;
             }
@@ -128,14 +131,18 @@ export default {
                     font-size: 0.29rem;
                     font-weight: 400;
                     color: #333;
-                  .van-tag{
-                    font-size: 10px;
-                  }
+                  //.van-tag{
+                  //  font-size: 10px;
+                  //}
                 }
+              .c-tag{
+                font-size: 10px;
+              }
                 .status {
                     font-size: 0.23rem;
                     font-weight: 400;
                     color: #ff1f16;
+                    margin-top: 10px;
                 }
                 .process {
                     display: flex;
