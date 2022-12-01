@@ -103,7 +103,7 @@ export default {
                 {
                     icon: barIcon2,
                     text: '好物鉴赏',
-                    url: '',
+                    url: '/find',
                     lang: 'home.goodThing'
                 },
                 {
@@ -115,7 +115,7 @@ export default {
                 {
                     icon: barIcon4,
                     text: '即将上线',
-                    url: '',
+                    url: '/projectList',
                     lang: 'home.comeSoon'
                 },
 
