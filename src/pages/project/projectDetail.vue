@@ -116,10 +116,7 @@
       <van-button @click="handleSub">{{ $t('project.subscribe') }}</van-button>
     </div>
 
-    <van-dialog class="address-dialog"
-    :cancelButtonText="$t('common.cancel')"
-    :confirmButtonText="$t('common.sure')"
-    v-model="isShow" :title="$t('common.map')" show-cancel-button>
+    <van-dialog class="address-dialog" :cancelButtonText="$t('common.cancel')" :confirmButtonText="$t('common.sure')" v-model="isShow" :title="$t('common.map')" show-cancel-button>
       <img :src="detailInfo.address_image" />
       <div class="ad">
         <p>{{detailInfo.address_info}}</p>
@@ -158,6 +155,7 @@ export default {
           to: '',
           icon: 'icon-xiangyoujiantou',
           type: 5,
+          prop: 'sponsor_team',
         },
         {
           label: this.$t('project.position'),
@@ -193,7 +191,7 @@ export default {
         c: '补充说明内容',
       },
       detailInfo: {},
-      projectProgramme:{},
+      projectProgramme: {},
     };
   },
   filters: {
@@ -239,10 +237,10 @@ export default {
     this.getProjectInfo();
   },
   methods: {
-    toPlan(){
+    toPlan() {
       this.$router.push({
         path: '/projectDetail/plan',
-        
+
       })
     },
     //认购
@@ -253,41 +251,41 @@ export default {
           id: this.detailInfo.project_id
         },
       })
-      return ;
+      return;
       this.$axios.post(api.home.submitOrder, {
-        project_id:this.projectProgramme.project_id,
-        programme_id:this.projectProgramme.programme_id,
-        num:this.projectProgramme.get_num,
-        autograph:this.projectProgramme.project_id,
-        remark:this.projectProgramme.project_remark,
-        pay_type:this.projectProgramme.return_type,
-        id_card_img_positive:1,
-        id_card_img_back:1,
+        project_id: this.projectProgramme.project_id,
+        programme_id: this.projectProgramme.programme_id,
+        num: this.projectProgramme.get_num,
+        autograph: this.projectProgramme.project_id,
+        remark: this.projectProgramme.project_remark,
+        pay_type: this.projectProgramme.return_type,
+        id_card_img_positive: 1,
+        id_card_img_back: 1,
         address: this.detailInfo.address_info
       }).then(res => {
         // console.log('res', res)
-          if (res.errCode == 200) {
-            this.$toast.success('Success');
-            this.$router.push({
-              path: '/self/order',
-              query: {
-                id: this.detailInfo.project_id
-              },
-            })
+        if (res.errCode == 200) {
+          this.$toast.success('Success');
+          this.$router.push({
+            path: '/self/order',
+            query: {
+              id: this.detailInfo.project_id
+            },
+          })
 
-          }else{
-            this.$toast({
-              type: 'fail',
-              message: res.errMsg
-            });
-          }
+        } else {
+          this.$toast({
+            type: 'fail',
+            message: res.errMsg
+          });
+        }
       })
     },
     // 跳转
     jumpPage(item, type) {
-     if(item.type==3){ //复制
-       this.copy(item)
-     }
+      if (item.type == 3) { //复制
+        this.copy(item)
+      }
       if (item.type == 4) { // 地理位置
         this.isShow = true;
         return;
@@ -296,18 +294,18 @@ export default {
       this.$router.push({
         path: '/detailInner',
         query: {
-          content: this.detailInfo[item.prop],
+          content: this.detailInfo[item.prop] || '无',
           title: item.label
         },
       })
     },
     //客服
-    toconsult(){
+    toconsult() {
       // this.$router.push('/project/consult')
       // http://chat.cbith.net/#/chat
       let a = document.createElement('a')
-      a.target='_self'
-      a.href='http://chat.cbith.net/#/chat'
+      a.target = '_self'
+      a.href = 'http://chat.cbith.net/#/chat'
       a.click();
     },
 
