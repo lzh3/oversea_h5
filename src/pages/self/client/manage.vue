@@ -19,13 +19,13 @@
             <div class="details">
               <div class="info">
                 <p class="name">{{item.name}}</p>
-                <p>ID: {{item.id}}</p>
+                <p>ID: {{item.user_id}}</p>
               </div>
               <div>
-                <p class="count">{{$t('client.customer')}}：<span class="num">{{item.count}}</span>
+                <p class="count">{{$t('client.customer')}}：<span class="num">{{item.user_name}}</span>
                   <!-- {{$t('client.person')}} -->
                 </p>
-                <p>{{$t('client.ratio')}}：<span>{{item.rate}}</span></p>
+                <p>{{$t('client.ratio')}}：<span>{{item.touzi_num}}%</span></p>
               </div>
             </div>
             <p class="icon"><i class="iconfont icon-xiangyoujiantou"></i></p>
@@ -37,42 +37,54 @@
 </template>
 
 <script>
+import api from "@/api/api"
 export default {
   data() {
     return {
         userList: [
-            {
-                name: '天猫精灵',
-                id: '3478755',
-                count: '10',
-                rate: '20%',
-                avatar: '',
-            },
-             {
-                name: '天猫精灵',
-                id: '34784755',
-                count: '10',
-                rate: '20%',
-                avatar: '',
-            },
-             {
-                name: '天猫精灵',
-                id: '3478475',
-                count: '10',
-                rate: '20%',
-                avatar: '',
-            },
-             {
-                name: '天猫精灵',
-                id: '3484755',
-                count: '10',
-                rate: '20%',
-                avatar: '',
-            },
+            // {
+            //     name: '天猫精灵',
+            //     id: '3478755',
+            //     count: '10',
+            //     rate: '20%',
+            //     avatar: '',
+            // },
+            //  {
+            //     name: '天猫精灵',
+            //     id: '34784755',
+            //     count: '10',
+            //     rate: '20%',
+            //     avatar: '',
+            // },
+            //  {
+            //     name: '天猫精灵',
+            //     id: '3478475',
+            //     count: '10',
+            //     rate: '20%',
+            //     avatar: '',
+            // },
+            //  {
+            //     name: '天猫精灵',
+            //     id: '3484755',
+            //     count: '10',
+            //     rate: '20%',
+            //     avatar: '',
+            // },
         ],
     }
   },
+  created() {
+      this.getclient()
+    },
   methods: {
+    getclient() {
+      this.$axios.post(api.self.investment, {
+      }).then(res => {
+        console.log('项目列表', res);
+        this.userList = res.data
+
+      })
+    },
     toFund(item){
         this.$router.push({
             path: '/client/manageDetail',
