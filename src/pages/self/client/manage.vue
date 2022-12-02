@@ -22,7 +22,7 @@
                 <p>ID: {{item.user_id}}</p>
               </div>
               <div>
-                <p class="count">{{$t('client.customer')}}：<span class="num">{{item.amount}}</span>
+                <p class="count">{{$t('client.customer')}}：<span class="num">{{item.user_name}}</span>
                   <!-- {{$t('client.person')}} -->
                 </p>
                 <p>{{$t('client.ratio')}}：<span>{{item.touzi_num}}%</span></p>
