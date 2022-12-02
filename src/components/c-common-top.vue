@@ -54,6 +54,7 @@ export default {
       this.$emit(this.type)
     },
     back() {
+      this.$emit('back')
       this.$router.go(-1);
     },
     toPage() {

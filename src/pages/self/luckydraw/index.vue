@@ -41,7 +41,8 @@ export default {
       prizeNo: 1, // 第几个中奖
       prizeNum: 7, // 奖品数量
       prizeList: ['现金红包', '谢谢参与', '谢谢参与', '现金红包', '谢谢参与', '现金红包',],
-      prizeInfo: {}
+      prizeInfo: {},
+      result: {},
     }
   },
   created() {
@@ -54,7 +55,7 @@ export default {
       this.$axios.post(api.self.getdaydayle, {
       }).then(res => {
         console.log('天天乐奖池', res)
-
+        this.prizeInfo = res.data
       })
     },
     // 用户天天乐抽奖
@@ -62,16 +63,22 @@ export default {
       this.$axios.post(api.self.drawprize, {
       }).then(res => {
         console.log('天天乐抽奖', res)
-        this.prizeInfo = res.data
+        // this.prizeInfo = res
         // console.log(this.prizeInfo,5555)
+        this.result = res;
       })
     },
     lotteryClick() {
+      if(this.result.errCode!=200){
+        this.$toast.fail(this.result.errMsg)
+        return;
+      }
       if(this.prizeInfo.num===0) return;
       this.lotteryStart = 1
       let randomNum = Math.ceil((Math.random() * 6))
       console.log('randomNum', randomNum)
       this.prizeNo = randomNum
+      // this.$toast.success()
     },
     lotteryDone(res) {
       this.lotteryStart = 0

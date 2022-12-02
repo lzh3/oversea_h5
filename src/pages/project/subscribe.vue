@@ -1,6 +1,6 @@
 <template>
     <div class="sub-page bg1">
-        <c-common-top :isBack="true" :title="$t('project.subscribe')"></c-common-top>
+        <c-common-top :isBack="true" :title="$t('project.subscribe')" @back="handleBack"></c-common-top>
         <div class="main p-30">
             <!--<div class="user-info">
          <div class="info">
@@ -159,6 +159,14 @@ export default {
         this.getCardId();
     },
     methods: {
+
+        handleBack() {
+            localStore.set('front_card_id', '')
+            localStore.set('back_card_id', '')
+            localStore.set('back_card', '')
+            localStore.set('front_card', '')
+            localStore.set('esign', '')
+        },
         getCardId() {
             let front = localStore.get('front_card_id')
             let back = localStore.get('back_card_id')

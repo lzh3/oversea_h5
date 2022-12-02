@@ -1,6 +1,6 @@
 <template>
   <div class="project-detail-wrap">
-    <c-common-top :isBack="true" title="" color="white"></c-common-top>
+    <c-common-top :isBack="true" title="" color="white" @back='handleBack'></c-common-top>
     <div class="bar-section">
       <section class="banner-section">
         <van-swipe class="my-swipe" :show-indicators="false" :autoplay="2000" indicator-color="white">
@@ -109,9 +109,9 @@
         <span>{{ $t('project.consult') }}</span>
       </div>
       <div class="op-item" @click="handleCollect">
-        <img src="../../assets/imgs/project/shoucang.png" alt="" v-if="detailInfo.is_collection ==1">
+        <img src="../../assets/imgs/project/shoucang.png" alt="" v-if="detailInfo.is_collection !=1">
         <img src="../../assets/imgs/project/shoucang1.png" alt="" v-else>
-        <span>{{detailInfo.is_collection !=1?$t('project.havecollection'):$t('project.collection')}}</span>
+        <span>{{detailInfo.is_collection ==1?$t('project.havecollection'):$t('project.collection')}}</span>
       </div>
       <van-button @click="handleSub">{{ $t('project.subscribe') }}</van-button>
     </div>
@@ -129,6 +129,7 @@
 <script>
 import api from "@/api/api"
 import { STATUS } from "@/utils/enum"
+import localStore from "@/utils/localStorage"
 
 export default {
   data() {
@@ -242,6 +243,12 @@ export default {
         path: '/projectDetail/plan',
 
       })
+    },
+    handleBack(){
+      localStore.set('front_card_id', '')
+      localStore.set('back_card_id', '')
+      localStore.set('back_card', '')
+      localStore.set('front_card', '')
     },
     //认购
     handleSub() {
