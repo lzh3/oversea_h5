@@ -31,21 +31,16 @@ export default {
     },
     created() {
         console.log('****', localStore.get('LANGUAGE'))
-        this.radio = localStore.get('LANGUAGE') === 'en' ? '2' : '1'
+        this.radio = localStore.get('ISIN') || '1';
     },
     methods: {
         handleCell(val) {
             // 1: 国内    2：国外
             this.radio = val;
             console.log('cell', this.radio)
-            let ISIN = val == 1 ? true : false;
-            // this.$i18n.locale = lang
-            // localStore.set('LANGUAGE', lang)
-
-            localStorage.setItem('ISIN',ISIN)
-            // location.reload();
-            
-
+            localStore.set('ISIN',val)
+            let BASEURL = val==1? 'http://h5.cbicn.net:799/':'https://www.cbith.com'
+            localStore.set('BASEURL',BASEURL)
         }
     }
 }

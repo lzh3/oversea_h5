@@ -50,7 +50,11 @@ let token  = localStore.get('token');
 console.log('token', token)
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
-  // console.log('请求拦截', config)
+  console.log('请求拦截', config)
+  let baseUrl = localStore.get('BASEURL')
+  if(baseUrl){
+    config.baseURL = baseUrl;
+  }
   // 发送请求
   return config;
 }, function (error) {

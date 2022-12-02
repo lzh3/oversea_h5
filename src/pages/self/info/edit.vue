@@ -105,7 +105,7 @@ export default {
   },
   created() {
     this.getUserInfoList()
-    this.getAvatar();
+    // this.getAvatar();
   },
   watch: {
     avaFile: {
@@ -121,16 +121,16 @@ export default {
   },
   methods: {
     // 获取头像
-    getAvatar(){
-      let imgid = localStore.get('imgava')
-      if(!imgid) return;
-      this.$axios.post(api.common.getImg, {
-        image_id: imgid
-      }).then(res => {
-        console.log('头像', res)
-        this.imgava = res.data.image_base64
-      })
-    },
+    // getAvatar(){
+    //   let imgid = localStore.get('imgava')
+    //   if(!imgid) return;
+    //   this.$axios.post(api.common.getImg, {
+    //     image_id: imgid
+    //   }).then(res => {
+    //     console.log('头像', res)
+    //     this.imgava = res.data.image_base64
+    //   })
+    // },
     //上传头像
     upload(base, type) {
       this.$axios.post(api.common.uploadImg, {
@@ -145,7 +145,8 @@ export default {
     getUserInfoList() {
       this.$axios.post(api.userinfo.getuserinfo, {}).then(res => {
         this.userInfo = res.data;
-        console.log("信息列表", this.userInfo);
+        // console.log("信息列表", this.userInfo);
+        this.imgava = res.data.header_img
         this.items.forEach(i => {
           if (i.type == '1') {
             i.desc = this.userInfo.nick_name
