@@ -89,7 +89,7 @@ export default {
       }).then(res => {
         console.log('支付', res.data)
         if (res && res.data) {
-          this.goPay(res.data.payUrl, res.data.msg)
+          this.goPay(res.data.payUrl, res.errMsg)
         }
 
       })

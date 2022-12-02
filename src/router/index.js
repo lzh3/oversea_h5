@@ -14,7 +14,7 @@ import ProjectDetail from "@/pages/project/projectDetail";
 import ProjectSubscribe from "@/pages/project/subscribe";
 import IDcardList from "@/pages/project/idcardList";
 import UploadCard from "@/pages/project/UploadCard";
-import Plan from '@/pages/project/plan'
+import Plan from "@/pages/project/plan";
 import ClientManage from "@/pages/self/client/manage";
 import FundManage from "@/pages/self/fund/manage";
 import ClientManagedetail from "@/pages/self/client/manageDetail";
@@ -28,26 +28,28 @@ import BankList from "@/pages/self/fund/bank-list";
 import BankAdd from "@/pages/self/fund/bank-add";
 import OrderManage from "@/pages/self/order/manage";
 import OrderPay from "@/pages/self/order/pay-detail";
-import SafeIndex from '@/pages/self/safe/index'
-import IndustryTrend from '@/pages/home/industry-trend'
-import pay from '@/pages/pay/index'
-import Luckydraw from '@/pages/self/luckydraw/index'
+import SafeIndex from "@/pages/self/safe/index";
+import IndustryTrend from "@/pages/home/industry-trend";
+import pay from "@/pages/pay/index";
+import Luckydraw from "@/pages/self/luckydraw/index";
 
-import ContractIndex from '@/pages/contract'
-import InvestRecommend from '@/pages/invest-recommend'
-import Changepwd from '@/pages/self/safe/change-password'
-import Changepay from '@/pages/self/safe/change-pay'
-import LangIndex from "@/pages/lang"
-import RiskAssessment from '@/pages/self/riskassessment/index'
-import Riskfinish from '@/pages/self/riskassessment/riskfinish'
-import NewsDetail from  '@/pages/find/news-detail'
+import ContractIndex from "@/pages/contract";
+import InvestRecommend from "@/pages/invest-recommend";
+import Changepwd from "@/pages/self/safe/change-password";
+import Changepay from "@/pages/self/safe/change-pay";
+import LangIndex from "@/pages/lang";
+import RiskAssessment from "@/pages/self/riskassessment/index";
+import Riskfinish from "@/pages/self/riskassessment/riskfinish";
+import NewsDetail from "@/pages/find/news-detail";
 import Consult from "@/pages/project/consult";
 
 import Collect from "@/pages/self/collect/index";
 // html字符串展示页面
-import DetailInner from '@/pages/project/detail-inner'
-import Beta from '@/pages/self/beta'
-import HomeSearch from "@/pages/home/search"
+import DetailInner from "@/pages/project/detail-inner";
+import Beta from "@/pages/self/beta";
+import HomeSearch from "@/pages/home/search";
+import HighCheck from '@/pages/self/highCheck'
+import HighUpload from '@/pages/self/highCheck/upload-asset'
 
 Vue.use(Router);
 
@@ -90,7 +92,7 @@ let routerObj = new Router({
     },
     {
       path: "/self",
-      component: Self,
+      component: Self
       // children: [
       //   {
       //     path: "edit",
@@ -116,8 +118,8 @@ let routerObj = new Router({
       component: ProjectList
     },
     {
-      path: '/projectDetail/plan',
-      component: Plan,
+      path: "/projectDetail/plan",
+      component: Plan
     },
     {
       path: "/projectDetail",
@@ -129,8 +131,8 @@ let routerObj = new Router({
       component: ProjectSubscribe
     },
     {
-      path: '/detailInner',
-      component: DetailInner,
+      path: "/detailInner",
+      component: DetailInner
     },
     // 身份证列表
     {
@@ -160,7 +162,7 @@ let routerObj = new Router({
     },
     {
       path: "/fund/cash", // 提现
-      name:'fundcash',
+      name: "fundcash",
       component: FundCash
     },
     {
@@ -207,59 +209,66 @@ let routerObj = new Router({
     },
     // 合同
     {
-      path: '/project/contract',
-      component: ContractIndex,
+      path: "/project/contract",
+      component: ContractIndex
     },
     // 投资推荐
     {
-      path: '/home/invest-recommend',
-      component: InvestRecommend,
+      path: "/home/invest-recommend",
+      component: InvestRecommend
     },
     // 修改密码
     {
-      path: '/self/changepwd',
-      component: Changepwd,
+      path: "/self/changepwd",
+      component: Changepwd
     },
     // 修改支付密码
     {
-      path: '/self/changepay',
-      component: Changepay,
+      path: "/self/changepay",
+      component: Changepay
     },
     // 转盘抽奖
     {
-      path: '/self/luckydraw',
-      component: Luckydraw,
+      path: "/self/luckydraw",
+      component: Luckydraw
     },
     {
-      path: '/lang',
+      path: "/lang",
       component: LangIndex
     },
     //风险评估
     {
-      path: '/self/riskassessment',
-      component: RiskAssessment,
+      path: "/self/riskassessment",
+      component: RiskAssessment
     },
     // 风险评估--完成
     {
-      path: '/self/riskfinish',
-      component: Riskfinish,
+      path: "/self/riskfinish",
+      component: Riskfinish
     },
     //客服
     {
-      path: '/project/consult',
-      component: Consult,
+      path: "/project/consult",
+      component: Consult
     },
     //收藏列表
     {
-      path:'/self/collect',
-      component:Collect,
+      path: "/self/collect",
+      component: Collect
     },
     {
-      path:'/self/beta',
-      component:Beta,
+      path: "/self/beta",
+      component: Beta
     },
-
-
+    // 高级认证
+    {
+      path: "/self/highCheck",
+      component: HighCheck
+    },
+    {
+      path: '/high/upload',
+      component: HighUpload
+    }
   ]
 });
 

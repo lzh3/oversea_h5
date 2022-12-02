@@ -64,6 +64,9 @@ export default {
     changeV: '版本切换',
     outVersion: '海外版',
     inVersion: '国内版',
+    highCheck: '高级认证',
+    assetCheck: '资产证明',
+    assetTitle: '上传资产证明',
     
   },
   placehold: {
@@ -236,8 +239,10 @@ export default {
     title1:'修改登录密码',
     hint1:'姓名',
     hint2:'证件号',
+    hint3: '新支付密码',
     tip1:'请填写姓名',
     tip2:'请填写证件号',
+    tip3: '请填写新的支付密码',
     next:'下一步',
     safe:'账户安全',
 

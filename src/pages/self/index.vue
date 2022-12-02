@@ -101,7 +101,7 @@ export default {
         {
           title: '高级认证',
           pic: img7,
-          to: '',
+          to: '/self/highCheck',
           lang: 'self.advCert'
         },
         {
