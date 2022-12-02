@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       user_name: 'yceshi',
-      password: '123456'
+      password: '121212'
     };
   },
 
@@ -32,6 +32,7 @@ export default {
   },
   methods: {
     loginFn() {
+      localStorage.clear();
       this.$axios.post(api.self.login, {
         user_name: this.user_name,
         password: this.password

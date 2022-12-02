@@ -40,7 +40,7 @@ export default {
         money: '',
         balance: 2000,
         cardinfo:'中国银行 (5558)',
-      bank_id:null,
+        bank_id:5558,
     }
   },
   created() {
