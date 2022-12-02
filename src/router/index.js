@@ -47,6 +47,7 @@ import Collect from "@/pages/self/collect/index";
 // html字符串展示页面
 import DetailInner from '@/pages/project/detail-inner'
 import Beta from '@/pages/self/beta'
+import HomeSearch from "@/pages/home/search"
 
 Vue.use(Router);
 
@@ -70,6 +71,10 @@ let routerObj = new Router({
       //     parent: 'home'
       //   }
       // ]
+    },
+    {
+      path: "/home/search",
+      component: HomeSearch
     },
     {
       path: "/position",

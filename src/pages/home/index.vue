@@ -8,7 +8,7 @@
                 <img src="../../assets/imgs/home/position.png" alt="">
                 <span>{{lang}}</span>
             </p>
-            <van-search class='top-search' v-model="keyword" shape="round" background="transparent" left-icon="search" :placeholder="$t('placehold.projectname')" />
+            <van-search class='top-search' @focus="toSearch" v-model="keyword" shape="round" background="transparent" left-icon="search" :placeholder="$t('placehold.projectname')" />
         </div>
         <div class="main p-30">
             <section class="home-top">
@@ -202,7 +202,12 @@ export default {
                     tab: 1,
                 },
             })
-        }
+        },
+        toSearch(){
+            this.$router.push({
+                path: '/home/search',
+            })
+        },
     }
 }
 </script>
