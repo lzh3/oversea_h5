@@ -63,7 +63,7 @@ export default {
         };
     },
     created() {
-        this.getcollectlist()
+        // this.getcollectlist()
     },
     methods: {
         loadMore() {
@@ -82,10 +82,10 @@ export default {
         // 获取用户喜欢列表
         getcollectlist() {
             this.$axios.post('/api/user-collection/user-collection-list', {
-                page: 1,
-                pageSize: 100
+                page: this.pagestart,
+                pageSize: this.pagesize
             }).then(res => {
-                console.log('喜欢列表', res)
+                console.log('列表', res)
                 // this.projects = res.data.list;
                 this.total = res.data.total;
                 if (this.pagestart === 1) {
@@ -93,7 +93,6 @@ export default {
                 } else {
                     this.projects.push(...res.data.list);
                 }
-                this.total = res.data.total;
                 this.loading = false;
                 if (this.projects.length >= this.total || res.data.list.length === 0) {
                     this.isFinished = true

@@ -36,17 +36,18 @@ export default {
             projects1: [],
             total2: 0,
             pagestart: 1,
-            pagesize: 5,
+            pagesize: 15,
 
             loading: false,
             isFinished: false,
         };
     },
     created() {
-        this.getProjectList1()
+        // this.getProjectList1()
     },
     methods: {
         loadMore() {
+            console.log('loadmore', this.active == 0)
             this.active == 0 ? this.getProjectList1(this.pagestart) : this.getProjectList2(this.pagestart);
             this.pagestart++;
         },
