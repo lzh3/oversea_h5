@@ -4,31 +4,31 @@
     <div class="main">
       <div class="summary-block">
         <p class="title">{{$t('hasproject.totalrevenue')}}（元）</p>
-        <p class="count">2000.20</p>
-        <p class="income">
+        <p class="count">{{totalinvest}}</p>
+        <!-- <p class="income">
           {{$t('hasproject.lastrevenue')}}
           <span>255.20</span>
-        </p>
+        </p> -->
       </div>
       <div class="project-list p-30">
         <ul>
-          <li v-for="item in projects" :key="item.id" @click="topage">
+          <li v-for="item in projects" :key="item.id" @click="topage(item.project_id)">
             <h3 class="item-title">
-              {{item.title}}
-              <van-tag color="#EE7348" v-for="(v, index) in item.tags" :key="index">{{v}}</van-tag>
+              {{item.name}}
+              <van-tag color="#EE7348">{{item.type}}</van-tag>
             </h3>
             <div class="details">
               <div class="item">
                 <p class="small-title">{{$t('hasproject.investmentamount')}}</p>
-                <p>{{item.invest | toNumber}}</p>
+                <p>{{item.investment_amount_all | toNumber}}</p>
               </div>
               <div class="item">
                 <p class="small-title">{{$t('hasproject.uprevenue')}}</p>
-                <p class="total">{{item.total | toNumber}}</p>
+                <p class="total">{{item.income_amount_all | toNumber}}</p>
               </div>
               <div class="item">
                 <p class="small-title">{{$t('hasproject.expire')}}</p>
-                <p>{{item.day}} {{$t('hasproject.day')}}</p>
+                <p>{{item.sy_time | toDay}} {{$t('hasproject.day')}}</p>
               </div>
             </div>
           </li>
@@ -39,35 +39,55 @@
 </template>
 
 <script>
+import api from "@/api/api"
+import localStore from '@/utils/localStorage'
 export default {
   data() {
     return {
-
+      totalinvest:null,
       projects: [
-        {
-          id: 0,
-          title: '项目abc',
-          invest: 10000000,
-          time: '2022-02-28',
-          tags: ['酒店', '利润'],
-          total: 232344,
-          day: 200,
-        },
-        {
-          id: 1,
-          title: '项目c',
-          invest: 398000,
-          time: '2022-02-28',
-          total: 230923,
-          day: 300,
-        },
+        // {
+        //   id: 0,
+        //   title: '项目abc',
+        //   invest: 10000000,
+        //   time: '2022-02-28',
+        //   tags: ['酒店', '利润'],
+        //   total: 232344,
+        //   day: 200,
+        // },
+        // {
+        //   id: 1,
+        //   title: '项目c',
+        //   invest: 398000,
+        //   time: '2022-02-28',
+        //   total: 230923,
+        //   day: 300,
+        // },
       ]
     };
   },
-  created() { },
+  created() {
+    this.geinvestmentlist()
+   },
   methods: {
-    topage(){
-      this.$router.push('/projectDetail')
+        // 获取用户信息
+        geinvestmentlist() {
+      this.$axios.post(api.self.investmentlist, {
+        user_id:localStore.get('userid')
+      }).then(res => {
+        this.totalinvest = res.data.income_amount_count_all
+        this.projects = res.data.list
+        console.log('用户详情', res)
+
+      })
+    },
+    topage(v){
+      this.$router.push({
+        path:'/projectDetail',
+        query: {
+                    id: v,
+                },
+      })
     },
   },
 };
