@@ -13,7 +13,8 @@
                     <van-tag color="#EE7348">{{item.city}}</van-tag>
                     <van-tag color="#7DA4F5">{{item.type }}</van-tag>
                   </div>
-                    <p class="status">{{item.show_status | statusFilter}}</p>
+                    <p v-if="showStatus" class="status">{{item.show_status | statusFilter}}</p>
+                    <p v-else class="status"></p>
                     <div class="process">
                         <div class="process-bar">
                             <van-progress :percentage="processBar(item)" :show-pivot="false" track-color="#FFB9B6" color="#FF1F16" />
@@ -34,6 +35,10 @@ export default {
             type: Array,
             default: () => []
         },
+        showStatus: {
+            type: Boolean,
+            default: true,
+        }
     },
     filters: {
         statusFilter(val) {

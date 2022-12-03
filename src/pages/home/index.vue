@@ -103,7 +103,7 @@ export default {
                 {
                     icon: barIcon2,
                     text: '好物鉴赏',
-                    url: '/find',
+                    url: '/industry/list',
                     lang: 'home.goodThing'
                 },
                 {
@@ -133,8 +133,19 @@ export default {
         this.getProjectList();
         this.getArtList();
         this.getnoticelist()
+        this.getBanners();
     },
     methods: {
+        // 获取banner图
+        getBanners(){
+            this.$axios.post(api.home.articleList, {
+                type: 3,
+                page: this.apage,
+                pageSize: this.apageSize
+            }).then(res => {
+                this.banners = res.data.list.map(item=>item.img_url);
+            })
+        },
         // 初始化
         initPage() {
             console.log(localStore.get('LANG') || 'ad', 'lllang')
@@ -161,7 +172,7 @@ export default {
                 console.log('项目列表', res);
                 let resData =res.data.list[0];
                 this.projects.push(resData);
-                this.banners = res.data.list.map(item => item.image)
+                // this.banners = res.data.list.map(item => item.image)
             })
         },
         // 时尚好物
