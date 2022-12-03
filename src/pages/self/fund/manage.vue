@@ -3,7 +3,9 @@
     <c-common-top :title="$t('fund.FundsManagement')" color='white' :isBack="true"></c-common-top>
     <div class="main">
       <div class="summary-block">
-        <p class="income">$ 23894.<span>18</span></p>
+        <p class="income">${{amount}}
+          <!-- <span>18</span> -->
+        </p>
         <van-button type="plain" @click="handleCash">{{$t('fund.cash1')}}</van-button>
       </div>
       <div class="income-content p-30">
@@ -36,9 +38,11 @@
 
 <script>
 import api from "@/api/api";
+import localStore from '@/utils/localStorage'
 export default {
   data() {
     return {
+      amount:null,
       currentTab: 1,
       tabs: [
         {
@@ -88,8 +92,10 @@ export default {
         page:1,
         page_size:100
       }).then(res => {
-        // console.log('资金管理', res)
+        console.log('资金管理', res)
+        this.amount = res.data.amount
         this.dayFuck = res.data.list;
+        localStore.set("amount",this.amount)
       })
     },
      // 资金管理  4项目分润
@@ -113,7 +119,10 @@ export default {
     },
     handleCash() {
       this.$router.push({
-        path: '/fund/cash'
+        name: 'fundcash',
+        params:{
+          amount:this.amount
+        }
       })
     },
     showDialog() {

@@ -33,25 +33,41 @@
 
 <script>
 import api from "@/api/api";
+import localStore from '@/utils/localStorage'
 export default {
   data() {
     return {
       text:this.$t('fund.withdraw'),
         money: '',
-        balance: 2000,
+        balance: null,
         cardinfo:'中国银行 (5558)',
-        bank_id:5558,
+      
     }
   },
   created() {
+    this.balance = localStore.get('amount')
     let cdata = this.$route.params
+    // console.log(cdata,'----');
 
+    
     if (cdata.bank_code != undefined) {
       this.cardinfo = cdata.bank_address + "(" + cdata.bank_code + ")"
       this.bank_id = cdata.bank_id
+    }else{
+    this.getBankcardList()
+
     }
   },
   methods: {
+        // 获取银行卡列表
+        getBankcardList() {
+      this.$axios.post(api.bankcard.banklist, {}).then(res => {
+        console.log("项目列表", res);
+        const temp = res.data.list[0];
+        this.cardinfo = temp.bank_address + "(" + temp.bank_code.substr(-4) + ")"
+        // this.banners = res.data.list.map(item => item.image)
+      });
+    },
     // 提现
     subWithdraw(){
       this.$axios.post(api.self.withdraworder, {

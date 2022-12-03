@@ -17,6 +17,7 @@ const selfAPI = {
   getdaydayle:'/api/project/get-day-dayle',//获取天天乐奖池
   drawprize:'/api/project/draw-prize',//用户天天乐抽奖
   investment:'/api/user-investment/user-invitelist',//客户管理
+  investmentlist:'/api/user-investment/list',//用户项目认购列表
 
 };
 const homeAPI = {
