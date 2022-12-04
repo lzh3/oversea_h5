@@ -82,7 +82,7 @@
             </div>
             <div class="describe bg-white">
                 <p class="title">{{$t('subscribe.trade')}}</p>
-                <p class="content">交易说明交易接口的垃圾方式来得快上课啦的解放克里斯丁说明交易说明交易说明交易说明交易说明交易说明交易说明交易说明交易说明交易说明交易说明</p>
+                <!-- <p class="content">交易说明</p> -->
             </div>
             <div class="agree">
 

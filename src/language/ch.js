@@ -119,7 +119,7 @@ export default {
     bankcard: '银行卡',
     idcard: '身份证信息',
     esignature: '电子签名',
-    trade: '交易说明 Trade Description',
+    trade: '交易说明',
     agreement1: '我已阅读并同意',
     agreement2: '<<投资协议>>',
     agreement3: '<<电子签名授权委托书>>',

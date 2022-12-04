@@ -60,7 +60,7 @@
                     <c-home-list :cards='projects' />
                 </section>
                 <section class="fashion-list">
-                    <c-common-title :title="$t('home.fashionGoods')" type='fashion'></c-common-title>
+                    <c-common-title :title="$t('home.fashionGoods')" type='fashion' @more='handleProjectMore'></c-common-title>
                     <c-article-list :cards='articles' />
                 </section>
             </div>
@@ -188,7 +188,7 @@ export default {
         },
         handleProjectMore(type) {
             console.log('type', type)
-            if (type === 'project') {
+            if (type === 'project' || type==='fashion') {
                 this.$router.push({
                     path: '/projectList'
                 })
