@@ -9,7 +9,7 @@
                         <li v-for="(v,index) in historyList" :key='index'>
                             <p class="status-block">
                                 <span class="money">{{v.money | toNumber}}</span>
-                                <span class="status" :class="v.withdraw_status==0?'ing':v.withdraw_status==1?'finish':'back'">{{v.withdraw_status | statusFilter}}</span>
+                                <span class="status" :class="v.withdraw_status==1?'ing':v.withdraw_status==2?'success':'back'">{{v.withdraw_status | statusFilter}}</span>
                             </p>
                             <p class="time-flag c-888">
                                 <span class="time">{{v.pay_time || v.create_time | toSecDate}}</span>
@@ -99,10 +99,10 @@ export default {
                 }
                 .status {
                     font-size: 0.27rem;
-                    &.ing {
+                    &.success {
                         color: #0c9f39;
                     }
-                    &.finish {
+                    &.ing {
                         color: #888;
                     }
                     &.back {
