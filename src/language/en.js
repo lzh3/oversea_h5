@@ -99,6 +99,7 @@ export default {
     infoDispose: "Information Disclosure",
     risk: "Risk Warning",
     investPlan: "Investment Plan",
+    investPlan1: "Investment Plan",
     returnType: "Type of Return",
     exit: "Exit Base",
     moreInfo: "More Info",

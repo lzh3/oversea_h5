@@ -119,6 +119,7 @@ let routerObj = new Router({
     },
     {
       path: "/projectDetail/plan",
+      name:'plan',
       component: Plan
     },
     {

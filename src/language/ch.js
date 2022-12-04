@@ -101,6 +101,7 @@ export default {
     infoDispose: '信息披露',
     risk: '风险提示',
     investPlan: '投资计划',
+    investPlan1: '投资方案',
     returnType: '回报类型',
     exit: '退出机制',
     moreInfo: '补充说明',

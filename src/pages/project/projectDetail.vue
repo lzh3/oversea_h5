@@ -240,7 +240,14 @@ export default {
   methods: {
     toPlan() {
       this.$router.push({
-        path: '/projectDetail/plan',
+        name: 'plan',
+        params:{
+          limit_num:this.projectAbout.limit_num,
+          price: this.projectAbout.price,
+          return_type:this.projectAbout.return_type,
+          out_type:this.projectAbout.out_type
+
+        }
 
       })
     },

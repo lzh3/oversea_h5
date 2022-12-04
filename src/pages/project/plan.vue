@@ -1,10 +1,10 @@
 <template>
   <div class="plan-page bg1">
-    <c-common-top :isBack='true' title='投资计划' toText='确定' :isTo="true"></c-common-top>
+    <c-common-top :isBack='true' title='投资计划' toText='确定' :isTo="true" @to="goback"></c-common-top>
     <div class="plan-main info-block2 p-30 bg-white b-29">
       <ul>
         <li>
-          <p class="title">{{ $t('project.investPlan') }}：</p>
+          <p class="title">{{ $t('project.investPlan1') }}：</p>
           <p class="invest">
             <span>每人限购{{projectAbout.limit_num || 0}}份</span>
             <span><i class="price">￥{{projectAbout.price}}</i>/份</span>
@@ -25,7 +25,7 @@
       </ul>
     </div>
 
-    <div class="plan-main info-block2 p-30 bg-white b-29">
+    <!-- <div class="plan-main info-block2 p-30 bg-white b-29">
       <ul>
         <li>
           <p class="title">{{ $t('project.investPlan') }}：</p>
@@ -47,7 +47,7 @@
           <p class="detail">{{projectAbout.project_remark}}</p>
         </li>
       </ul>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -55,7 +55,9 @@
 export default {
   data() {
     return {
-      projectAbout: {},
+      projectAbout: {
+
+      },
     }
   },
   filters: {
@@ -73,7 +75,18 @@ export default {
       return obj[val] || '--'
     },
   },
-  methods: {}
+  created() {
+    let cdata = this.$route.params
+    console.log(cdata,'传过来的值');
+    if(cdata.price!=undefined){
+      this.projectAbout = cdata
+    }
+  },
+  methods: {
+    goback(){
+      this.$router.go(-1)
+    }
+  }
 }
 </script>
 
