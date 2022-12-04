@@ -67,6 +67,7 @@ export default {
     highCheck: "Advanced Certification",
     assetCheck: "Assets Certification",
     assetTitle: 'Certificate of upload',
+    bankList: 'Bank-Card List'
   },
   placehold: {
     nickname: "Please enter your nickname",

@@ -8,7 +8,7 @@
                 </div>
                 <div class="details">
                     <h3 class="item-title" :class="{'no-img': !item.url}" v-html="item.title"></h3>
-                    <p class="time">{{item.update_time | toSecDate}}</p>
+                    <p class="time">{{(item.update_time|toSecDate)}}</p>
                 </div>
             </li>
         </ul>

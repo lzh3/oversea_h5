@@ -263,7 +263,9 @@ export default {
                     type: 'success',
                     message: '提交成功',
                 })
-                this.$router.back();
+                this.$router.push({
+                    path: '/self/order',
+                });
             })
         },
 

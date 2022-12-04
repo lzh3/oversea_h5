@@ -36,13 +36,13 @@ export default {
         if (res.errCode == 200) {
          this.$toast({
             type: 'success',
-            message: res.data.errMsg
+            message: res.errMsg
           })
           this.$router.push('/bank/list')
         } else {
           this.$toast({
             type: 'fail',
-            message: res.data.errMsg
+            message: res.errMsg
           })
         }
       })

@@ -93,6 +93,12 @@ export default {
           lang: 'self.lucky'
         },
         {
+          title: '我的银行卡',
+          pic: img5,
+          to: '/bank/list',
+          lang: 'self.bankList'
+        },
+        {
           title: '我的收藏',
           pic: img6,
           to: '/self/collect',

@@ -11,7 +11,11 @@
               <i class="iconfont icon-xiangyoujiantou"></i>
             </div>
             <p class="status" :class="statusObj[item.order_status]">
-              {{item.order_status | orderStatusFilter}}
+              <span>{{item.order_status | orderStatusFilter}}</span>
+              <span>{{(item.create_time | toSecDate)}}</span>
+            </p>
+            <p class="order-no">
+              订单号: {{item.order}}
             </p>
           </li>
         </van-list>
@@ -100,7 +104,9 @@ export default {
       flex-direction: column;
       justify-content: space-between;
       padding: 0.3rem;
-      height: 1.87rem;
+      height: auto;
+      // height: 1.87rem;
+      // pandding:
       margin-bottom: 0.3rem;
       background: #fff;
       box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
@@ -111,6 +117,7 @@ export default {
         color: #333;
       }
       .price-block {
+        margin-top: 0.05rem;
         display: flex;
         justify-content: space-between;
         .price {
@@ -118,6 +125,7 @@ export default {
         }
       }
       .status {
+        margin: 0.05rem 0;
         font-size: 0.24rem;
         &.no-pay {
           color: #0a35d8;
@@ -128,6 +136,10 @@ export default {
         &.back {
           color: #999;
         }
+      }
+      .order-no{
+        // line-height: 0.3rem;
+        font-size: 0.24rem;
       }
     }
   }

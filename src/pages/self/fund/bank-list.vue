@@ -73,12 +73,12 @@ export default {
           this.getBankcardList();
           this.$toast({
             type: "success",
-            message: res.data.errMsg
+            message: res.errMsg
           });
         } else {
           this.$toast({
             type: "fail",
-            message: res.data.errMsg
+            message: res.errMsg
           });
         }
       });

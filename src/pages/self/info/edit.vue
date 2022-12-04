@@ -1,5 +1,5 @@
 <template>
-  <div class="edit-wrap">
+  <div class="edit-wrap bg1">
     <c-common-top :title="$t('self.userInfo')" :isBack="true"></c-common-top>
     <div class="main p-30">
       <van-uploader v-model="avaFile">
@@ -120,6 +120,24 @@ export default {
     },
   },
   methods: {
+    // 上传头像-更改用户信息
+    upAvatar(header_img) {
+      this.$axios.post(api.userinfo.updateuser, {
+        header_img: header_img
+      }).then(res => {
+        if (res.errCode == 200) {
+          this.$toast({
+            type: "success",
+            message: res.errMsg
+          });
+        } else {
+          this.$toast({
+            type: "fail",
+            message: res.errMsg
+          });
+        }
+      });
+    },
     // 获取头像
     // getAvatar(){
     //   let imgid = localStore.get('imgava')
@@ -138,6 +156,7 @@ export default {
       }).then(res => {
         // console.log('upload', res)
         localStore.set(type, res.data.image_id)
+        this.upAvatar(res.data.image_id)
         // this.$router.back();
       })
     },
@@ -176,12 +195,12 @@ export default {
           this.getUserInfoList();
           this.$toast({
             type: "success",
-            message: res.data.errMsg
+            message: res.errMsg
           });
         } else {
           this.$toast({
             type: "fail",
-            message: res.data.errMsg
+            message: res.errMsg
           });
         }
       });
@@ -212,12 +231,12 @@ export default {
           this.getUserInfoList();
           this.$toast({
             type: "success",
-            message: res.data.errMsg
+            message: res.errMsg
           });
         } else {
           this.$toast({
             type: "fail",
-            message: res.data.errMsg
+            message: res.errMsg
           });
         }
       });

@@ -67,6 +67,7 @@ export default {
     highCheck: '高级认证',
     assetCheck: '资产证明',
     assetTitle: '上传资产证明',
+    bankList: '我的银行卡'
     
   },
   placehold: {

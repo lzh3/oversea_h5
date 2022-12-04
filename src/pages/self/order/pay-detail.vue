@@ -22,7 +22,7 @@
         <div class="buy">
           <p class="info">
             <span class="unit">￥{{orderInfo.price}}<i>/{{$t('common.copies')}}</i></span>
-            <span class="remain">{{$t('order.remain')}}{{(projectInfo.amount - orderInfo.num) || 0}}{{$t('common.copies')}}</span>
+            <span class="remain">{{$t('order.remain')}}{{(projectInfo.limit_buy_num - projectInfo.sub_buy_num) || 0}}{{$t('common.copies')}}</span>
           </p>
           <p class="op">
             <span class="">{{orderInfo.num}}</span>
