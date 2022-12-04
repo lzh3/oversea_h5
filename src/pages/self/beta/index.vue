@@ -38,9 +38,9 @@ export default {
             // 1: 国内    2：国外
             this.radio = val;
             console.log('cell', this.radio)
-            localStore.set('ISIN',val)
-            let BASEURL = val==1? 'http://h5.cbicn.net:799/':'https://www.cbith.com'
-            localStore.set('BASEURL',BASEURL)
+            localStore.set('ISIN', val)
+            let BASEURL = val == 1 ? 'http://h5.cbicn.net:799/' : 'https://www.cbith.com'
+            localStore.set('BASEURL', BASEURL)
         }
     }
 }
