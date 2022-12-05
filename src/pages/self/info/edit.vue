@@ -157,6 +157,7 @@ export default {
       }).then(res => {
         console.log('upload', res)
         localStore.set(type, res.data.url)
+        localStore.set(imgid, res.data.image_id)
         this.upAvatar(res.data.url)
         // this.$router.back();
       })
