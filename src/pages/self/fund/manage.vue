@@ -16,7 +16,7 @@
         <div class="tab-block1" v-if="currentTab==1">
           <ul>
             <li class="p-30" v-for="(item, index) in dayFuck" :key='index'>
-              <span class="time">{{item.create_time | toDate}}</span>
+              <span class="time">{{item.create_time | toSecDate}}</span>
               <span class="income">${{item.change_account}}</span>
             </li>
           </ul>
@@ -24,7 +24,7 @@
         <div class="tab-block2" v-else>
           <ul>
             <li class="p-30" v-for="(item, index) in projectIncome" :key='index'>
-              <p class="detail"><span class="time">{{item.create_time}}</span>
+              <p class="detail"><span class="time">{{item.create_time | toSecDate}}</span>
                 <span class="income">${{item.change_account}}</span>
               </p>
               <p class="info">{{item.remark}}</p>
