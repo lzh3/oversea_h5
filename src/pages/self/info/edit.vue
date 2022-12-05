@@ -111,6 +111,7 @@ export default {
     avaFile: {
       handler(arr) {
         if (arr.length) {
+          // console.log(arr,'----arr')
           this.imgava = arr[0].content;
           localStore.set('imgava', this.imgava)
           this.upload(this.imgava, 'imgava')
@@ -154,9 +155,9 @@ export default {
       this.$axios.post(api.common.uploadImg, {
         image_base64: base
       }).then(res => {
-        // console.log('upload', res)
-        localStore.set(type, res.data.image_id)
-        this.upAvatar(res.data.image_id)
+        console.log('upload', res)
+        localStore.set(type, res.data.url)
+        this.upAvatar(res.data.url)
         // this.$router.back();
       })
     },
