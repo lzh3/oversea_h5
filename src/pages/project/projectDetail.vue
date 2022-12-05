@@ -241,17 +241,17 @@ export default {
     toPlan() {
       this.$router.push({
         name: 'plan',
-        params:{
-          limit_num:this.projectAbout.limit_num,
+        params: {
+          limit_num: this.projectAbout.limit_num,
           price: this.projectAbout.price,
-          return_type:this.projectAbout.return_type,
-          out_type:this.projectAbout.out_type
+          return_type: this.projectAbout.return_type,
+          out_type: this.projectAbout.out_type
 
         }
 
       })
     },
-    handleBack(){
+    handleBack() {
       localStore.set('front_card_id', '')
       localStore.set('back_card_id', '')
       localStore.set('back_card', '')

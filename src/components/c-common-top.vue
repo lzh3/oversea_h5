@@ -55,7 +55,7 @@ export default {
     },
     back() {
       this.$emit('back')
-      this.$router.go(-1);
+      this.$router.back();
     },
     toPage() {
       this.$emit("to")

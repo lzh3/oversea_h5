@@ -50,16 +50,16 @@ Vue.component("CCommonTop", CCommonTop);
 axios.interceptors.request.use(
   function(config) {
     let token = localStore.get("token");
-    // console.log("请求拦截token", token);
+    config.headers.token = token;
+
     // console.log("请求拦截", config);
+
     let baseUrl = localStore.get("BASEURL");
     console.log('local-baseurl', baseUrl)
     if (baseUrl) {
       config.baseURL = baseUrl;
-      config.headers.token = baseUrl;
+      axios.defaults.baseURL = baseUrl;
     }
-
-    axios.defaults.headers["token"] = token;
     
     console.log("请求拦截", config, baseUrl);
     // 发送请求
