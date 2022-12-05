@@ -79,11 +79,11 @@ export default {
         //   type: '5',
         //   lang: 'self.email'
         // },
-        {
-          label: '收件地址',
-          type: '6',
-          lang: 'self.address'
-        },
+        // {
+        //   label: '收件地址',
+        //   type: '6',
+        //   lang: 'self.address'
+        // },
       ],
       sex: [
         {
